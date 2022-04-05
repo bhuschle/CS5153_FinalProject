@@ -1,0 +1,18 @@
+// Abstract folder
+@import "./abstract/variables";     // variable declarations
+@import "./abstract/mixins";        // mixins declaration
+
+// Base folder
+@import "./base/base";              // *, html, body styles / css
+@import "./base/typography";        // typography related styles
+
+// Layout folder
+@import "./layout/section";
+@import "./layout/header";
+@import "./layout/footer";
+
+// Pages folder
+@import "./pages/page1";            // Page 1 specific styles
+
+// Components Folder
+@import "./components/component1";  // reusable styles specific to this component

@@ -1,0 +1,23 @@
+{
+  "name": "cs5153_finalproject",
+  "version": "1.0.0",
+  "description": "CS5153 Final Project",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "sass": "node-sass styles/sass/main.scss styles/css/style.css -w"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bhuschle/CS5153_FinalProject.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/bhuschle/CS5153_FinalProject/issues"
+  },
+  "homepage": "https://github.com/bhuschle/CS5153_FinalProject#readme",
+  "dependencies": {
+    "sass": "^1.49.11"
+  }
+}
