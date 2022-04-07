@@ -52,3 +52,20 @@ or team completed each requirement.
     -   [ ] Functional prototype - ready for usability testing (grads: two designs) (5.5.2, 6 in book)
         * Your functional prototype must work (i.e. for online shopping you must be able to buy
 things and for a game, it must be playable)!
+
+-   [ ] Milestone 3
+   -   [ ] Study Design (grads: comparative study: compare two designs (both must also work with a
+screen reader)) (8.3 in book)
+      -   [ ] concerns
+      -   [ ] purpose
+      -   [ ] task
+      -   [ ] scenarios
+      -   [ ] measurements
+      -   [ ] test methods
+   -   [ ] Conduct Study with 10 people (Grads: comparative study – 20 people) (8.4, 8.5 in book)
+      -   [ ] Half of the participants will use the standard GUI interface.
+      -   [ ] The other half must use the program blindfolded with the screen reader helping
+them.
+   -   [ ] Analyze Results (turn in excel file) (8.6. in book)
+   -   [ ] Graphs, mean, range, standard deviation (grads: t-test)
+   -   [ ] Report (1-2 pages, single space, and 11ptArial font) (8.6 in book – ‘Document’ p306-307)
