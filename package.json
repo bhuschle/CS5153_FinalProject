@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "sass": "node-sass styles/sass/main.scss styles/css/style.css -w"
+    "compile:sass": "node-sass sass/main.scss src/index.css -w"
   },
   "repository": {
     "type": "git",
@@ -19,5 +19,8 @@
   "homepage": "https://github.com/bhuschle/CS5153_FinalProject#readme",
   "dependencies": {
     "sass": "^1.49.11"
+  },
+  "devDependencies": {
+    "node-sass": "^7.0.1"
   }
 }
