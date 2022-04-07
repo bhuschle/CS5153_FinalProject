@@ -25,7 +25,7 @@ Feel free to add comments like this one under or next to the requirement to keep
 or team completed each requirement.
 -->
 
--   [x] At least 50 items to sell (e.g., each one should have a different product description)
+-   [ ] At least 50 items to sell (e.g., each one should have a different product description)
 -   [ ] Search
 -   [ ] Organize/Filter Products
 -   [ ] Inspect Product Details
