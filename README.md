@@ -35,12 +35,12 @@ or team completed each requirement.
 
 ## Milestone Checklist
 
--   [ ] Milestone 1
-    -   [ ] Questionnaire answered by 10 participants (grads: 20) with at least 20 questions (4.2.3 in book)
-    -   [ ] Stakeholder Profiles (4.3.4 in book)
-    -   [ ] Use Cases (4.3.3 in book)
-    -   [ ] Requirements Documentation (4.4.2 in book)
-    -   [ ] Project Management Documentation (4.4.3 in book)
+-   [X] Milestone 1
+    -   [X] Questionnaire answered by 10 participants (grads: 20) with at least 20 questions (4.2.3 in book)
+    -   [X] Stakeholder Profiles (4.3.4 in book)
+    -   [X] Use Cases (4.3.3 in book)
+    -   [X] Requirements Documentation (4.4.2 in book)
+    -   [X] Project Management Documentation (4.4.3 in book)
 
 -   [ ] Milestone 2
     -   [ ] Personas (5.2.4 in book)
