@@ -7,7 +7,7 @@ CS 5153 Final Project E-Commerce website
 Brandon Huschle - VTF657  
 Ethan Chappel -  
 Jesus Perez -  
-Shabnam Mustafa -
+Shabnam Mustafa - AXZ393
 
 ## Programming environments
 
