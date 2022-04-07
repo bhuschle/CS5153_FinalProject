@@ -37,11 +37,11 @@ or team completed each requirement.
 
 ### Milestone 1
 
-- [x] Questionnaire answered by 10 participants (grads: 20) with at least 20 questions (4.2.3 in book)
-- [x] Stakeholder Profiles (4.3.4 in book)
-- [x] Use Cases (4.3.3 in book)
-- [x] Requirements Documentation (4.4.2 in book)
-- [x] Project Management Documentation (4.4.3 in book)
+- [x] Questionnaire answered by 10 participants (grads: 20) with at least 20 questions (4.2.3 in book) <!--- Shabnam Mustafa --->
+- [x] Stakeholder Profiles (4.3.4 in book) <!--- Jesus Perez --->
+- [x] Use Cases (4.3.3 in book) <!--- Brandon Huschle --->
+- [x] Requirements Documentation (4.4.2 in book) <!--- Shabnam Mustafa --->
+- [x] Project Management Documentation (4.4.3 in book) <!--- Ethan Chappel --->
 
 ### Milestone 2
 
@@ -50,10 +50,10 @@ or team completed each requirement.
 - [ ] Flow charts (5.2.5 in book)
 - [ ] Cognitive Walkthrough (5.2.5 in book)
 - [ ] Paper Prototypes (grads: 2 designs)(5.3.2, 6 in book)
-- [ ] Wireframe Prototype (e.g., in GWT) (grads: two designs) (5.5.1, 6 in book)
-- [ ] Functional prototype - ready for usability testing (grads: two designs) (5.5.2, 6 in book)
-- [ ] Your functional prototype must work (i.e. for online shopping you must be able to buy
-      things and for a game, it must be playable)!
+- [ ] Wireframe Prototype (e.g., in GWT) (grads: two designs) (5.5.1, 6 in book) <!--- Brandon Huschle --->
+- [ ] Functional prototype - ready for usability testing (grads: two designs) (5.5.2, 6 in book) <!--- Brandon Huschle --->
+  - [ ] Your functional prototype must work (i.e. for online shopping you must be able to buy
+        things and for a game, it must be playable)!
 
 ### Milestone 3
 
