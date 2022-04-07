@@ -26,8 +26,8 @@ or team completed each requirement.
 -->
 
 -   [x] At least 50 items to sell (e.g., each one should have a different product description)
--   [] Search
--   [] Organize/Filter Products
--   [] Inspect Product Details
--   [] Buy
--   [] login
+-   [ ] Search
+-   [ ] Organize/Filter Products
+-   [ ] Inspect Product Details
+-   [ ] Buy
+-   [ ] login
