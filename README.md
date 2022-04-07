@@ -36,3 +36,15 @@ or team completed each requirement.
 ## Milestone Checklist
 
 Moved to [Issues](https://github.com/bhuschle/CS5153_FinalProject/issues)
+
+### Milestone 1
+
+Completed
+
+### Milestone 2
+
+In-Progress
+
+### Milestone 3
+
+Not Started
