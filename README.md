@@ -11,7 +11,7 @@ Shabnam -
 
 ## Programming environments
 
-Brandon Huschle - VSCode  
+Brandon Huschle - Atom Github IDE  
 Ethan Chappel -  
 Jesus Perez -  
 Shabnam -
