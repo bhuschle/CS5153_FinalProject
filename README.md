@@ -31,3 +31,4 @@ or team completed each requirement.
 -   [ ] Inspect Product Details
 -   [ ] Buy
 -   [ ] login
+-   [ ] Must be designed to effectively work with screen readers – for the persons with vision disabilities
