@@ -1,6 +1,7 @@
 // Abstract folder
 @import "./abstract/variables";     // variable declarations
 @import "./abstract/mixins";        // mixins declaration
+@import "./abstract/functions";     // functions declarations
 
 // Base folder
 @import "./base/base";              // *, html, body styles / css
@@ -16,6 +17,10 @@
 
 // Components Folder
 @import "./components/component1";  // reusable styles specific to this component
+
+// Theme Folder
+@import "./themes/dark";            // Dark theme
+@import "./themes/light";           // Light theme
 
 // Global Variables
 $color-primary: #00008b; //this is a dark blue color
