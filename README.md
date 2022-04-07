@@ -20,18 +20,9 @@ Shabnam Mustafa -
 
 <!---
 Add requirements here as we go so that we can keep organized
-Add an X inside the box in order to check that we have completed each requirement
-Feel free to add comments like this one under or next to the requirement to keep track of which individual
-or team completed each requirement.
 -->
 
-- [ ] At least 50 items to sell (e.g., each one should have a different product description)
-- [ ] Search
-- [ ] Organize/Filter Products
-- [ ] Inspect Product Details
-- [ ] Buy
-- [ ] login
-- [ ] Must be designed to effectively work with screen readers – for the persons with vision disabilities
+[Functional Requirement Issue](https://github.com/bhuschle/CS5153_FinalProject/issues/22)
 
 ## Milestone Checklist
 
@@ -43,8 +34,8 @@ Completed
 
 ### Milestone 2
 
-In-Progress
+[In-Progress](https://github.com/bhuschle/CS5153_FinalProject/issues/2)
 
 ### Milestone 3
 
-Not Started
+[Not Started](https://github.com/bhuschle/CS5153_FinalProject/issues/3)
