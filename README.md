@@ -5,15 +5,15 @@ CS 5153 Final Project E-Commerce website
 ## Group Members Listed
 
 Brandon Huschle - VTF657  
-Ethan Chappel -  
-Jesus Perez - RXY048
+Ethan Chappel - MXK273  
+Jesus Perez - RXY048  
 Shabnam Mustafa - AXZ393
 
 ## Programming environments
 
 Brandon Huschle - Atom Github IDE  
-Ethan Chappel -  
-Jesus Perez - Visual Studio
+Ethan Chappel - Visual Studio  
+Jesus Perez - Visual Studio  
 Shabnam Mustafa -
 
 ## Functional Requirements
