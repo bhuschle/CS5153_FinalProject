@@ -1,14 +1,98 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>E-Commerce Website</title>
-</head>
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-<body>
-  <div class="background"></div>
-</body>
+    <link rel="stylesheet" href="src/index.css" />
+    <!--- <link rel="shortcut icon" type="image/png" href="img/favicon.png" /> --->
 
+    <title>Tech N' Stuff</title>
+  </head>
+
+  <body>
+    <div class="topnav">
+      <a class="active" href="#home"> Home </a>
+      <div class="dropdown">
+        <button class="dropbtn">
+          Products
+          <i class="fa fa-caret-down"></i>
+        </button>
+        <div class="dropdown-content">
+          <a href="#"> Computers </a>
+          <a href="#"> Tablets </a>
+          <a href="#"> Phones </a>
+          <a href="#"> Accessories </a>
+        </div>
+      </div>
+      <a href="#search"> search </a>
+      <a href="#contact-us"> Contact Us </a>
+      <a href="#help"> Help </a>
+    </div>
+
+    <div class="featured-products">
+      <div class="product">
+        <img src="" alt="" class="product-img" />
+        <div class="featured-product_info">
+          <label for="product-img" class="product-label"> Product Label </label>
+          <label for="product-img" class="product-price"> $$$$ </label>
+          <button type="button">Buy now!</button>
+        </div>
+      </div>
+
+      <div class="product-carousel">
+        <div class="product-carousel_individual">
+          <img src="" alt="" class="product-carousel_img" />
+          <div class="featured-product_info">
+            <label for="product-carousel_img" class="product-carousel_label">
+              Product Carousel Label
+            </label>
+            <label for="product-carousel_img" class="product-carousel_price">
+              $$$$
+            </label>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <footer class="footer">
+      <div class="footer__logo-box">
+        <img
+          src="/img/logo-green-2x.png"
+          alt="Full logo"
+          class="footer__logo"
+        />
+      </div>
+      <div class="row">
+        <div class="col-1-of-2">
+          <div class="footer__navigation">
+            <ul class="footer__list">
+              <li class="footer__item">
+                <a href="#" class="footer__link">Company</a>
+              </li>
+              <li class="footer__item">
+                <a href="#" class="footer__link">Contact Us</a>
+              </li>
+              <li class="footer__item">
+                <a href="#" class="footer__link">Careers</a>
+              </li>
+              <li class="footer__item">
+                <a href="#" class="footer__link">Privacy</a>
+              </li>
+              <li class="footer__item">
+                <a href="#" class="footer__link">Terms</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div class="col-1-of-2">
+          <p class="footer__copyright">
+            Built by <a href="#footer" class="footer__link">CS 5153 Group 16</a>
+            <br />
+          </p>
+        </div>
+      </div>
+    </footer>
+  </body>
 </html>
