@@ -8,23 +8,35 @@
     <link rel="stylesheet" href="src/index.css" />
     <!--- <link rel="shortcut icon" type="image/png" href="img/favicon.png" /> --->
 
-    <title>E-Commerce Website</title>
+    <title>Tech N' Stuff</title>
   </head>
 
   <body>
     <div class="topnav">
-      <a class="active" href="#home">Home</a>
-      <a href="#search">search</a>
-      <a href="#contact-us">Contact Us</a>
-      <a href="#help">Help</a>
+      <a class="active" href="#home"> Home </a>
+      <div class="dropdown">
+        <button class="dropbtn">
+          Products
+          <i class="fa fa-caret-down"></i>
+        </button>
+        <div class="dropdown-content">
+          <a href="#"> Computers </a>
+          <a href="#"> Tablets </a>
+          <a href="#"> Phones </a>
+          <a href="#"> Accessories </a>
+        </div>
+      </div>
+      <a href="#search"> search </a>
+      <a href="#contact-us"> Contact Us </a>
+      <a href="#help"> Help </a>
     </div>
 
     <div class="featured-products">
       <div class="product">
         <img src="" alt="" class="product-img" />
         <div class="featured-product_info">
-          <label for="product-img" class="product-label">Product Label</label>
-          <label for="product-img" class="product-price">$$$$</label>
+          <label for="product-img" class="product-label"> Product Label </label>
+          <label for="product-img" class="product-price"> $$$$ </label>
           <button type="button">Buy now!</button>
         </div>
       </div>
@@ -33,12 +45,12 @@
         <div class="product-carousel_individual">
           <img src="" alt="" class="product-carousel_img" />
           <div class="featured-product_info">
-            <label for="product-carousel_img" class="product-carousel_label"
-              >Product Label</label
-            >
-            <label for="product-carousel_img" class="product-carousel_price"
-              >$$$$</label
-            >
+            <label for="product-carousel_img" class="product-carousel_label">
+              Product Carousel Label
+            </label>
+            <label for="product-carousel_img" class="product-carousel_price">
+              $$$$
+            </label>
           </div>
         </div>
       </div>
