@@ -9,7 +9,7 @@ services:
     restart: on-failure
     environment:
       MYSQL_RANDOM_ROOT_PASSWORD: 1
-      MYSQL_USER: testuser
+      MYSQL_USER: server
       MYSQL_PASSWORD: qwertyuiop
       MYSQL_DATABASE: "store"
   adminer:
@@ -17,5 +17,15 @@ services:
     restart: on-failure
     ports: 
       - 8081:8080
+  server:
+    build:
+      dockerfile: ./docker/server/Dockerfile
+      context: .
+    command: node testdb.mjs
+    restart: on-failure
+    ports:
+      - 8000:8000
+    depends_on:
+      - db
 volumes:
   db-vol: {}
