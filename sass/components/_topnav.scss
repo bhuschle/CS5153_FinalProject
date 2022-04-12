@@ -1,26 +1,26 @@
 /* Sass Variables and Mixins */
-.main-nav{
+.main-nav {
   background-color: $color-grey-dark-2;
   padding: 2rem 0;
   font-size: 1.5rem;
   color: $color-grey-dark;
 
-  &__logo-box{
-    text-align:center;
+  &__logo-box {
+    text-align: center;
     margin: 0;
   }
 
-  &__logo{
+  &__logo {
     width: 4rem;
     height: auto;
   }
 
-  &__navigation{
+  &__navigation {
     padding: 1rem;
     display: inline-block;
   }
 
-  &__list{
+  &__list {
     list-style: none;
   }
 
@@ -33,7 +33,7 @@
     }
   }
 
-  &__sublist{
+  &__sub {
     display: none;
   }
 
@@ -58,4 +58,6 @@
   }
 }
 
-ul li:hover ul{display: block;}
+ul li:hover ul {
+  display: block;
+}
