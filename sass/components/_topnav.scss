@@ -1,27 +1,59 @@
-/* Add a black background color to the top navigation */
-.topnav {
-  background-color: #333;
-  overflow: hidden;
+/* Sass Variables and Mixins */
+@mixin testborder{ border: 1px solid magenta; }
+@mixin reset{ margin: 0; padding: 0; }
+@mixin shadow($x, $y, $fuzz, $color){
+  box-shadow: $x $y $fuzz $color;
 }
-
-/* Style the links inside the navigation bar */
-.topnav a {
-  float: left;
-  color: #f2f2f2;
-  text-align: center;
-  padding: 14px 16px;
-  text-decoration: none;
-  font-size: 17px;
+@mixin subtle-gradient($c1, $c2){
+  background: linear-gradient(135deg, $c1 0%,$c2 100%);
 }
-
-/* Change the color of links on hover */
-.topnav a:hover {
-  background-color: #ddd;
-  color: black;
-}
-
-/* Add a color to the active/current link */
-.topnav a.active {
-  background-color: #04aa6d;
-  color: white;
+$nav-color: #000000;
+$nav-drop-color: #000000;
+$line-height: 2em;
+$nav-padding: .75em;
+$a-hover: #ffffff;
+/* Dropdown */
+nav{
+  background: $nav-color;
+  @include subtle-gradient(lighten($nav-color, 3%), $nav-color);
+  height: $line-height;
+  border-top: 1px solid lighten($nav-color, 15%);
+  border-bottom: 1px solid darken($nav-color, 20%);
+  @include shadow(2px, 2px, 0px, rgba(0,0,0,.25));
+  a{
+    color: #6bd5d5;
+    padding-left: $nav-padding;
+    padding-right: $nav-padding;
+    display: block;
+    border-right: 1px solid darken($nav-color, 5%);
+    text-decoration: none;
+    &:hover{
+      color: $a-hover;
+    }
+  }
+  ul{
+    @include reset;
+    list-style: none;
+    li{
+      float: left;
+      position: relative;
+      ul{
+        display: none;
+        position: absolute;
+        overflow: auto;
+        width: 17em; /* fix this */
+        background-color: $nav-drop-color;
+        border-bottom: 1px solid darken($nav-drop-color, 20%);
+        border-left: 1px solid darken($nav-drop-color, 20%);
+        border-right: 1px solid darken($nav-drop-color, 20%);
+        @include shadow(2px, 2px, 0px, rgba(0,0,0,.25));
+        @include subtle-gradient(lighten($nav-drop-color, 3%), $nav-drop-color);
+        li{
+          float: none;
+          border-bottom: 1px solid darken($nav-drop-color, 2%);
+        }
+      }
+      &:hover ul{ display: block; }
+    }
+  }
 }
