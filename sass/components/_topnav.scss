@@ -1,59 +1,58 @@
-/* Sass Variables and Mixins */
 .main-nav {
-  background-color: $color-grey-dark-2;
-  padding: 2rem 0;
-  font-size: 1.5rem;
-  color: $color-grey-dark;
 
-  &__logo-box {
-    text-align: center;
-    margin: 0;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 10rem;
+
+  background-color: white;
+  overflow: hidden;
+
+  box-shadow: 0, 0rem, 1rem, 1.5rem, rgba(0,0,0,0.1);
+
+
+  &__left{
+    float: left;
   }
 
-  &__logo {
-    width: 4rem;
-    height: auto;
+  &__right{
+    float: right;
   }
 
-  &__navigation {
-    padding: 1rem;
+  &__center{
+    max-width: 95%;
+    margin: 0 auto;
+  }
+
+  &__drop{
     display: inline-block;
-  }
+    position: relative;
 
-  &__list {
-    list-style: none;
-  }
+    &-cont{
+      display: none;
+      position: absolute;
+      width: 100%;
+      overflow: auto;
+      box-shadow: 0 1rem 1rem 0 rgba(0,0,0,0.4);
 
-  &__item {
-    display: inline-block;
-    margin-right: 2rem;
+      & a{
+        display: block;
+        display-link: none;
+        color: #000000;
+        padding: .5rem;
+        text-decoration: none;
+      }
 
-    &:not(:last-child) {
-      margin-right: 1.5rem;
-    }
-  }
-
-  &__sub {
-    display: none;
-  }
-
-  &__link {
-    &:link,
-    &:visited {
-      color: $color-grey-light-1;
-      background-color: $color-grey-dark-3;
-      text-decoration: none;
-      text-transform: uppercase;
-      display: inline-block;
-      transition: all 0.2s;
-      margin-right: 2rem;
+      & a:hover{
+        color: #FFFFFF;
+        background-color: #00A4BD;
+      }
     }
 
-    &:hover,
-    &:active {
-      color: $color-primary;
-      box-shadow: 0 1rem 2rem rgba($color-black, 0.4);
-      transform: rotate(5deg) scale(1.3);
+    &:hover &-cont{
+      display: block;
+
     }
   }
 }
