@@ -250,7 +250,7 @@ body {
       .row:not(:last-child) {
         margin-bottom: 6rem; } }
   .row::after {
-    content: '';
+    content: "";
     display: table;
     clear: both; }
   .row [class^='col-'] {
@@ -301,7 +301,7 @@ body {
     margin-right: 2rem; }
     .main-nav__item:not(:last-child) {
       margin-right: 1.5rem; }
-  .main-nav__sublist {
+  .main-nav__sub {
     display: none; }
   .main-nav__link:link, .main-nav__link:visited {
     color: #f7f7f7;
@@ -315,9 +315,6 @@ body {
     color: #55c57a;
     box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.4);
     transform: rotate(5deg) scale(1.3); }
-
-ul li:hover ul {
-  display: block; }
 
 .btn, .btn:link, .btn:visited {
   text-transform: uppercase;
