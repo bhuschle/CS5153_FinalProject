@@ -11,20 +11,15 @@
 @import "./layout/section";
 @import "./layout/header";
 @import "./layout/footer";
+@import "./layout/grid";
 
 // Pages folder
 @import "./pages/page1"; // Page 1 specific styles
 
 // Components Folder
 @import "./components/topnav"; // topnav component
+@import "./components/button";
 
 // Theme Folder
 @import "./themes/dark"; // Dark theme
 @import "./themes/light"; // Light theme
-
-// Global Variables
-$color-primary: #00008b; //this is a dark blue color
-
-body {
-  background-color: $color-primary;
-}
