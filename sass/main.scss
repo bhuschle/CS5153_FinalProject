@@ -6,6 +6,8 @@
 // Base folder
 @import "./base/base"; // *, html, body styles / css
 @import "./base/typography"; // typography related styles
+@import "./base/animations";
+@import "./base/utilities";
 
 // Layout folder
 @import "./layout/section";
