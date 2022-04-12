@@ -5,57 +5,47 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <link rel="stylesheet" href="src/index.css" />
+    <link rel="stylesheet" href="css/style.css" />
     <link rel="shortcut icon" type="image/png" href="img/favicon/favicon.ico" />
 
     <title>Tech N' Stuff</title>
   </head>
 
   <body>
-    <div class="topnav">
-      <img
-        src="img/TechNStuff/TechNStuff_black.png"
-        alt="Tech N' Stuff"
-        class="logo"
-      />
-      <a class="active" href="#home"> Home </a>
-      <div class="dropdown">
-        <button class="dropbtn">
-          Products
-          <i class="fa fa-caret-down"></i>
-        </button>
-        <div class="dropdown-content">
-          <a href="#"> Computers </a>
-          <a href="#"> Tablets </a>
-          <a href="#"> Phones </a>
-          <a href="#"> Accessories </a>
-        </div>
-      </div>
-      <a href="#search"> search </a>
-      <a href="#help"> Help </a>
-      <a href="#cart"> Cart </a>
-      <div class="dropdown">
-        <button class="dropbtn">
-          Profile
-          <i class="fa fa-caret-down"></i>
-        </button>
-        <div class="dropdown-content">
-          <img src="" alt="" class="profile-img" />
-          <a href="#"> Account </a>
-          <a href="#"> Orders </a>
-        </div>
-      </div>
-    </div>
 
-    <div class="featured-products">
-      <div class="product">
-        <img src="" alt="" class="product-img" />
-        <div class="featured-product_info">
-          <label for="product-img" class="product-label"> Product Label </label>
-          <label for="product-img" class="product-price"> $$$$ </label>
-          <button type="button">Buy now!</button>
+    <nav class="main-navigation">
+      <ul>
+        <li class="item"><img class="main-navigation__logo" src="img/TechNStuff/TechNStuffLogo.png" alt="Tech N' Stuff"></li>
+        <li class="item"><a href="#">Menu</a></li>
+        <li class="item"><a href="#">Products</a></li>
+        <ul>
+          <li><a href="#">Computers</a></li>
+          <li><a href="#">Tablets</a></li>
+          <li><a href="#">Phones</a></li>
+          <li><a href="#">Accessories</a></li>
+        </ul>
+        <li class="item"><a href="#">Search</a></li>
+        <li class="item"><a href="#">Help</a></li>
+        <li class="item"><a href="#">Cart</a></li>
+        <li class="item"><a href="#">Profile</a></li>
+        <ul>
+          <li><a href="#">Account</a></li>
+          <li><a href="#">Orders</a></li>
+        </ul>
+      </ul>
+    </nav>
+
+    <header class="header">
+      <div class="featured-product">
+        <div class="product">
+          <img src="" alt="" class="product-img" />
+            <h1 class="heading-primary">
+              <span class="heading-primary--main"> Product Label </span>
+              <span class="heading-primary--sub"> $$$$ </span>
+            </h1>
+            <a href="#" class="btn btn--white btn--animated"> Buy now! </a>
         </div>
-      </div>
+    </header>
 
       <div class="product-carousel">
         <div class="product-carousel_individual">
@@ -75,7 +65,7 @@
     <footer class="footer">
       <div class="footer__logo-box">
         <img
-          src="/img/logo-green-2x.png"
+          src="/img/TechNStuff/TechNStuffLogo.png"
           alt="Full logo"
           class="footer__logo"
         />
