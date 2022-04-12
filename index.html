@@ -22,7 +22,18 @@
   </head>
 
   <body>
-    <nav class="navbar sticky-top navbar-expand-lg navbar-light bg-light">
+    <style type="text/css">
+      body {
+        background: grey !important;
+      } /* Adding !important forces the browser to overwrite the default style applied by Bootstrap */
+      .navbar {
+        margin-bottom: 1rem;
+      }
+    </style>
+
+    <nav
+      class="navbar sticky-top navbar-expand-sm navbar-light bg-light mx-4 my-4 rounded "
+    >
       <a class="navbar-brand" href="#">
         <img
           src="/img/TechNStuff/TechNStuffLogo.png"
@@ -44,12 +55,7 @@
       </button>
       <div class="collapse navbar-collapse" id="navbarText">
         <ul class="navbar-nav mr-auto">
-          <li class="nav-item active">
-            <a class="nav-link" href="#"
-              >TECH N' STUFF<span class="sr-only">(current)</span></a
-            >
-          </li>
-          <li class="nav-item dropdown">
+          <li class="nav-item dropdown active">
             <a
               class="nav-link dropdown-toggle"
               href="#"
@@ -59,7 +65,7 @@
               aria-haspopup="true"
               aria-expanded="false"
             >
-              PRODUCTS
+              TECH N' STUFF<span class="sr-only">(current)</span>
             </a>
             <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
               <a class="dropdown-item" href="#">COMPUTERS</a>
@@ -105,71 +111,299 @@
       </div>
     </nav>
 
-    <header class="header">
-      <div class="featured-product">
-        <div class="product">
-          <img src="" alt="" class="product-img" />
-          <h1 class="heading-primary">
-            <span class="heading-primary--main"> Product Label </span>
-            <span class="heading-primary--sub"> $$$$ </span>
-          </h1>
-          <a href="#" class="btn btn--white btn--animated"> Buy now! </a>
-        </div>
-      </div>
-    </header>
+    <!--- FEATURED PRODUCT --->
 
-    <!-- Optional JavaScript -->
-    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <div class="product-carousel">
-      <div class="product-carousel_individual">
-        <img src="" alt="" class="product-carousel_img" />
-        <div class="featured-product_info">
-          <label for="product-carousel_img" class="product-carousel_label">
-            Product Carousel Label
-          </label>
-          <label for="product-carousel_img" class="product-carousel_price">
-            $$$$
-          </label>
+    <div class="card justify-content-center mx-4 my-4">
+      <img
+        class="card-img-top rounded"
+        src="/img/test/MacbookPro.webp"
+        alt="Card image cap"
+      />
+      <div class="card-body">
+        <h5 class="card-title">2022 Macbook Pro 16"</h5>
+        <p class="card-text">
+          Apple M1 Pro or M1 Max chip for a massive leap in CPU, GPU, and
+          machine learning performance Up to 10-core CPU delivers up to 3.7x
+          faster performance to fly through pro workflows quicker than ever. Up
+          to 32-core GPU with up to 13x faster performance for
+          graphics-intensive apps and games 16-core Neural Engine for up to 11x
+          faster machine learning performance.
+        </p>
+        <a href="#" class="card-link">More Info</a>
+        <a href="#" class="card-link">Buy Now!</a>
+      </div>
+    </div>
+
+    <!-- Items List -->
+    <div class="container-fluid mx-4 my-4">
+      <h1>MOST PURCHASED ITEMS LIST</h1>
+    </div>
+
+    <div class="container-fluid">
+      <div class="row justify-content-md-center">
+        <div class="col my-4 mx-4">
+          <div class="card rounded" style="width: 18rem;">
+            <img
+              class="card-img-top rounded"
+              src="img/test/macbook1.jpg"
+              alt="Card image cap"
+            />
+            <div class="card-body">
+              <h5 class="card-title">Card title</h5>
+              <p class="card-text">
+                Some quick example text to build on the card title and make up
+                the bulk of the card's content.
+              </p>
+              <a href="#" class="card-link">Buy Now!</a>
+            </div>
+          </div>
+        </div>
+        <div class="col my-4 mx-4">
+          <div class="card rounded" style="width: 18rem;">
+            <img
+              class="card-img-top rounded"
+              src="img/test/macbook1.jpg"
+              alt="Card image cap"
+            />
+            <div class="card-body">
+              <h5 class="card-title">Card title</h5>
+              <p class="card-text">
+                Some quick example text to build on the card title and make up
+                the bulk of the card's content.
+              </p>
+              <a href="#" class="card-link">Buy Now!</a>
+            </div>
+          </div>
+        </div>
+        <div class="col my-4 mx-4">
+          <div class="card rounded" style="width: 18rem;">
+            <img
+              class="card-img-top rounded"
+              src="img/test/macbook1.jpg"
+              alt="Card image cap"
+            />
+            <div class="card-body">
+              <h5 class="card-title">Card title</h5>
+              <p class="card-text">
+                Some quick example text to build on the card title and make up
+                the bulk of the card's content.
+              </p>
+              <a href="#" class="card-link">Buy Now!</a>
+            </div>
+          </div>
+        </div>
+        <div class="col my-4 mx-4">
+          <div class="card rounded" style="width: 18rem;">
+            <img
+              class="card-img-top rounded"
+              src="img/test/macbook1.jpg"
+              alt="Card image cap"
+            />
+            <div class="card-body">
+              <h5 class="card-title">Card title</h5>
+              <p class="card-text">
+                Some quick example text to build on the card title and make up
+                the bulk of the card's content.
+              </p>
+              <a href="#" class="card-link">Buy Now!</a>
+            </div>
+          </div>
+        </div>
+        <div class="col my-4 mx-4">
+          <div class="card rounded" style="width: 18rem;">
+            <img
+              class="card-img-top rounded"
+              src="img/test/macbook1.jpg"
+              alt="Card image cap"
+            />
+            <div class="card-body">
+              <h5 class="card-title">Card title</h5>
+              <p class="card-text">
+                Some quick example text to build on the card title and make up
+                the bulk of the card's content.
+              </p>
+              <a href="#" class="card-link">Buy Now!</a>
+            </div>
+          </div>
+        </div>
+        <div class="col my-4 mx-4">
+          <div class="card rounded" style="width: 18rem;">
+            <img
+              class="card-img-top rounded"
+              src="img/test/macbook1.jpg"
+              alt="Card image cap"
+            />
+            <div class="card-body">
+              <h5 class="card-title">Card title</h5>
+              <p class="card-text">
+                Some quick example text to build on the card title and make up
+                the bulk of the card's content.
+              </p>
+              <a href="#" class="card-link">Buy Now!</a>
+            </div>
+          </div>
+        </div>
+        <div class="col my-4 mx-4">
+          <div class="card rounded" style="width: 18rem;">
+            <img
+              class="card-img-top rounded"
+              src="img/test/macbook1.jpg"
+              alt="Card image cap"
+            />
+            <div class="card-body">
+              <h5 class="card-title">Card title</h5>
+              <p class="card-text">
+                Some quick example text to build on the card title and make up
+                the bulk of the card's content.
+              </p>
+              <a href="#" class="card-link">Buy Now!</a>
+            </div>
+          </div>
+        </div>
+        <div class="col my-4 mx-4">
+          <div class="card rounded" style="width: 18rem;">
+            <img
+              class="card-img-top rounded"
+              src="img/test/macbook1.jpg"
+              alt="Card image cap"
+            />
+            <div class="card-body">
+              <h5 class="card-title">Card title</h5>
+              <p class="card-text">
+                Some quick example text to build on the card title and make up
+                the bulk of the card's content.
+              </p>
+              <a href="#" class="card-link">Buy Now!</a>
+            </div>
+          </div>
+        </div>
+        <div class="col my-4 mx-4">
+          <div class="card rounded" style="width: 18rem;">
+            <img
+              class="card-img-top rounded"
+              src="img/test/macbook1.jpg"
+              alt="Card image cap"
+            />
+            <div class="card-body">
+              <h5 class="card-title">Card title</h5>
+              <p class="card-text">
+                Some quick example text to build on the card title and make up
+                the bulk of the card's content.
+              </p>
+              <a href="#" class="card-link">Buy Now!</a>
+            </div>
+          </div>
+        </div>
+        <div class="col my-4 mx-4">
+          <div class="card rounded" style="width: 18rem;">
+            <img
+              class="card-img-top rounded"
+              src="img/test/macbook1.jpg"
+              alt="Card image cap"
+            />
+            <div class="card-body">
+              <h5 class="card-title">Card title</h5>
+              <p class="card-text">
+                Some quick example text to build on the card title and make up
+                the bulk of the card's content.
+              </p>
+              <a href="#" class="card-link">Buy Now!</a>
+            </div>
+          </div>
         </div>
       </div>
     </div>
 
-    <footer class="footer">
-      <div class="footer__logo-box">
-        <img
-          src="/img/TechNStuff/TechNStuffLogo.png"
-          alt="Full logo"
-          class="footer__logo"
-        />
-      </div>
-      <div class="row">
-        <div class="col-1-of-2">
-          <div class="footer__navigation">
-            <ul class="footer__list">
-              <li class="footer__item">
-                <a href="#" class="footer__link">Company</a>
-              </li>
-              <li class="footer__item">
-                <a href="#" class="footer__link">Contact Us</a>
-              </li>
-              <li class="footer__item">
-                <a href="#" class="footer__link">Help</a>
-              </li>
-              <li class="footer__item">
-                <a href="#" class="footer__link">Privacy</a>
-              </li>
-            </ul>
-          </div>
-        </div>
-        <div class="col-1-of-2">
-          <p class="footer__copyright">
-            Built by <a href="#footer" class="footer__link">CS 5153 Group 16</a>
-            <br />
-          </p>
-        </div>
-      </div>
-    </footer>
+    <!-- Footer -->
+    <footer
+      class="text-center text-lg-start text-white"
+      style="background-color: #3e4551"
+    >
+      <!-- Grid container -->
+      <div class="container p-4 pb-0">
+        <!-- Section: Links -->
+        <section class="">
+          <!--Grid row-->
+          <div class="row">
+            <!--Grid column-->
+            <div class="col-lg-4 col-md-6 mb-4 mb-md-0">
+              <h5 class="text-uppercase">TECH N' STUFF</h5>
+              <p>
+                Brandon Huschle <br />
+                Ethan Chappel <br />
+                Jesus Perez <br />
+                Shabnam Mustafa
+              </p>
+            </div>
+            <!--Grid column-->
 
+            <!--Grid column-->
+            <div class="col-lg-2 col-md-6 mb-4 mb-md-0">
+              <h5 class="text-uppercase">PRODUCTS</h5>
+
+              <ul class="list-unstyled mb-0">
+                <li>
+                  <a href="#!" class="text-white">COMPUTERS</a>
+                </li>
+                <li>
+                  <a href="#!" class="text-white">TABLETS</a>
+                </li>
+                <li>
+                  <a href="#!" class="text-white">PHONES</a>
+                </li>
+                <li>
+                  <a href="#!" class="text-white">ACCESSORIES</a>
+                </li>
+              </ul>
+            </div>
+            <!--Grid column-->
+
+            <!--Grid column-->
+            <div class="col-lg-2 col-md-6 mb-4 mb-md-0">
+              <h5 class="text-uppercase">ACCOUNT</h5>
+
+              <ul class="list-unstyled mb-0">
+                <li>
+                  <a href="#!" class="text-white">MANAGE</a>
+                </li>
+                <li>
+                  <a href="#!" class="text-white">ORDERS</a>
+                </li>
+              </ul>
+            </div>
+            <!--Grid column-->
+          </div>
+          <!--Grid row-->
+        </section>
+        <!-- Section: Links -->
+
+        <hr class="mb-4" />
+
+        <!-- Section: CTA -->
+        <section class="">
+          <p class="d-flex justify-content-center align-items-center">
+            <button type="button" class="btn btn-outline-light btn-rounded">
+              Sign up!
+            </button>
+          </p>
+        </section>
+        <!-- Section: CTA -->
+      </div>
+      <!-- Grid container -->
+
+      <!-- Copyright -->
+      <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2)">
+        © 2020 Copyright:
+        <a class="text-white" href="https://mdbootstrap.com/"
+          >MDBootstrap.com</a
+        >
+      </div>
+      <!-- Copyright -->
+    </footer>
+    <!-- Footer -->
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script
       src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
       integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
