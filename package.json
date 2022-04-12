@@ -18,6 +18,8 @@
   },
   "homepage": "https://github.com/bhuschle/CS5153_FinalProject#readme",
   "dependencies": {
+    "knex": "^1.0.6",
+    "mysql": "^2.18.1",
     "sass": "^1.49.11"
   },
   "devDependencies": {
