@@ -1,59 +1,57 @@
 /* Sass Variables and Mixins */
-@mixin testborder{ border: 1px solid magenta; }
-@mixin reset{ margin: 0; padding: 0; }
-@mixin shadow($x, $y, $fuzz, $color){
-  box-shadow: $x $y $fuzz $color;
-}
-@mixin subtle-gradient($c1, $c2){
-  background: linear-gradient(135deg, $c1 0%,$c2 100%);
-}
-$nav-color: #000000;
-$nav-drop-color: #000000;
-$line-height: 2em;
-$nav-padding: .75em;
-$a-hover: #ffffff;
-/* Dropdown */
-nav{
-  background: $nav-color;
-  @include subtle-gradient(lighten($nav-color, 3%), $nav-color);
-  height: $line-height;
-  border-top: 1px solid lighten($nav-color, 15%);
-  border-bottom: 1px solid darken($nav-color, 20%);
-  @include shadow(2px, 2px, 0px, rgba(0,0,0,.25));
-  a{
-    color: #6bd5d5;
-    padding-left: $nav-padding;
-    padding-right: $nav-padding;
-    display: block;
-    border-right: 1px solid darken($nav-color, 5%);
-    text-decoration: none;
-    &:hover{
-      color: $a-hover;
-    }
+.main-nav{
+  background-color: $color-grey-dark-2;
+  padding: 2rem 0;
+  font-size: 1.5rem;
+  color: $color-grey-dark;
+
+  &__logo-box{
+    text-align:center;
+    margin: 0;
   }
-  ul{
-    @include reset;
+
+  &__logo{
+    width: 4rem;
+    height: auto;
+  }
+
+  &__navigation{
+    padding: 1rem;
+    display: inline-block;
+  }
+
+  &__list{
     list-style: none;
-    li{
-      float: left;
-      position: relative;
-      ul{
-        display: none;
-        position: absolute;
-        overflow: auto;
-        width: 17em; /* fix this */
-        background-color: $nav-drop-color;
-        border-bottom: 1px solid darken($nav-drop-color, 20%);
-        border-left: 1px solid darken($nav-drop-color, 20%);
-        border-right: 1px solid darken($nav-drop-color, 20%);
-        @include shadow(2px, 2px, 0px, rgba(0,0,0,.25));
-        @include subtle-gradient(lighten($nav-drop-color, 3%), $nav-drop-color);
-        li{
-          float: none;
-          border-bottom: 1px solid darken($nav-drop-color, 2%);
-        }
-      }
-      &:hover ul{ display: block; }
+  }
+
+  &__item {
+    display: inline-block;
+    margin-right: 2rem;
+
+    &:not(:last-child) {
+      margin-right: 1.5rem;
     }
   }
+
+  &__link {
+    &:link,
+    &:visited {
+      color: $color-grey-light-1;
+      background-color: $color-grey-dark-3;
+      text-decoration: none;
+      text-transform: uppercase;
+      display: inline-block;
+      transition: all 0.2s;
+      margin-right: 2rem;
+    }
+
+    &:hover,
+    &:active {
+      color: $color-primary;
+      box-shadow: 0 1rem 2rem rgba($color-black, 0.4);
+      transform: rotate(5deg) scale(1.3);
+    }
+  }
+
+
 }
