@@ -22,11 +22,7 @@
       crossorigin="anonymous"
     />
 
-    <link
-      rel="shortcut icon"
-      type="image/png"
-      href="../img/favicon/favicon.ico"
-    />
+    <link rel="shortcut icon" type="image/png" href="img/favicon/favicon.ico" />
 
     <title>Tech N' Stuff</title>
   </head>
@@ -44,7 +40,7 @@
     <nav
       class="navbar sticky-top navbar-expand-sm navbar-light bg-light mx-4 my-4 rounded "
     >
-      <a class="navbar-brand" href="../index.html">
+      <a class="navbar-brand" href="index.html">
         <img
           src="/img/TechNStuff/TechNStuffLogo.png"
           width="40"
@@ -78,10 +74,14 @@
               TECH N' STUFF<span class="sr-only">(current)</span>
             </a>
             <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-              <a class="dropdown-item" href="Computers.html">COMPUTERS</a>
-              <a class="dropdown-item" href="Tablets.html">TABLETS</a>
-              <a class="dropdown-item" href="Phones.html">PHONES</a>
-              <a class="dropdown-item" href="Accessories.html">ACCESSORIES</a>
+              <a class="dropdown-item" href="v2/Computers.html">COMPUTERS</a>
+              <a class="dropdown-item" href="v2/Tablets.html">TABLETS</a>
+              <a class="dropdown-item" href="v2/Phones.html">PHONES</a>
+              <a class="dropdown-item" href="v2/Accessories.html"
+                >ACCESSORIES</a
+              >
+              <a class="dropdown-item" href="v2/Phones.html">CART</a>
+              <a class="dropdown-item" href="v2/Account.html">ACCOUNT</a>
             </div>
           </li>
         </ul>
@@ -97,90 +97,135 @@
               Search
             </button>--->
           </form>
-          <div class="nav-item">
-            <a class="nav-link" href="cart.html">CART</a>
-          </div>
-          <div class="nav-item dropdown">
-            <a
-              class="nav-link dropdown-toggle"
-              href="#"
-              id="navbarDropdownMenuLink"
-              role="button"
-              data-toggle="dropdown"
-              aria-haspopup="true"
-              aria-expanded="false"
-            >
-              PROFILE
-            </a>
-            <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-              <a class="dropdown-item" href="Account.html">MANAGE</a>
-              <a class="dropdown-item" href="#">ORDERS</a>
-            </div>
-          </div>
         </ul>
       </div>
     </nav>
 
-    <!-- Listed Account Information -->
+    <!--- FEATURED PRODUCT --->
 
-    <div class="container bg-light my-4 py-2 rounded">
-      <div class="row">
-        <div class="col">
-          <div class="col my-4 mx-4">
-            <div class="card rounded" style="width: 18rem;">
-              <img
-                class="card-img-top rounded"
-                style="height: 13.5rem"
-                src="img/prodImg/kindle.jpg"
-                alt="Card image cap"
-              />
-              <div class="card-body">
-                <h5 class="card-title">Kindle - black</h5>
-                <a href="#" class="card-link">$59.99</a>
-              </div>
+    <div class="card justify-content-center mx-4 my-4">
+      <img
+        class="card-img-top rounded"
+        style="height: 50rem"
+        src="/img/test/MacbookPro.webp"
+        alt="Card image cap"
+      />
+      <div class="card-body">
+        <h5 class="card-title">2021 Macbook Pro 14"</h5>
+        <p class="card-text">
+          Apple M1 Pro or M1 Max chip for a massive leap in CPU, GPU, and
+          machine learning performance Up to 10-core CPU delivers up to 3.7x
+          faster performance to fly through pro workflows quicker than ever. Up
+          to 32-core GPU with up to 13x faster performance for
+          graphics-intensive apps and games 16-core Neural Engine for up to 11x
+          faster machine learning performance.
+        </p>
+        <!--<a href="v2/product.html" class="card-link">More Info</a>-->
+        <a href="#" class="card-link">$1,999.00</a>
+      </div>
+    </div>
+
+    <!-- Items List -->
+    <div class="container-fluid mx-4 my-4">
+      <h1>MOST PURCHASED ITEMS LIST</h1>
+    </div>
+
+    <div class="container-fluid">
+      <div class="row justify-content-md-center">
+        <div class="col my-4 mx-4">
+          <div class="card rounded" style="width: 18rem;">
+            <img
+              class="card-img-top rounded"
+              style="height: 13.5rem"
+              src="img/prodImg/kindle.jpg"
+              alt="Card image cap"
+            />
+            <div class="card-body">
+              <h5 class="card-title">Kindle - black</h5>
+              <p class="card-text">
+                Purpose-built for reading with a 167 ppi glare-free display that
+                reads like real paper, even in direct sunlight. Adjustable
+                brightness lets you read comfortably
+              </p>
+              <a href="#" class="card-link">$59.99</a>
             </div>
           </div>
         </div>
-        <div class="col-6">
-          <form>
-            <div class="form-group">
-              <label for="exampleInputAddress1">Address</label>
-              <input
-                type="Address"
-                class="form-control"
-                id="exampleInputAddress1"
-                placeholder="Address"
-              />
+        <div class="col my-4 mx-4">
+          <div class="card rounded" style="width: 18rem;">
+            <img
+              class="card-img-top rounded"
+              style="height: 15rem"
+              src="img/prodImg/ipad.jpg"
+              alt="Card image cap"
+            />
+            <div class="card-body">
+              <h5 class="card-title">2021 Apple 10.2" iPad</h5>
+              <p class="card-text">
+                Gorgeous 10.2-inch Retina display with True Tone A13 Bionic chip
+                with Neural Engine 8MP Wide back camera, 12MP Ultra Wide front
+                camera with Center Stage
+              </p>
+              <a href="#" class="card-link">$429.99</a>
             </div>
-            <div class="form-group">
-              <label for="exampleInputCity1">City</label>
-              <input
-                type="City"
-                class="form-control"
-                id="exampleInputCity1"
-                placeholder="City"
-              />
+          </div>
+        </div>
+        <div class="col my-4 mx-4">
+          <div class="card rounded" style="width: 18rem;">
+            <img
+              class="card-img-top rounded"
+              style="height: 12rem"
+              src="img/prodImg/protector.jpg"
+              alt="Card image cap"
+            />
+            <div class="card-body">
+              <h5 class="card-title">Alex Tech 10ft - cord protector</h5>
+              <p class="card-text">
+                Size: Diameter: 1/2"| Length: 10 Feet | Color: Black. Our wire
+                loom is split and easy to load wires. Once loaded, our cable
+                sleeve will close on itself and perfect wire wrap
+              </p>
+              <a href="#" class="card-link">$9.99</a>
             </div>
-            <div class="form-group">
-              <label for="exampleInputState1">State</label>
-              <input
-                type="State"
-                class="form-control"
-                id="exampleInputState1"
-                placeholder="State"
-              />
+          </div>
+        </div>
+        <div class="col my-4 mx-4">
+          <div class="card rounded" style="width: 18rem;">
+            <img
+              class="card-img-top rounded"
+              style="height: 15rem"
+              src="img/prodImg/stand.jpg"
+              alt="Card image cap"
+            />
+            <div class="card-body">
+              <h5 class="card-title">LISEN Desk Stand</h5>
+              <p class="card-text">
+                This cell phone stand for desk is the only one on the market
+                equipped with a weighted base and an aluminum alloy rod taller
+                electronic stand.
+              </p>
+              <a href="#" class="card-link">$15.99</a>
             </div>
-            <div class="form-group">
-              <label for="exampleInputZipCode1">Zipcode</label>
-              <input
-                type="ZipCode"
-                class="form-control"
-                id="exampleInputZipCode1"
-                placeholder="ZipCode"
-              />
+          </div>
+        </div>
+        <div class="col my-4 mx-4">
+          <div class="card rounded" style="width: 18rem;">
+            <img
+              class="card-img-top rounded"
+              style="height: 15rem"
+              src="img/prodImg/s21fe.jpg"
+              alt="Card image cap"
+            />
+            <div class="card-body">
+              <h5 class="card-title">Samsung S21 FE</h5>
+              <p class="card-text">
+                The 120Hz display delivers a super smooth scroll, with optimized
+                refresh rate, and a fast touch response gives seamless visuals
+                in both work and play
+              </p>
+              <a href="#" class="card-link">$549.99</a>
             </div>
-            <button type="submit" class="btn btn-primary my-4">Checkout</button>
-          </form>
+          </div>
         </div>
       </div>
     </div>
@@ -214,16 +259,18 @@
 
               <ul class="list-unstyled mb-0">
                 <li>
-                  <a href="Computers.html" class="text-white">COMPUTERS</a>
+                  <a href="v2/Computers.html" class="text-white">COMPUTERS</a>
                 </li>
                 <li>
-                  <a href="Tablets.html" class="text-white">TABLETS</a>
+                  <a href="v2/Tablets.html" class="text-white">TABLETS</a>
                 </li>
                 <li>
-                  <a href="Phones.html" class="text-white">PHONES</a>
+                  <a href="v2/Phones.html" class="text-white">PHONES</a>
                 </li>
                 <li>
-                  <a href="accessories.html" class="text-white">ACCESSORIES</a>
+                  <a href="v2/accessories.html" class="text-white"
+                    >ACCESSORIES</a
+                  >
                 </li>
               </ul>
             </div>
@@ -235,7 +282,7 @@
 
               <ul class="list-unstyled mb-0">
                 <li>
-                  <a href="Account.html" class="text-white">MANAGE</a>
+                  <a href="#!" class="text-white">MANAGE</a>
                 </li>
                 <li>
                   <a href="#!" class="text-white">ORDERS</a>

@@ -22,11 +22,7 @@
       crossorigin="anonymous"
     />
 
-    <link
-      rel="shortcut icon"
-      type="image/png"
-      href="../img/favicon/favicon.ico"
-    />
+    <link rel="shortcut icon" type="image/png" href="img/favicon/favicon.ico" />
 
     <title>Tech N' Stuff</title>
   </head>
@@ -44,7 +40,7 @@
     <nav
       class="navbar sticky-top navbar-expand-sm navbar-light bg-light mx-4 my-4 rounded "
     >
-      <a class="navbar-brand" href="../index.html">
+      <a class="navbar-brand" href="index.html">
         <img
           src="/img/TechNStuff/TechNStuffLogo.png"
           width="40"
@@ -82,6 +78,8 @@
               <a class="dropdown-item" href="Tablets.html">TABLETS</a>
               <a class="dropdown-item" href="Phones.html">PHONES</a>
               <a class="dropdown-item" href="Accessories.html">ACCESSORIES</a>
+              <a class="dropdown-item" href="Phones.html">CART</a>
+              <a class="dropdown-item" href="Account.html">ACCOUNT</a>
             </div>
           </li>
         </ul>
@@ -97,26 +95,6 @@
               Search
             </button>--->
           </form>
-          <div class="nav-item">
-            <a class="nav-link" href="cart.html">CART</a>
-          </div>
-          <div class="nav-item dropdown">
-            <a
-              class="nav-link dropdown-toggle"
-              href="#"
-              id="navbarDropdownMenuLink"
-              role="button"
-              data-toggle="dropdown"
-              aria-haspopup="true"
-              aria-expanded="false"
-            >
-              PROFILE
-            </a>
-            <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-              <a class="dropdown-item" href="Account.html">MANAGE</a>
-              <a class="dropdown-item" href="#">ORDERS</a>
-            </div>
-          </div>
         </ul>
       </div>
     </nav>
@@ -124,65 +102,83 @@
     <!-- Listed Account Information -->
 
     <div class="container bg-light my-4 py-2 rounded">
-      <div class="row">
-        <div class="col">
-          <div class="col my-4 mx-4">
-            <div class="card rounded" style="width: 18rem;">
-              <img
-                class="card-img-top rounded"
-                style="height: 13.5rem"
-                src="img/prodImg/kindle.jpg"
-                alt="Card image cap"
-              />
-              <div class="card-body">
-                <h5 class="card-title">Kindle - black</h5>
-                <a href="#" class="card-link">$59.99</a>
-              </div>
-            </div>
-          </div>
+      <h2>My ACCOUNT :</h2>
+      <form>
+        <div class="form-group">
+          <label for="exampleInputEmail1">Email address</label>
+          <input
+            type="email"
+            class="form-control"
+            id="exampleInputEmail1"
+            aria-describedby="emailHelp"
+            placeholder="Enter email"
+          />
+          <small id="emailHelp" class="form-text text-muted"
+            >We'll never share your email with anyone else.</small
+          >
         </div>
-        <div class="col-6">
-          <form>
-            <div class="form-group">
-              <label for="exampleInputAddress1">Address</label>
-              <input
-                type="Address"
-                class="form-control"
-                id="exampleInputAddress1"
-                placeholder="Address"
-              />
-            </div>
-            <div class="form-group">
-              <label for="exampleInputCity1">City</label>
-              <input
-                type="City"
-                class="form-control"
-                id="exampleInputCity1"
-                placeholder="City"
-              />
-            </div>
-            <div class="form-group">
-              <label for="exampleInputState1">State</label>
-              <input
-                type="State"
-                class="form-control"
-                id="exampleInputState1"
-                placeholder="State"
-              />
-            </div>
-            <div class="form-group">
-              <label for="exampleInputZipCode1">Zipcode</label>
-              <input
-                type="ZipCode"
-                class="form-control"
-                id="exampleInputZipCode1"
-                placeholder="ZipCode"
-              />
-            </div>
-            <button type="submit" class="btn btn-primary my-4">Checkout</button>
-          </form>
+        <div class="form-group">
+          <label for="exampleInputUsername1">Username</label>
+          <input
+            type="Username"
+            class="form-control"
+            id="exampleInputUsername1"
+            placeholder="Username"
+          />
         </div>
-      </div>
+        <div class="form-group">
+          <label for="exampleInputPassword1">Password</label>
+          <input
+            type="password"
+            class="form-control"
+            id="exampleInputPassword1"
+            placeholder="Password"
+          />
+        </div>
+        <div class="form-group">
+          <label for="exampleInputAddress1">Address</label>
+          <input
+            type="Address"
+            class="form-control"
+            id="exampleInputAddress1"
+            placeholder="Address"
+          />
+        </div>
+        <div class="form-group">
+          <label for="exampleInputCity1">City</label>
+          <input
+            type="City"
+            class="form-control"
+            id="exampleInputCity1"
+            placeholder="City"
+          />
+        </div>
+        <div class="form-group">
+          <label for="exampleInputState1">State</label>
+          <input
+            type="State"
+            class="form-control"
+            id="exampleInputState1"
+            placeholder="State"
+          />
+        </div>
+        <div class="form-group">
+          <label for="exampleInputZipCode1">Zipcode</label>
+          <input
+            type="ZipCode"
+            class="form-control"
+            id="exampleInputZipCode1"
+            placeholder="ZipCode"
+          />
+        </div>
+        <div class="form-group form-check">
+          <input type="checkbox" class="form-check-input" id="exampleCheck1" />
+          <label class="form-check-label" for="exampleCheck1"
+            >Sign up for our Mailer?</label
+          >
+        </div>
+        <button type="submit" class="btn btn-primary my-4">Submit</button>
+      </form>
     </div>
 
     <!-- Footer -->
@@ -214,16 +210,18 @@
 
               <ul class="list-unstyled mb-0">
                 <li>
-                  <a href="Computers.html" class="text-white">COMPUTERS</a>
+                  <a href="v2/Computers.html" class="text-white">COMPUTERS</a>
                 </li>
                 <li>
-                  <a href="Tablets.html" class="text-white">TABLETS</a>
+                  <a href="v2/Tablets.html" class="text-white">TABLETS</a>
                 </li>
                 <li>
-                  <a href="Phones.html" class="text-white">PHONES</a>
+                  <a href="v2/Phones.html" class="text-white">PHONES</a>
                 </li>
                 <li>
-                  <a href="accessories.html" class="text-white">ACCESSORIES</a>
+                  <a href="v2/accessories.html" class="text-white"
+                    >ACCESSORIES</a
+                  >
                 </li>
               </ul>
             </div>
