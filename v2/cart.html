@@ -9,6 +9,7 @@
     />
 
     <script
+      defer
       language="javascript"
       type="text/javascript"
       src="../js/cart.js"
@@ -42,9 +43,9 @@
     </style>
 
     <nav
-      class="navbar sticky-top navbar-expand-sm navbar-light bg-light mx-4 my-4 rounded "
+      class="navbar sticky-top navbar-expand-sm navbar-light bg-light mx-4 my-4 rounded"
     >
-      <a class="navbar-brand" href="index.html">
+      <a class="navbar-brand" href="../index.html">
         <img
           src="../img/TechNStuff/TechNStuffLogo.png"
           width="40"
@@ -82,8 +83,6 @@
               <a class="dropdown-item" href="Tablets.html">TABLETS</a>
               <a class="dropdown-item" href="Phones.html">PHONES</a>
               <a class="dropdown-item" href="Accessories.html">ACCESSORIES</a>
-              <a class="dropdown-item" href="Phones.html">CART</a>
-              <a class="dropdown-item" href="Account.html">ACCOUNT</a>
             </div>
           </li>
         </ul>
@@ -99,6 +98,26 @@
               Search
             </button>--->
           </form>
+          <div class="nav-item">
+            <a class="nav-link" href="cart.html">CART</a>
+          </div>
+          <div class="nav-item dropdown">
+            <a
+              class="nav-link dropdown-toggle"
+              href="#"
+              id="navbarDropdownMenuLink"
+              role="button"
+              data-toggle="dropdown"
+              aria-haspopup="true"
+              aria-expanded="false"
+            >
+              PROFILE
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+              <a class="dropdown-item" href="Account.html">MANAGE</a>
+              <a class="dropdown-item" href="#">ORDERS</a>
+            </div>
+          </div>
         </ul>
       </div>
     </nav>
@@ -111,14 +130,15 @@
           <div class="col my-4 mx-4">
             <div class="card rounded" style="width: 18rem;">
               <img
+                id="productImage"
                 class="card-img-top rounded"
-                style="height: 13.5rem"
-                src="img/prodImg/kindle.jpg"
+                style="height: 13.5rem;"
+                src=""
                 alt="Card image cap"
               />
               <div class="card-body">
-                <h5 class="card-title">Kindle - black</h5>
-                <a href="#" class="card-link">$59.99</a>
+                <h5 id="productName" class="card-title"></h5>
+                <p id="productPrice" class="card-text"></p>
               </div>
             </div>
           </div>
@@ -161,7 +181,13 @@
                 placeholder="ZipCode"
               />
             </div>
-            <button type="submit" class="btn btn-primary my-4">Checkout</button>
+            <button
+              type="submit"
+              class="btn btn-primary my-4"
+              onclick="Purchase()"
+            >
+              Checkout
+            </button>
           </form>
         </div>
       </div>
@@ -170,7 +196,7 @@
     <!-- Footer -->
     <footer
       class="text-center text-lg-start text-white"
-      style="background-color: #3e4551"
+      style="background-color: #3e4551;"
     >
       <!-- Grid container -->
       <div class="container p-4 pb-0">
@@ -196,18 +222,16 @@
 
               <ul class="list-unstyled mb-0">
                 <li>
-                  <a href="v2/Computers.html" class="text-white">COMPUTERS</a>
+                  <a href="Computers.html" class="text-white">COMPUTERS</a>
                 </li>
                 <li>
-                  <a href="v2/Tablets.html" class="text-white">TABLETS</a>
+                  <a href="Tablets.html" class="text-white">TABLETS</a>
                 </li>
                 <li>
-                  <a href="v2/Phones.html" class="text-white">PHONES</a>
+                  <a href="Phones.html" class="text-white">PHONES</a>
                 </li>
                 <li>
-                  <a href="v2/accessories.html" class="text-white"
-                    >ACCESSORIES</a
-                  >
+                  <a href="accessories.html" class="text-white">ACCESSORIES</a>
                 </li>
               </ul>
             </div>
@@ -247,7 +271,10 @@
       <!-- Grid container -->
 
       <!-- Copyright -->
-      <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2)">
+      <div
+        class="text-center p-3"
+        style="background-color: rgba(0, 0, 0, 0.2);"
+      >
         © 2020 Copyright:
         <a class="text-white" href="https://mdbootstrap.com/"
           >MDBootstrap.com</a
@@ -256,6 +283,14 @@
       <!-- Copyright -->
     </footer>
     <!-- Footer -->
+
+    <script type="text/javascript">
+      function Purchase() {
+        alert(
+          "Thank you for your purchase.  We are now processing your order!"
+        );
+      }
+    </script>
 
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
