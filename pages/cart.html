@@ -43,7 +43,7 @@
     </style>
 
     <nav
-      class="navbar sticky-top navbar-expand-sm navbar-light bg-light mx-4 my-4 rounded "
+      class="navbar sticky-top navbar-expand-sm navbar-light bg-light mx-4 my-4 rounded"
     >
       <a class="navbar-brand" href="../index.html">
         <img
@@ -132,7 +132,7 @@
               <img
                 id="productImage"
                 class="card-img-top rounded"
-                style="height: 13.5rem"
+                style="height: 13.5rem;"
                 src=""
                 alt="Card image cap"
               />
@@ -181,7 +181,13 @@
                 placeholder="ZipCode"
               />
             </div>
-            <button type="submit" class="btn btn-primary my-4">Checkout</button>
+            <button
+              type="submit"
+              class="btn btn-primary my-4"
+              onclick="Purchase()"
+            >
+              Checkout
+            </button>
           </form>
         </div>
       </div>
@@ -190,7 +196,7 @@
     <!-- Footer -->
     <footer
       class="text-center text-lg-start text-white"
-      style="background-color: #3e4551"
+      style="background-color: #3e4551;"
     >
       <!-- Grid container -->
       <div class="container p-4 pb-0">
@@ -265,7 +271,10 @@
       <!-- Grid container -->
 
       <!-- Copyright -->
-      <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2)">
+      <div
+        class="text-center p-3"
+        style="background-color: rgba(0, 0, 0, 0.2);"
+      >
         © 2020 Copyright:
         <a class="text-white" href="https://mdbootstrap.com/"
           >MDBootstrap.com</a
@@ -274,6 +283,14 @@
       <!-- Copyright -->
     </footer>
     <!-- Footer -->
+
+    <script type="text/javascript">
+      function Purchase() {
+        alert(
+          "Thank you for your purchase.  We are now processing your order!"
+        );
+      }
+    </script>
 
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
