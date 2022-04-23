@@ -14,5 +14,7 @@ database.addUser("Ethan", "Chappel", "ethan.chappel@example.edu", "password", "1
 database.addUser("John", "Doe", "john.doe@example.edu", "password", "1 UTSA Blvd.", "San Antonio", "Texas", "United States of America", "78249")
 console.log("Users added to database.");
 
+console.log(await database.getUserById(1));
+
 database.removeUser(2)
 console.log("Removed user from database.");

@@ -65,3 +65,13 @@ function removeUser(id) {
 }
 
 module.exports.removeUser = removeUser
+
+
+async function getUserById(id) {
+    return knex(usersTableName)
+    .where({id: id})
+    .first()
+    .then((row) => JSON.parse(JSON.stringify(row)));
+}
+
+module.exports.getUserById = getUserById;
