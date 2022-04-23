@@ -1,12 +1,12 @@
 import * as database from './js/database.js';
 
 
-database.addProduct("test1", 1.99, "A product.");
-database.addProduct("test2", 2.99, "Another product.");
-database.addProduct("test3", 3.99, "Another product.");
+await database.addProduct("test1", 1.99, "A product.");
+await database.addProduct("test2", 2.99, "Another product.");
+await database.addProduct("test3", 3.99, "Another product.");
 console.log("Products added to database.");
 
-database.removeProduct(2)
+await database.removeProduct(2)
 console.log("Removed product from database.");
 
 
