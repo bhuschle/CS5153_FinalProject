@@ -6,9 +6,13 @@ await database.addProduct("test2", 2.99, "Another product.");
 await database.addProduct("test3", 3.99, "Another product.");
 console.log("Products added to database.");
 
+console.log(await database.searchProductsByName("test"));
+console.log(await database.searchProductsByName("test", [0.00, 3.00]));
+
 await database.removeProduct(2)
 console.log("Removed product from database.");
 
+console.log(await database.searchProductsByName("test"));
 
 database.addUser("Ethan", "Chappel", "ethan.chappel@example.edu", "password", "1 UTSA Blvd.", "San Antonio", "Texas", "United States of America", "78249")
 database.addUser("John", "Doe", "john.doe@example.edu", "password", "1 UTSA Blvd.", "San Antonio", "Texas", "United States of America", "78249")

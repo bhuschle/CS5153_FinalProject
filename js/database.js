@@ -37,6 +37,24 @@ async function removeProduct(id) {
 module.exports.removeProduct = removeProduct;
 
 
+async function searchProductsByName(name, priceRange = null) {
+    let products = knex(productsTableName)
+        .whereILike('product_name', `%${name}%`);
+
+    if (priceRange != null) {
+        products = products.whereBetween(
+            'price', priceRange
+        );
+    }
+    
+    return products.then(function(r) {
+        return JSON.parse(JSON.stringify(r));
+    });
+}
+
+module.exports.searchProductsByName = searchProductsByName;
+
+
 async function addUser(firstName, lastName, emailAddress, password, address, city, state, country, zipCode) {
     await knex(usersTableName)
         .insert({
