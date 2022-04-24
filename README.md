@@ -14,7 +14,7 @@ Shabnam Mustafa - AXZ393
 Brandon Huschle - Atom Github IDE  
 Ethan Chappel - Visual Studio  
 Jesus Perez - Visual Studio  
-Shabnam Mustafa -
+Shabnam Mustafa - Visual Studio Code
 
 ## Functional Requirements
 
