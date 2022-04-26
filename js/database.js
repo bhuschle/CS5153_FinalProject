@@ -17,9 +17,11 @@ const usersTableName = 'users'
 function addProduct(name, price, description = "") {
     knex(productsTableName)
         .insert({
-            product_name: name,
+            prod_name: name,
             price: price,
-            product_description: description
+            prod_descr: description,
+            prod_img: image,
+            prod_alt_txt: alt text
         }).then(()=>{})
 }
 
