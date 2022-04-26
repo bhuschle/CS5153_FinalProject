@@ -14,32 +14,49 @@ const productsTableName = 'products'
 const usersTableName = 'users'
 
 
-function addProduct(name, price, description = "") {
-    knex(productsTableName)
+async function addProduct(name, price, description = "") {
+    await knex(productsTableName)
         .insert({
             product_name: name,
             price: price,
             product_description: description
-        }).then(()=>{})
+        });
 }
 
 module.exports.addProduct = addProduct;
 
 
-function removeProduct(id) {
-    knex(productsTableName)
+async function removeProduct(id) {
+    await knex(productsTableName)
         .where({
           'id': id
     })
-    .del()
-    .then(()=>{});
+    .del();
 }
 
 module.exports.removeProduct = removeProduct;
 
 
-function addUser(firstName, lastName, emailAddress, password, address, city, state, country, zipCode) {
-  knex(usersTableName)
+async function searchProductsByName(name, priceRange = null) {
+    let products = knex(productsTableName)
+        .whereILike('product_name', `%${name}%`);
+
+    if (priceRange != null) {
+        products = products.whereBetween(
+            'price', priceRange
+        );
+    }
+    
+    return products.then(function(r) {
+        return JSON.parse(JSON.stringify(r));
+    });
+}
+
+module.exports.searchProductsByName = searchProductsByName;
+
+
+async function addUser(firstName, lastName, emailAddress, password, address, city, state, country, zipCode) {
+    await knex(usersTableName)
         .insert({
             first_name: firstName,
             last_name: lastName,
@@ -50,18 +67,18 @@ function addUser(firstName, lastName, emailAddress, password, address, city, sta
             user_state: state,
             user_country: country,
             user_zip_code: zipCode
-        }).then(()=>{})
+        });
 }
 
 module.exports.addUser = addUser
 
 
-function removeUser(id) {
-  knex(usersTableName)
-      .del()
-      .where({
-        'id': id
-      }).then(()=>{});
+async function removeUser(id) {
+    await knex(usersTableName)
+        .del()
+        .where({
+            'id': id
+        });
 }
 
 module.exports.removeUser = removeUser
