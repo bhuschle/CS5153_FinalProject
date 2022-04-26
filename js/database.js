@@ -1,30 +1,30 @@
-const knex = require('knex')({
-    client: 'mysql',
-    connection: {
-      host : 'db',
-      port : 3306,
-      user : 'server',
-      password : 'qwertyuiop',
-      database : 'store'
-    }
+const knex = require("knex")({
+  client: "mysql",
+  connection: {
+    host: "db",
+    port: 3306,
+    user: "server",
+    password: "qwertyuiop",
+    database: "store",
+  },
 });
 
+const productsTableName = "products";
+const usersTableName = "users";
 
-const productsTableName = 'products'
-const usersTableName = 'users'
 
-
-async function addProduct(name, price, description = "") {
-    await knex(productsTableName)
-        .insert({
-            product_name: name,
-            price: price,
-            product_description: description
-        });
+async function addProduct(name, price, description = "", image, altText) {
+  knex(productsTableName)
+    .insert({
+      prod_name: name,
+      price: price,
+      prod_descr: description,
+      prod_img: image,
+      prod_alt_txt: altText,
+    });
 }
 
 module.exports.addProduct = addProduct;
-
 
 async function removeProduct(id) {
     await knex(productsTableName)
@@ -35,7 +35,6 @@ async function removeProduct(id) {
 }
 
 module.exports.removeProduct = removeProduct;
-
 
 async function searchProductsByName(name, priceRange = null) {
     let products = knex(productsTableName)
@@ -70,8 +69,7 @@ async function addUser(firstName, lastName, emailAddress, password, address, cit
         });
 }
 
-module.exports.addUser = addUser
-
+module.exports.addUser = addUser;
 
 async function removeUser(id) {
     await knex(usersTableName)

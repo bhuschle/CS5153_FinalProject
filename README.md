@@ -34,8 +34,8 @@ Completed
 
 ### Milestone 2
 
-[In-Progress](https://github.com/bhuschle/CS5153_FinalProject/issues/2)
+[Completed](https://github.com/bhuschle/CS5153_FinalProject/issues/2)
 
 ### Milestone 3
 
-[Not Started](https://github.com/bhuschle/CS5153_FinalProject/issues/3)
+[In-Progress](https://github.com/bhuschle/CS5153_FinalProject/issues/3)
