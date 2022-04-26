@@ -12,10 +12,16 @@ services:
     restart: on-failure
     environment:
       MYSQL_RANDOM_ROOT_PASSWORD: 1
+      MYSQL_ROOT_HOST: localhost
       MYSQL_ROOT_PASSWORD: root
       MYSQL_USER: server
       MYSQL_PASSWORD: qwertyuiop
       MYSQL_DATABASE: "store"
+  adminer:
+    image: adminer
+    restart: on-failure
+    ports:
+      - 8081:8080
   server:
     build:
       dockerfile: ./docker/server/Dockerfile
