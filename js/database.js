@@ -12,7 +12,8 @@ const knex = require("knex")({
 const productsTableName = "products";
 const usersTableName = "users";
 
-function addProduct(name, price, description = "") {
+
+async function addProduct(name, price, description = "", image, altText) {
   knex(productsTableName)
     .insert({
       prod_name: name,
@@ -20,58 +21,72 @@ function addProduct(name, price, description = "") {
       prod_descr: description,
       prod_img: image,
       prod_alt_txt: altText,
-    })
-    .then(() => {});
+    });
 }
 
 module.exports.addProduct = addProduct;
 
-function removeProduct(id) {
-  knex(productsTableName)
-    .where({
-      id: id,
+async function removeProduct(id) {
+    await knex(productsTableName)
+        .where({
+          'id': id
     })
-    .del()
-    .then(() => {});
+    .del();
 }
 
 module.exports.removeProduct = removeProduct;
 
-function addUser(
-  firstName,
-  lastName,
-  emailAddress,
-  password,
-  address,
-  city,
-  state,
-  country,
-  zipCode
-) {
-  knex(usersTableName)
-    .insert({
-      first_name: firstName,
-      last_name: lastName,
-      email: emailAddress,
-      user_password: password,
-      user_address: address,
-      user_city: city,
-      user_state: state,
-      user_country: country,
-      user_zip_code: zipCode,
-    })
-    .then(() => {});
+async function searchProductsByName(name, priceRange = null) {
+    let products = knex(productsTableName)
+        .whereILike('product_name', `%${name}%`);
+
+    if (priceRange != null) {
+        products = products.whereBetween(
+            'price', priceRange
+        );
+    }
+    
+    return products.then(function(r) {
+        return JSON.parse(JSON.stringify(r));
+    });
+}
+
+module.exports.searchProductsByName = searchProductsByName;
+
+
+async function addUser(firstName, lastName, emailAddress, password, address, city, state, country, zipCode) {
+    await knex(usersTableName)
+        .insert({
+            first_name: firstName,
+            last_name: lastName,
+            email: emailAddress,
+            user_password: password,
+            user_address: address,
+            user_city: city,
+            user_state: state,
+            user_country: country,
+            user_zip_code: zipCode
+        });
 }
 
 module.exports.addUser = addUser;
 
-function removeUser(id) {
-  knex(usersTableName)
-    .del()
-    .where({
-      id: id,
-    })
-    .then(() => {});
+async function removeUser(id) {
+    await knex(usersTableName)
+        .del()
+        .where({
+            'id': id
+        });
 }
 
-module.exports.removeUser = removeUser;
+module.exports.removeUser = removeUser
+
+
+async function getUserById(id) {
+    return knex(usersTableName)
+    .where({id: id})
+    .first()
+    .then((row) => JSON.parse(JSON.stringify(row)));
+}
+
+module.exports.getUserById = getUserById;
