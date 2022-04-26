@@ -23,8 +23,5 @@
     "node-gyp": "^8.4.1",
     "sass": "^1.49.11"
   },
-  "devDependencies": {
-    "node-sass": "^7.0.1"
-  },
   "keywords": []
 }
