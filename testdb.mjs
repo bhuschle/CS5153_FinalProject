@@ -1,17 +1,17 @@
 import * as database from "./js/database.js";
 
-await database.addProduct("test1", 1.99, "A product.");
-await database.addProduct("test2", 2.99, "Another product.");
-await database.addProduct("test3", 3.99, "Another product.");
-console.log("Products added to database.");
+//await database.addProduct("test1", 1.99, "A product.");
+//await database.addProduct("test2", 2.99, "Another product.");
+//await database.addProduct("test3", 3.99, "Another product.");
+//console.log("Products added to database.");
 
-console.log(await database.searchProductsByName("test"));
-console.log(await database.searchProductsByName("test", [0.0, 3.0]));
+//console.log(await database.searchProductsByName("test"));
+//console.log(await database.searchProductsByName("test", [0.0, 3.0]));
 
-await database.removeProduct(2);
-console.log("Removed product from database.");
+//await database.removeProduct(2);
+//console.log("Removed product from database.");
 
-console.log(await database.searchProductsByName("test"));
+//console.log(await database.searchProductsByName("test"));
 
 database.addUser(
   "Ethan",
