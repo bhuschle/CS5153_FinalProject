@@ -11,7 +11,7 @@
     <script
       language="javascript"
       type="text/javascript"
-      src="../js/cart.js"
+      src="/static/js/cart.js"
     ></script>
 
     <!-- Bootstrap CSS -->
@@ -22,7 +22,7 @@
       crossorigin="anonymous"
     />
 
-    <link rel="shortcut icon" type="image/png" href="img/favicon/favicon.ico" />
+    <link rel="shortcut icon" type="image/png" href="/static/img/favicon/favicon.ico" />
 
     <title>Tech N' Stuff</title>
   </head>
@@ -40,9 +40,9 @@
     <nav
       class="navbar sticky-top navbar-expand-sm navbar-light bg-light mx-4 my-4 rounded"
     >
-      <a class="navbar-brand" href="index.html">
+      <a class="navbar-brand" href="/">
         <img
-          src="../img/TechNStuff/TechNStuffLogo.png"
+          src="/static/img/TechNStuff/TechNStuffLogo.png"
           width="40"
           height="40"
           alt="TECH N' STUFF"
@@ -64,7 +64,7 @@
           <li class="nav-item dropdown active">
             <a
               class="nav-link dropdown-toggle"
-              href="index.html"
+              href="/"
               id="navbarDropdownMenuLink"
               role="button"
               data-toggle="dropdown"
@@ -74,10 +74,10 @@
               TECH N' STUFF<span class="sr-only">(current)</span>
             </a>
             <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-              <a class="dropdown-item" href="pages/Computers.html">COMPUTERS</a>
-              <a class="dropdown-item" href="pages/Tablets.html">TABLETS</a>
-              <a class="dropdown-item" href="pages/Phones.html">PHONES</a>
-              <a class="dropdown-item" href="pages/Accessories.html"
+              <a class="dropdown-item" href="/computers">COMPUTERS</a>
+              <a class="dropdown-item" href="/tablets">TABLETS</a>
+              <a class="dropdown-item" href="/phones">PHONES</a>
+              <a class="dropdown-item" href="/accessories"
                 >ACCESSORIES</a
               >
             </div>
@@ -96,7 +96,7 @@
             </button>--->
           </form>
           <div class="nav-item">
-            <a class="nav-link" href="pages/cart.html">CART</a>
+            <a class="nav-link" href="/cart">CART</a>
           </div>
           <div class="nav-item dropdown">
             <a
@@ -111,7 +111,7 @@
               PROFILE
             </a>
             <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-              <a class="dropdown-item" href="pages/Account.html">MANAGE</a>
+              <a class="dropdown-item" href="/account">MANAGE</a>
               <a class="dropdown-item" href="#">ORDERS</a>
             </div>
           </div>
@@ -125,7 +125,7 @@
       <img
         class="card-img-top rounded"
         style="height: 50rem;"
-        src="./img/test/MacbookPro.webp"
+        src="/static/img/test/MacbookPro.webp"
         alt="Card image cap"
       />
       <div class="card-body">
@@ -138,9 +138,9 @@
           graphics-intensive apps and games 16-core Neural Engine for up to 11x
           faster machine learning performance.
         </p>
-        <!--<a href="pages/product.html" class="card-link">More Info</a>-->
+        <!--<a href="/product" class="card-link">More Info</a>-->
         <a
-          href="./pages/cart.html?price=1999.00&name=2021%20Macbook%20Pro%2014&image=..%2Fimg%2FprodImg%2Fmacbook.jpg"
+          href="/cart?price=1999.00&name=2021%20Macbook%20Pro%2014&image=..%2Fimg%2FprodImg%2Fmacbook.jpg"
           class="card-link"
           >$1,999.00</a
         >
@@ -159,7 +159,7 @@
             <img
               class="card-img-top rounded"
               style="height: 13.5rem;"
-              src="img/prodImg/kindle.jpg"
+              src="/static/img/prodImg/kindle.jpg"
               alt="Card image cap"
             />
             <div class="card-body">
@@ -170,7 +170,7 @@
                 brightness lets you read comfortably
               </p>
               <a
-                href="./pages/cart.html?price=59.99&name=Kindle%20-%20black&image=..%2Fimg%2FprodImg%2Fkindle.jpg"
+                href="/cart?price=59.99&name=Kindle%20-%20black&image=..%2Fimg%2FprodImg%2Fkindle.jpg"
                 class="card-link"
                 >$59.99</a
               >
@@ -182,7 +182,7 @@
             <img
               class="card-img-top rounded"
               style="height: 15rem;"
-              src="img/prodImg/ipad.jpg"
+              src="/static/img/prodImg/ipad.jpg"
               alt="Card image cap"
             />
             <div class="card-body">
@@ -193,7 +193,7 @@
                 camera with Center Stage
               </p>
               <a
-                href="./pages/cart.html?price=429.99&name=2021%20Apple%2010.2%22%20iPad&image=..%2Fimg%2FprodImg%2Fipad.jpg"
+                href="/cart?price=429.99&name=2021%20Apple%2010.2%22%20iPad&image=..%2Fimg%2FprodImg%2Fipad.jpg"
                 class="card-link"
                 >$429.99</a
               >
@@ -205,7 +205,7 @@
             <img
               class="card-img-top rounded"
               style="height: 12rem;"
-              src="img/prodImg/protector.jpg"
+              src="/static/img/prodImg/protector.jpg"
               alt="Card image cap"
             />
             <div class="card-body">
@@ -216,7 +216,7 @@
                 sleeve will close on itself and perfect wire wrap
               </p>
               <a
-                href="./pages/cart.html?price=9.99&name=Alex%20Tech%2010ft%20-%20cord%20protector&image=..%2Fimg%2FprodImg%2Fprotector.jpg"
+                href="/cart?price=9.99&name=Alex%20Tech%2010ft%20-%20cord%20protector&image=..%2Fimg%2FprodImg%2Fprotector.jpg"
                 class="card-link"
                 >$9.99</a
               >
@@ -228,7 +228,7 @@
             <img
               class="card-img-top rounded"
               style="height: 15rem;"
-              src="img/prodImg/stand.jpg"
+              src="/static/img/prodImg/stand.jpg"
               alt="Card image cap"
             />
             <div class="card-body">
@@ -239,7 +239,7 @@
                 electronic stand.
               </p>
               <a
-                href="./pages/cart.html?price=15.99&name=ISEN%20Desk%20Stand&image=..%2Fimg%2FprodImg%2Fstand.jpg"
+                href="/cart?price=15.99&name=ISEN%20Desk%20Stand&image=..%2Fimg%2FprodImg%2Fstand.jpg"
                 class="card-link"
                 >$15.99</a
               >
@@ -251,7 +251,7 @@
             <img
               class="card-img-top rounded"
               style="height: 15rem;"
-              src="img/prodImg/s21fe.jpg"
+              src="/static/img/prodImg/s21fe.jpg"
               alt="Card image cap"
             />
             <div class="card-body">
@@ -262,7 +262,7 @@
                 in both work and play
               </p>
               <a
-                href="./pages/cart.html?price=549.99&name=Samsung%20S21%20FE&image=..%2Fimg%2FprodImg%2Fs21fe.jpg"
+                href="/cart?price=549.99&name=Samsung%20S21%20FE&image=..%2Fimg%2FprodImg%2Fs21fe.jpg"
                 class="card-link"
                 >$549.99</a
               >
@@ -301,18 +301,18 @@
 
               <ul class="list-unstyled mb-0">
                 <li>
-                  <a href="pages/Computers.html" class="text-white"
+                  <a href="/computers" class="text-white"
                     >COMPUTERS</a
                   >
                 </li>
                 <li>
-                  <a href="pages/Tablets.html" class="text-white">TABLETS</a>
+                  <a href="/tablets" class="text-white">TABLETS</a>
                 </li>
                 <li>
-                  <a href="pages/Phones.html" class="text-white">PHONES</a>
+                  <a href="/phones" class="text-white">PHONES</a>
                 </li>
                 <li>
-                  <a href="pages/accessories.html" class="text-white"
+                  <a href="/accessories" class="text-white"
                     >ACCESSORIES</a
                   >
                 </li>
