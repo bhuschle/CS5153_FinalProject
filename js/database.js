@@ -11,6 +11,8 @@ const knex = require("knex")({
 
 const productsTableName = "products";
 const usersTableName = "users";
+const ordersTableName = "orders";
+const orderItemsTableName = "order_items";
 
 
 async function addProduct(name, price, description = "", altText = "") {
@@ -89,3 +91,39 @@ async function getUserById(id) {
 }
 
 module.exports.getUserById = getUserById;
+
+
+async function addOrder(userId, items) {
+    let orderId = await knex(ordersTableName)
+    .insert({
+        user_id_: userId,
+    })
+    .then((row) => JSON.parse(JSON.stringify(row))[0]);
+
+    if (items.length > 0) {
+        items.forEach(element => {
+            element["order_id"] = orderId;
+        });
+
+        await knex(orderItemsTableName)
+        .insert(items);
+    }
+}
+
+module.exports.addOrder = addOrder;
+
+
+async function getOrderById(id) {
+    let order = await knex(ordersTableName)
+    .where({id: id})
+    .first()
+    .then((row) => JSON.parse(JSON.stringify(row)));
+    
+    order['items'] = await knex(orderItemsTableName)
+    .where({order_id: id})
+    .then((row) => JSON.parse(JSON.stringify(row)));
+
+    return order;
+}
+
+module.exports.getOrderById = getOrderById;

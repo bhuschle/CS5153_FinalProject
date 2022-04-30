@@ -22,3 +22,7 @@ console.log(await database.getUserById(1));
 
 database.removeUser(2)
 console.log("Removed user from database.");
+
+await database.addOrder(1, [{'quantity': 1, 'product_id': 1}]);
+console.log("Order added to database");
+console.log(await database.getOrderById(1));

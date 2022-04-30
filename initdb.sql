@@ -19,4 +19,17 @@ CREATE TABLE users (
     user_country varchar(50),
     user_zip_code varchar(5),
     PRIMARY KEY(id)
-)
+);
+
+CREATE TABLE orders (
+    id INT NOT NULL AUTO_INCREMENT,
+    user_id_ INT NOT NULL,
+    PRIMARY KEY(id)
+);
+
+CREATE TABLE order_items (
+    order_id INT NOT NULL,
+    product_id INT NOT NULL,
+    quantity INT NOT NULL,
+    PRIMARY KEY(order_id, product_id)
+);
