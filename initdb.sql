@@ -2,9 +2,7 @@ CREATE TABLE products (
     id INT NOT NULL AUTO_INCREMENT,
     product_name VARCHAR(100) NOT NULL,
     price DECIMAL(8, 2) NOT NULL,
-    image1_path VARCHAR(4096),
-    image2_path VARCHAR(4096),
-    image3_path VARCHAR(4096),
+    alt_text VARCHAR(200),
     product_description TEXT,
     PRIMARY KEY(id)
 );
@@ -21,4 +19,17 @@ CREATE TABLE users (
     user_country varchar(50),
     user_zip_code varchar(5),
     PRIMARY KEY(id)
-)
+);
+
+CREATE TABLE orders (
+    id INT NOT NULL AUTO_INCREMENT,
+    user_id_ INT NOT NULL,
+    PRIMARY KEY(id)
+);
+
+CREATE TABLE order_items (
+    order_id INT NOT NULL,
+    product_id INT NOT NULL,
+    quantity INT NOT NULL,
+    PRIMARY KEY(order_id, product_id)
+);
