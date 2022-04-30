@@ -13,14 +13,13 @@ const productsTableName = "products";
 const usersTableName = "users";
 
 
-async function addProduct(name, price, description = "", image, altText) {
-  knex(productsTableName)
+async function addProduct(name, price, description = "", altText = "") {
+    await knex(productsTableName)
     .insert({
-      prod_name: name,
-      price: price,
-      prod_descr: description,
-      prod_img: image,
-      prod_alt_txt: altText,
+        product_name: name,
+        price: price,
+        product_description: description,
+        alt_text: altText,
     });
 }
 
