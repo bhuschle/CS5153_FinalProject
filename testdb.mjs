@@ -14,14 +14,20 @@ console.log("Removed product from database.");
 
 console.log(await database.searchProductsByName("test"));
 
-database.addUser("Ethan", "Chappel", "ethan.chappel@example.edu", "password", "1 UTSA Blvd.", "San Antonio", "Texas", "United States of America", "78249")
-database.addUser("John", "Doe", "john.doe@example.edu", "password", "1 UTSA Blvd.", "San Antonio", "Texas", "United States of America", "78249")
+
+await database.addUser("Ethan", "Chappel", "ethan.chappel@example.edu", "password", "1 UTSA Blvd.", "San Antonio", "Texas", "United States of America", "78249")
+await database.addUser("John", "Doe", "john.doe@example.edu", "password", "1 UTSA Blvd.", "San Antonio", "Texas", "United States of America", "78249")
 console.log("Users added to database.");
 
 console.log(await database.getUserById(1));
 
 database.removeUser(2)
 console.log("Removed user from database.");
+
+await database.editUser(1, "Ethan", "Chappel", "ethan.chappel@example.org", "password", "2 UTSA St.", "San Antonio", "Texas", "United States of America", "78250")
+console.log("Edited user in database.");
+console.log(await database.getUserById(1));
+
 
 await database.addOrder(1, [{'quantity': 1, 'product_id': 1}]);
 console.log("Order added to database");
