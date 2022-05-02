@@ -97,7 +97,7 @@
         </ul>
 
         <ul class="navbar-nav my-2 ml-auto">
-           
+          {{#if loggedIn}}
           <!-- User Sign In -->
           <li class="nav-item dropdown mx-4 mt-2">
             <a
@@ -118,9 +118,27 @@
               <a class="dropdown-item" href="{{urlRoot}}/signinV2.html">Sign Out</a>
             </div>
           </li>
+          {{else}}
+          <a
+              class="nav-item ml-4 mr-2 mt-2 text-nowrap"
+              href="{{urlRoot}}/signup"
+              aria-expanded="false"
+              style = "color:white"
+              >
+              Sign up
+          </a>
+          <a
+            class="nav-item ml-2 mr-4 mt-2 text-nowrap"
+            href="{{urlRoot}}/signin"
+            aria-expanded="false"
+            style = "color:white"
+            >
+            Sign in
+          </a>
+          {{/if}}
 
           <!-- Add to Cart -->
-          <div class="nav-item ">
+          <div class="nav-item">
             <a class="text-reset me-3" href="{{urlRoot}}/cart">
               <button type="button" class="btn " style = "background-color: #d7cec7; color: #4b1b25 ">
                 Cart
