@@ -6,7 +6,7 @@
 const comp1 = { 
   name: '2021 Macbook Pro 14"',
   price: 1999.00,
-  img: '../img/prodImg/macbook.jpg',
+  img: '/static/img/prodImg/macbook.jpg',
   altImg: 'Macbook Pro fourteen inch',
   desc: 'Apple M1 Pro or M1 Max chip for a massive leap in CPU, GPU, and machine learning performance Up to 10-core CPU delivers up to 3.7x faster performance to fly through pro workflows quicker than ever',
 };
