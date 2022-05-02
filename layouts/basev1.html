@@ -35,9 +35,14 @@
     <style type="text/css">
       body {
         background: grey !important;
-      } /* Adding !important forces the browser to overwrite the default style applied by Bootstrap */
+      }
+
       .navbar {
         margin-bottom: 1rem;
+      }
+
+      .nav-link:hover {
+        font-weight: bold;
       }
     </style>
 
@@ -46,6 +51,16 @@
     >
       <div class="collapse navbar-collapse" id="navbarText">
         <ul class="navbar-nav mr-auto">
+          <li>
+            <a class="navbar-brand" href="/">
+              <img
+                src="/static/img/TechNStuff/TechNStuffLogo.png"
+                width="40"
+                height="40"
+                alt="Tech N Stuff logo"
+              />
+            </a>
+          </li>
           <li class="nav-item dropdown active">
             <a
               class="nav-link dropdown-toggle"
@@ -56,21 +71,63 @@
               aria-haspopup="true"
               aria-expanded="false"
             >
-              <img
-                src="/static/img/TechNStuff/TechNStuffLogo.png"
-                width="40"
-                height="40"
-                alt="TECH N' STUFF"
-              />
+              COMPUTERS
             </a>
             <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-              <a class="dropdown-item" href="/"
-                >HOME<span class="sr-only">(current)</span></a
-              >
-              <a class="dropdown-item" href="/computers">COMPUTERS</a>
+              <a class="dropdown-item" href="/laptops">LAPTOPS</a>
+              <a class="dropdown-item" href="/desktops">DESKTOPS</a>
               <a class="dropdown-item" href="/tablets">TABLETS</a>
-              <a class="dropdown-item" href="/phones">PHONES</a>
-              <a class="dropdown-item" href="/accessories">ACCESSORIES </a>
+            </div>
+          </li>
+          <li class="nav-item dropdown active">
+            <a
+              class="nav-link dropdown-toggle"
+              href="/"
+              id="navbarDropdownMenuLink"
+              role="button"
+              data-toggle="dropdown"
+              aria-haspopup="true"
+              aria-expanded="false"
+            >
+              CAMERAS
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+              <a class="dropdown-item" href="/dslr">DSLR</a>
+              <a class="dropdown-item" href="/pointshoot">POINT + SHOOT</a>
+            </div>
+          </li>
+          <li class="nav-item dropdown active">
+            <a
+              class="nav-link dropdown-toggle"
+              href="/"
+              id="navbarDropdownMenuLink"
+              role="button"
+              data-toggle="dropdown"
+              aria-haspopup="true"
+              aria-expanded="false"
+            >
+              CELL PHONES
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+              <a class="dropdown-item" href="/iphone">IPHONE</a>
+              <a class="dropdown-item" href="/samsung">SAMSUNG</a>
+            </div>
+          </li>
+          <li class="nav-item dropdown active">
+            <a
+              class="nav-link dropdown-toggle"
+              href="/"
+              id="navbarDropdownMenuLink"
+              role="button"
+              data-toggle="dropdown"
+              aria-haspopup="true"
+              aria-expanded="false"
+            >
+              MOVIES + MUSIC
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+              <a class="dropdown-item" href="/movies">MOVIES</a>
+              <a class="dropdown-item" href="/music">MUSIC</a>
             </div>
           </li>
         </ul>
@@ -110,84 +167,54 @@
       </div>
     </nav>
 
-    <!-- Listed Account Information -->
+    {{{ body }}}
 
-    <!-- Footer -->
+    <!-- footer section -->
     <footer
       class="text-center text-lg-start text-white"
       style="background-color: #3e4551;"
     >
-      <!-- Grid container -->
+      <!-- 1st footer -->
       <div class="container p-4 pb-0">
-        <!-- Section: Links -->
-        <section class="">
-          <!--Grid row-->
-          <div class="row">
-            <!--Grid column-->
-            <div class="col-lg-4 col-md-6 mb-4 mb-md-0">
-              <h5 class="text-uppercase">TECH N' STUFF</h5>
-              <p>
-                Brandon Huschle <br />
-                Ethan Chappel <br />
-                Jesus Perez <br />
-                Shabnam Mustafa
-              </p>
-            </div>
-            <!--Grid column-->
-
-            <!--Grid column-->
-            <div class="col-lg-2 col-md-6 mb-4 mb-md-0">
-              <h5 class="text-uppercase">PRODUCTS</h5>
-
-              <ul class="list-unstyled mb-0">
-                <li>
-                  <a href="/computers" class="text-white">COMPUTERS</a>
-                </li>
-                <li>
-                  <a href="/tablets" class="text-white">TABLETS</a>
-                </li>
-                <li>
-                  <a href="/phones" class="text-white">PHONES</a>
-                </li>
-                <li>
-                  <a href="/accessories" class="text-white">ACCESSORIES</a>
-                </li>
-              </ul>
-            </div>
-            <!--Grid column-->
-
-            <!--Grid column-->
-            <div class="col-lg-2 col-md-6 mb-4 mb-md-0">
-              <h5 class="text-uppercase">ACCOUNT</h5>
-
-              <ul class="list-unstyled mb-0">
-                <li>
-                  <a href="/account" class="text-white">MANAGE</a>
-                </li>
-                <li>
-                  <a href="#!" class="text-white">ORDERS</a>
-                </li>
-              </ul>
-            </div>
-            <!--Grid column-->
+        <div class="row">
+          <div class="col-lg-4 col-md-6 mb-4 mb-md-0">
+            <h5 class="text-uppercase">About Us</h5>
+            <ul class="list-unstyled mb-0">
+              <li>
+                <a href="{{urlRoot}}/aboutusV2.html" class="footerLink"
+                  >About Tech N' Stuff</a
+                >
+              </li>
+              <li>
+                <a href="{{urlRoot}}/locationsV2.html" class="footerLink"
+                  >Locations</a
+                >
+              </li>
+            </ul>
           </div>
-          <!--Grid row-->
-        </section>
-        <!-- Section: Links -->
-
-        <hr class="mb-4" />
-
-        <!-- Section: CTA -->
-        <section class="">
-          <p class="d-flex justify-content-center align-items-center">
-            <button type="button" class="btn btn-outline-light btn-rounded">
-              Sign up!
-            </button>
-          </p>
-        </section>
-        <!-- Section: CTA -->
+          <div class="col-lg-4 col-md-6 mb-4 mb-md-0">
+            <h5 class="text-uppercase">Customer Service</h5>
+            <ul class="list-unstyled mb-0">
+              <li>
+                <a href="{{urlRoot}}/faqV2.html" class="footerLink">FAQ</a>
+              </li>
+              <li>
+                <a href="{{urlRoot}}/returnfaqV2.html" class="footerLink"
+                  >Return Policy</a
+                >
+              </li>
+            </ul>
+          </div>
+          <div class="col-lg-4 col-md-6 mb-4 mb-md-0">
+            <h5 class="text-uppercase">Contact Us</h5>
+            <p>
+              Call: 123-456-7890 <br />
+              (Mon-Fri 8am-6pm CST) <br />
+              Email: customercare@technstuff.com <br />
+            </p>
+          </div>
+        </div>
       </div>
-      <!-- Grid container -->
 
       <!-- Copyright -->
       <div
@@ -199,7 +226,6 @@
       </div>
       <!-- Copyright -->
     </footer>
-    <!-- Footer -->
 
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
