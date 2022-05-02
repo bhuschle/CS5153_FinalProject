@@ -37,11 +37,22 @@ async function removeProduct(id) {
 
 module.exports.removeProduct = removeProduct;
 
-async function searchProductsByName(name, priceRange = null) {
-    let products = knex(productsTableName)
-        .whereILike('product_name', `%${name}%`);
+async function getProducts(name = null, priceRange = null, category = null, brand = null) {
+    let products = knex(productsTableName);
 
-    if (priceRange != null) {
+    if (name !== null) {
+        products = products.whereILike('product_name', `%${name}%`);
+    }
+
+    if (category !== null) {
+        products = products.whereILike('category', `%${category}%`);
+    }
+
+    if (brand !== null) {
+        products = products.whereILike('brand', `%${brand}%`);
+    }
+
+    if (priceRange !== null) {
         products = products.whereBetween(
             'price', priceRange
         );
@@ -52,7 +63,7 @@ async function searchProductsByName(name, priceRange = null) {
     });
 }
 
-module.exports.searchProductsByName = searchProductsByName;
+module.exports.getProducts = getProducts;
 
 
 async function addUser(firstName, lastName, emailAddress, password, address, city, state, country, zipCode) {
