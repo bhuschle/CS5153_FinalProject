@@ -36,3 +36,7 @@ CREATE TABLE order_items (
     quantity INT NOT NULL,
     PRIMARY KEY(order_id, product_id)
 );
+
+
+INSERT INTO products (product_name, brand, category, price, image_path, alt_text, product_description) VALUES
+('Kindle - black', 'Amazon', 'Tablets', 59.99, '/prodImg/kindle.jpg', 'Picture of Kindle Paperwhite', 'Kindle Paperwhite (8 GB) - Now with a 6.8" display and adjustable warm light - Ad-Supported');
