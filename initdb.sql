@@ -2,10 +2,16 @@ CREATE TABLE products (
     id INT NOT NULL AUTO_INCREMENT,
     product_name VARCHAR(100) NOT NULL,
     price DECIMAL(8, 2) NOT NULL,
-    alt_text VARCHAR(200),
+    image1_path VARCHAR(1000),
+    image2_path VARCHAR(1000),
+    image3_path VARCHAR(1000),
+    alt1_text VARCHAR(200),
+    alt2_text VARCHAR(200),
+    alt3_text VARCHAR(200),
     category VARCHAR(50),
     brand VARCHAR(100),
-    image_path VARCHAR(1000),
+    color VARCHAR(20),
+    model_number varchar(100),
     product_description TEXT,
     PRIMARY KEY(id)
 );
@@ -38,5 +44,5 @@ CREATE TABLE order_items (
 );
 
 
-INSERT INTO products (product_name, brand, category, price, image_path, alt_text, product_description) VALUES
+INSERT INTO products (product_name, brand, category, price, image1_path, alt1_text, product_description) VALUES
 ('Kindle - black', 'Amazon', 'Tablets', 59.99, '/prodImg/kindle.jpg', 'Picture of Kindle Paperwhite', 'Kindle Paperwhite (8 GB) - Now with a 6.8" display and adjustable warm light - Ad-Supported');
