@@ -34,15 +34,10 @@ const v2BaseContext = {
   urlRoot: v2UrlPath,
 };
 
+// V1 INFORMATION
+
 app.get(`${v1UrlPath}/`, (request, response) => {
   response.render(`${v1ViewsPath}/index.html`, {
-    ...v1BaseContext,
-    layout: "./basev1.html",
-  });
-});
-
-app.get(`${v1UrlPath}/accessories`, (request, response) => {
-  response.render(`${v1ViewsPath}/Accessories.html`, {
     ...v1BaseContext,
     layout: "./basev1.html",
   });
@@ -62,33 +57,133 @@ app.get(`${v1UrlPath}/cart`, (request, response) => {
   });
 });
 
-app.get(`${v1UrlPath}/computers`, (request, response) => {
-  response.render(`${v1ViewsPath}/Computers.html`, {
-    ...v1BaseContext,
-    layout: "./basev1.html",
-  });
-});
+app.get(`${v1UrlPath}/laptops`, async (request, response) => {
+  let category = "laptops";
+  let products = await database.getProducts({ category: category });
 
-app.get(`${v1UrlPath}/phones`, (request, response) => {
-  response.render(`${v1ViewsPath}/Phones.html`, {
-    ...v1BaseContext,
-    layout: "./basev1.html",
-  });
-});
+  brands = new Set(products.map((x) => x["brand"]));
 
-app.get(`${v1UrlPath}/product`, (request, response) => {
   response.render(`${v1ViewsPath}/product.html`, {
     ...v1BaseContext,
-    layout: "./basev1.html",
+    products: products,
+    category: category,
+    brands: brands,
   });
 });
 
-app.get(`${v1UrlPath}/tablets`, (request, response) => {
-  response.render(`${v1ViewsPath}/Tablets.html`, {
+app.get(`${v1UrlPath}/desktops`, async (request, response) => {
+  let category = "desktops";
+  let products = await database.getProducts({ category: category });
+
+  brands = new Set(products.map((x) => x["brand"]));
+
+  response.render(`${v1ViewsPath}/product.html`, {
     ...v1BaseContext,
-    layout: "./basev1.html",
+    products: products,
+    category: category,
+    brands: brands,
   });
 });
+
+app.get(`${v1UrlPath}/tablets`, async (request, response) => {
+  let category = "tablets";
+  let products = await database.getProducts({ category: category });
+
+  brands = new Set(products.map((x) => x["brand"]));
+
+  response.render(`${v1ViewsPath}/product.html`, {
+    ...v1BaseContext,
+    products: products,
+    category: category,
+    brands: brands,
+  });
+});
+
+app.get(`${v1UrlPath}/dslr`, async (request, response) => {
+  let category = "dslr";
+  let products = await database.getProducts({ category: category });
+
+  brands = new Set(products.map((x) => x["brand"]));
+
+  response.render(`${v1ViewsPath}/product.html`, {
+    ...v1BaseContext,
+    products: products,
+    category: category,
+    brands: brands,
+  });
+});
+
+app.get(`${v1UrlPath}/pointshoot`, async (request, response) => {
+  let category = "pointshoot";
+  let products = await database.getProducts({ category: category });
+
+  brands = new Set(products.map((x) => x["brand"]));
+
+  response.render(`${v1ViewsPath}/product.html`, {
+    ...v1BaseContext,
+    products: products,
+    category: category,
+    brands: brands,
+  });
+});
+
+app.get(`${v1UrlPath}/iphone`, async (request, response) => {
+  let category = "iphone";
+  let products = await database.getProducts({ category: category });
+
+  brands = new Set(products.map((x) => x["brand"]));
+
+  response.render(`${v1ViewsPath}/product.html`, {
+    ...v1BaseContext,
+    products: products,
+    category: category,
+    brands: brands,
+  });
+});
+
+app.get(`${v1UrlPath}/samsung`, async (request, response) => {
+  let category = "samsung";
+  let products = await database.getProducts({ category: category });
+
+  brands = new Set(products.map((x) => x["brand"]));
+
+  response.render(`${v1ViewsPath}/product.html`, {
+    ...v1BaseContext,
+    products: products,
+    category: category,
+    brands: brands,
+  });
+});
+
+app.get(`${v1UrlPath}/movies`, async (request, response) => {
+  let category = "movies";
+  let products = await database.getProducts({ category: category });
+
+  brands = new Set(products.map((x) => x["brand"]));
+
+  response.render(`${v1ViewsPath}/product.html`, {
+    ...v1BaseContext,
+    products: products,
+    category: category,
+    brands: brands,
+  });
+});
+
+app.get(`${v1UrlPath}/music`, async (request, response) => {
+  let category = "music";
+  let products = await database.getProducts({ category: category });
+
+  brands = new Set(products.map((x) => x["brand"]));
+
+  response.render(`${v1ViewsPath}/product.html`, {
+    ...v1BaseContext,
+    products: products,
+    category: category,
+    brands: brands,
+  });
+});
+
+// V2 INFORMATION
 
 app.get(`${v2UrlPath}`, (request, response) => {
   response.render(`${v2ViewsPath}/index.html`, {

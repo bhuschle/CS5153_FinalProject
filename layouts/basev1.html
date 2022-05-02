@@ -35,9 +35,14 @@
     <style type="text/css">
       body {
         background: grey !important;
-      } /* Adding !important forces the browser to overwrite the default style applied by Bootstrap */
+      }
+
       .navbar {
         margin-bottom: 1rem;
+      }
+
+      .nav-link:hover {
+        font-weight: bold;
       }
     </style>
 
@@ -46,6 +51,16 @@
     >
       <div class="collapse navbar-collapse" id="navbarText">
         <ul class="navbar-nav mr-auto">
+          <li>
+            <a class="navbar-brand" href="/">
+              <img
+                src="/static/img/TechNStuff/TechNStuffLogo.png"
+                width="40"
+                height="40"
+                alt="Tech N Stuff logo"
+              />
+            </a>
+          </li>
           <li class="nav-item dropdown active">
             <a
               class="nav-link dropdown-toggle"
@@ -56,19 +71,63 @@
               aria-haspopup="true"
               aria-expanded="false"
             >
-              <img
-                src="/static/img/TechNStuff/TechNStuffLogo.png"
-                width="40"
-                height="40"
-                alt="TECH N' STUFF"
-              />
+              COMPUTERS
             </a>
             <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-              <a class="dropdown-item" href="/">HOME</a>
-              <a class="dropdown-item" href="/computers">COMPUTERS</a>
+              <a class="dropdown-item" href="/laptops">LAPTOPS</a>
+              <a class="dropdown-item" href="/desktops">DESKTOPS</a>
               <a class="dropdown-item" href="/tablets">TABLETS</a>
-              <a class="dropdown-item" href="/phones">PHONES</a>
-              <a class="dropdown-item" href="/accessories">ACCESSORIES </a>
+            </div>
+          </li>
+          <li class="nav-item dropdown active">
+            <a
+              class="nav-link dropdown-toggle"
+              href="/"
+              id="navbarDropdownMenuLink"
+              role="button"
+              data-toggle="dropdown"
+              aria-haspopup="true"
+              aria-expanded="false"
+            >
+              CAMERAS
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+              <a class="dropdown-item" href="/dslr">DSLR</a>
+              <a class="dropdown-item" href="/pointshoot">POINT + SHOOT</a>
+            </div>
+          </li>
+          <li class="nav-item dropdown active">
+            <a
+              class="nav-link dropdown-toggle"
+              href="/"
+              id="navbarDropdownMenuLink"
+              role="button"
+              data-toggle="dropdown"
+              aria-haspopup="true"
+              aria-expanded="false"
+            >
+              CELL PHONES
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+              <a class="dropdown-item" href="/iphone">IPHONE</a>
+              <a class="dropdown-item" href="/samsung">SAMSUNG</a>
+            </div>
+          </li>
+          <li class="nav-item dropdown active">
+            <a
+              class="nav-link dropdown-toggle"
+              href="/"
+              id="navbarDropdownMenuLink"
+              role="button"
+              data-toggle="dropdown"
+              aria-haspopup="true"
+              aria-expanded="false"
+            >
+              MOVIES + MUSIC
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+              <a class="dropdown-item" href="/movies">MOVIES</a>
+              <a class="dropdown-item" href="/music">MUSIC</a>
             </div>
           </li>
         </ul>

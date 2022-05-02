@@ -1,36 +1,79 @@
-<!-- Display products -->
-<div class="col-lg-9">
-  Computers / {{category}}
-  <h4>{{category}}</h4>
-  {{#each products}}
+<div class="container-fluid mt-4">
   <div class="row">
-    <div class="col-md-3 mb-2">
-      <div class="card rounded" style="width: 15rem;">
-        <img
-          class="card-img-top rounded px-2 py-2"
-          style="height: 13.5rem;"
-          src="{{../imageRoot}}{{this.image_path}}"
-          alt="{{this.alt_text}}"
-        />
-        <div class="card-body">
-          <h5 class="card-title">{{this.product_name}}</h5>
-          <a
-            href="./pages/cart.html?price=59.99&name=Kindle%20-%20black&image=..%2Fimg%2FprodImg%2Fkindle.jpg"
-            class="card-link"
-            >${{this.price}}</a
-          >
-          <button
-            type="button"
-            class="btn ml-4"
-            style="background-color: #4b1b25; color: white;"
-          >
-            Add to Cart
-          </button>
+    <!-- Filter and Sort Products -->
+    <div class="col-lg-3">
+      <h5>Product Category</h5>
+      <h6>Brand</h6>
+      <ul class="list-group">
+        <!-- <li class="list-group-item"> <h6>Brand</h6></li>  -->
+        {{#each brands}}
+        <li class="list-group-item">
+          <div class="form-check">
+            <label for="form-check-label">
+              <input
+                type="checkbox"
+                class="form-check-input product-check"
+                value=""
+                id="brand"
+              />
+              {{this}}
+            </label>
+          </div>
+        </li>
+        {{else}}
+        <li class="list-group-item">
+          No brands.
+        </li>
+        {{/each}}
+      </ul>
+      <br />
+      <h5>Sort Products</h5>
+      <form action="">
+        <div class="form-group">
+          <select class="form-control form-control-md">
+            <option> Best Sellers </option>
+            <option> Low-to-high </option>
+            <option> High-to-low </option>
+          </select>
         </div>
+      </form>
+    </div>
+
+    <!-- Display products -->
+    <div class="col-lg-9">
+      Computers / {{category}}
+      <h4>{{category}}</h4>
+      {{#each products}}
+      <div class="row">
+        <div class="col-md-3 mb-2">
+          <div class="card rounded" style="width: 15rem;">
+            <img
+              class="card-img-top rounded px-2 py-2"
+              style="height: 13.5rem;"
+              src="{{../imageRoot}}{{this.image_path}}"
+              alt="{{this.alt_text}}"
+            />
+            <div class="card-body">
+              <h5 class="card-title">{{this.product_name}}</h5>
+              <a
+                href="./pages/cart.html?price=59.99&name=Kindle%20-%20black&image=..%2Fimg%2FprodImg%2Fkindle.jpg"
+                class="card-link"
+                >${{this.price}}</a
+              >
+              <button
+                type="button"
+                class="btn ml-4"
+                style="background-color: #4b1b25; color: white;"
+              >
+                Add to Cart
+              </button>
+            </div>
+          </div>
+        </div>
+        {{else}}
+        <p>No products to display.</p>
+        {{/each}}
       </div>
     </div>
-    {{else}}
-    <p>No products to display.</p>
-    {{/each}}
   </div>
 </div>
