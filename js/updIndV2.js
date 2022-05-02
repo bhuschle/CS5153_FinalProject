@@ -35,36 +35,7 @@ function updateV1Prod(name, price, img, altImg, desc) {
         >
       </div>
     </div>
-  </div>`
+  </div>`;
 
   update_index.insertAdjacentHTML('afterbegin', html);
 }
-
-updateV1Prod(comp1.name, comp1.price, comp1.img, comp1.altImg, comp1.desc);
-
-function updateV2Prod(name, price, img, altImg, desc){
-  const html = `
-  <div class="card mb-3 mx-4 my-2" >
-      <div class="row g-0">
-        <div class="col-md-4">
-          <img src="${img}" class="img-fluid rounded-start" alt="${altImg}" style="height: 10rem; width: 10rem;">
-        </div>
-        <div class="col-md-8">
-          <div class="card-body">
-            <h5 class="card-title">${name}</h5>
-            <p class="card-text">${desc}</p>
-            <a
-                href="#"
-                class="card-link"
-                >$${price}
-                </a>
-          </div>
-        </div>
-      </div>
-    </div>
-    `
-
-  update_index.insertAdjacentHTML('afterbegin', html);
-}
-
-updateV2Prod(comp1.name, comp1.price, comp1.img, comp1.altImg, comp1.desc);
