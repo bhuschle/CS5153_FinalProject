@@ -76,7 +76,7 @@ app.get(`${v2UrlPath}`, (request, response) => {
 
 app.get(`${v2UrlPath}/accessories`, async (request, response) => {
     let category = 'Accessories'
-    let products = await database.getProducts(null, null, category, null);
+    let products = await database.getProducts({category: category});
 
     brands = new Set(products.map(x => x['brand']));
 
@@ -101,7 +101,7 @@ app.get(`${v2UrlPath}/cart`, (request, response) => {
 
 app.get(`${v2UrlPath}/computers`, async (request, response) => {
     let category = 'Computers'
-    let products = await database.getProducts(null, null, category, null);
+    let products = await database.getProducts({category: category});
 
     brands = new Set(products.map(x => x['brand']));
 
@@ -118,7 +118,7 @@ app.get(`${v2UrlPath}/computers`, async (request, response) => {
 
 app.get(`${v2UrlPath}/phones`, async (request, response) => {
     let category = 'Phones'
-    let products = await database.getProducts(null, null, category, null);
+    let products = await database.getProducts({category: category});
 
     brands = new Set(products.map(x => x['brand']));
 
@@ -139,7 +139,7 @@ app.get(`${v2UrlPath}/product`, (request, response) => {
 
 app.get(`${v2UrlPath}/tablets`, async (request, response) => {
     let category = 'Tablets'
-    let products = await database.getProducts(null, null, category, null);
+    let products = await database.getProducts({category: category});
 
     brands = new Set(products.map(x => x['brand']));
 
@@ -156,7 +156,7 @@ app.get(`${v2UrlPath}/tablets`, async (request, response) => {
 
 app.get(`${v2UrlPath}/laptops`, async (request, response) => {
     let category = 'Laptops'
-    let products = await database.getProducts(null, null, category, null);
+    let products = await database.getProducts({category: category});
 
     brands = new Set(products.map(x => x['brand']));
 
