@@ -54,7 +54,6 @@
                       <div class="col-md-6 col-lg-7 d-flex align-items-center">
                         <div class="card-body p-4 p-lg-5" style="color: #4b1b25;">
           
-                          <form>
           
                             <h5 class="fw-normal text-center mb-2 pb-3" style="letter-spacing: 1px;" style="color: #4b1b25;">
                               <a class="navbar-brand text-white mt-2" href="../main_nosigninV2.html">
@@ -67,20 +66,20 @@
                                 </a>
                               Sign into your account
                             </h5>
-          
+                            
+                          <form method="post" action="{{commonUrlRoot}}/auth">
                             <div class="form-outline mb-3">
                               <label class="form-label" for="emailaddress" style="color: #4b1b25;">
                                 Email address
                               </label>
-                              <input type="email" id="emailaddress" class="form-control form-control-lg" style="border-color: #4b1b25;"/>
-                              
+                              <input type="email" id="emailaddress" name="emailaddress" class="form-control form-control-lg" style="border-color: #4b1b25;"/>
                             </div>
           
                             <div class="form-outline mb-2">
                               <label class="form-label" for="userpassword" style="color: #4b1b25;">
                                 Password
                               </label>
-                              <input type="password" id="userpassword" class="form-control form-control-lg" style="border-color: #4b1b25;"/>
+                              <input type="password" id="userpassword" name="userpassword" class="form-control form-control-lg" style="border-color: #4b1b25;"/>
                             </div>
 
                             <div class="form-outline mb-4 ml-4">
@@ -90,21 +89,23 @@
           
                             <div class="pt-1 mb-3">
                               <a class="text-reset" href="../mainV2.html">
-                              <button class="btn btn-dark btn-lg btn-block" type="button" style="background-color: #4b1b25;">
-                                Sign In</button>
+                              <input class="btn btn-dark btn-lg btn-block" type="submit" style="background-color: #4b1b25;">
+                                Sign In</input>
                               </a>
                             </div>
-          
-                            <a class="small text-muted" href="forgotpasswordV2.html">Forgot password?</a>
-                            <p class="mb-4 pb-lg-2" style="color: #4b1b25;">Don't have an account? <a href="createaccountV2.html"
-                                style="color: #4b1b25;">Register here</a></p>
-                              
-                            
-                              <a href="terms&conditionsV2.html" class="small text-muted">Terms & Conditions</a>
-                              <div class = "mt-1" style="float: right; font-size: 12px; color: #4b1b25;">
-                                    © 2022 Copyright: Tech N' Stuff </div>
-                              
+
+                            <input type="hidden" id="version" name="version" value="2">
                           </form>
+          
+                          <a class="small text-muted" href="forgotpasswordV2.html">Forgot password?</a>
+                          <p class="mb-4 pb-lg-2" style="color: #4b1b25;">Don't have an account? <a href="createaccountV2.html"
+                              style="color: #4b1b25;">Register here</a></p>
+                            
+                          
+                            <a href="terms&conditionsV2.html" class="small text-muted">Terms & Conditions</a>
+                            <div class = "mt-1" style="float: right; font-size: 12px; color: #4b1b25;">
+                                  © 2022 Copyright: Tech N' Stuff </div>
+                                
           
                         </div>
                       </div>
