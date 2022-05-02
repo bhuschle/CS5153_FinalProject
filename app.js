@@ -29,9 +29,8 @@ const v1BaseContext = {
 };
 
 const v2BaseContext = {
-  layout: "./basev2.html",
-  imageRoot: imagePath,
-  urlRoot: v2UrlPath,
+    imageRoot: imagePath,
+    urlRoot: v2UrlPath,
 };
 
 // V1 INFORMATION
@@ -186,10 +185,14 @@ app.get(`${v1UrlPath}/music`, async (request, response) => {
 // V2 INFORMATION
 
 app.get(`${v2UrlPath}`, (request, response) => {
-  response.render(`${v2ViewsPath}/index.html`, {
-    ...v2BaseContext,
-    layout: "./basev2.html",
-  });
+    response.render(
+        `${v2ViewsPath}/index.html`,
+        {
+            ...v2BaseContext,
+            layout: './basev2.html',
+            layout: './basev2.html',
+        }
+    );
 });
 
 app.get(`${v2UrlPath}/accessories`, async (request, response) => {
@@ -197,13 +200,16 @@ app.get(`${v2UrlPath}/accessories`, async (request, response) => {
   let products = await database.getProducts({ category: category });
 
   brands = new Set(products.map((x) => x["brand"]));
-
-  response.render(`${v2ViewsPath}/productpageV2.html`, {
-    ...v2BaseContext,
-    products: products,
-    category: category,
-    brands: brands,
-  });
+    response.render(
+        `${v2ViewsPath}/productpageV2.html`,
+        {
+            ...v2BaseContext,
+            layout: './basev2.html',
+            products: products,
+            category: category,
+            brands: brands,
+        }
+    );
 });
 
 app.get(`${v2UrlPath}/account`, (request, response) => {
@@ -219,13 +225,16 @@ app.get(`${v2UrlPath}/computers`, async (request, response) => {
   let products = await database.getProducts({ category: category });
 
   brands = new Set(products.map((x) => x["brand"]));
-
-  response.render(`${v2ViewsPath}/productpageV2.html`, {
-    ...v2BaseContext,
-    products: products,
-    category: category,
-    brands: brands,
-  });
+    response.render(
+        `${v2ViewsPath}/productpageV2.html`,
+        {
+            ...v2BaseContext,
+            layout: './basev2.html',
+            products: products,
+            category: category,
+            brands: brands,
+        }
+    );
 });
 
 app.get(`${v2UrlPath}/phones`, async (request, response) => {
@@ -233,13 +242,16 @@ app.get(`${v2UrlPath}/phones`, async (request, response) => {
   let products = await database.getProducts({ category: category });
 
   brands = new Set(products.map((x) => x["brand"]));
-
-  response.render(`${v2ViewsPath}/productpageV2.html`, {
-    ...v2BaseContext,
-    products: products,
-    category: category,
-    brands: brands,
-  });
+    response.render(
+        `${v2ViewsPath}/productpageV2.html`,
+        {
+            ...v2BaseContext,
+            layout: './basev2.html',
+            products: products,
+            category: category,
+            brands: brands,
+        }
+    );
 });
 
 app.get(`${v2UrlPath}/product`, (request, response) => {
@@ -251,13 +263,16 @@ app.get(`${v2UrlPath}/tablets`, async (request, response) => {
   let products = await database.getProducts({ category: category });
 
   brands = new Set(products.map((x) => x["brand"]));
-
-  response.render(`${v2ViewsPath}/productpageV2.html`, {
-    ...v2BaseContext,
-    products: products,
-    category: category,
-    brands: brands,
-  });
+    response.render(
+        `${v2ViewsPath}/productpageV2.html`,
+        {
+            ...v2BaseContext,
+            layout: './basev2.html',
+            products: products,
+            category: category,
+            brands: brands,
+        }
+    );
 });
 
 app.get(`${v2UrlPath}/laptops`, async (request, response) => {
@@ -265,14 +280,27 @@ app.get(`${v2UrlPath}/laptops`, async (request, response) => {
   let products = await database.getProducts({ category: category });
 
   brands = new Set(products.map((x) => x["brand"]));
-
-  response.render(`${v2ViewsPath}/productpageV2.html`, {
-    ...v2BaseContext,
-    products: products,
-    category: category,
-    brands: brands,
-  });
+    response.render(
+        `${v2ViewsPath}/productpageV2.html`,
+        {
+            ...v2BaseContext,
+            layout: './basev2.html',
+            products: products,
+            category: category,
+            brands: brands,
+        }
+    );
 });
+
+app.get(`${v2UrlPath}/locations`, (request, response) => {
+    response.render(
+        `${v2ViewsPath}/locationsV2.html`,
+        {
+            ...v2BaseContext,
+            layout: false,
+        }
+    )
+})
 
 app.listen(port, () => {
   console.log(`Server listening on port ${port}`);

@@ -21,7 +21,7 @@ async function addProduct(name, price, description = "", altText = "") {
         product_name: name,
         price: price,
         product_description: description,
-        alt_text: altText,
+        alt1_text: altText,
     });
 }
 
