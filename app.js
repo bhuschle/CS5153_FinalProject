@@ -16,20 +16,26 @@ const scriptPath = "/static/js";
 app.use(imagePath, express.static("img"));
 app.use(scriptPath, express.static("js"));
 
+const commonUrlPath = "/common";
 const v1UrlPath = "";
 const v2UrlPath = "/v2";
 
 const v1ViewsPath = "./pages";
 const v2ViewsPath = "./v2";
 
+const commonBaseContext = {
+    commonUrlRoot: commonUrlPath,
+    imageRoot: imagePath,
+}
+
 const v1BaseContext = {
+  ...commonBaseContext,
   layout: "./basev1.html",
-  imageRoot: imagePath,
   urlRoot: v1UrlPath,
 };
 
 const v2BaseContext = {
-    imageRoot: imagePath,
+    ...commonBaseContext,
     urlRoot: v2UrlPath,
 };
 
