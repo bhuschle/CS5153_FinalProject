@@ -1,12 +1,12 @@
 const database = require("./js/database.js");
 const path = require("path");
 const express = require("express");
-const handlebars = require('express-handlebars');
+const handlebars = require("express-handlebars");
 const app = express();
 const port = 8080;
 
 
-app.engine('html', handlebars.engine());
+app.engine("html", handlebars.engine());
 
 app.set('view engine', 'handlebars');
 app.set('views', './');
