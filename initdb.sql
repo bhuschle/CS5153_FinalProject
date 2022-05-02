@@ -3,6 +3,9 @@ CREATE TABLE products (
     product_name VARCHAR(100) NOT NULL,
     price DECIMAL(8, 2) NOT NULL,
     alt_text VARCHAR(200),
+    category VARCHAR(50),
+    brand VARCHAR(100),
+    image_path VARCHAR(1000),
     product_description TEXT,
     PRIMARY KEY(id)
 );
