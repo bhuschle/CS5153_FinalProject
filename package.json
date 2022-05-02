@@ -25,8 +25,5 @@
     "mysql": "^2.18.1",
     "sass": "^1.49.11"
   },
-  "devDependencies": {
-    "node-sass": "^7.0.1"
-  },
   "keywords": []
 }
