@@ -1,7 +1,9 @@
 const database = require("./js/database.js");
 const path = require("path");
+const bodyParser = require("body-parser");
 const express = require("express");
 const handlebars = require("express-handlebars");
+const session = require("express-session");
 const app = express();
 const port = 8080;
 
@@ -9,12 +11,19 @@ app.engine("html", handlebars.engine());
 
 app.set("view engine", "handlebars");
 app.set("views", "./");
+app.set("trust proxy", 1);
 
 const imagePath = "/static/img";
 const scriptPath = "/static/js";
 
 app.use(imagePath, express.static("img"));
 app.use(scriptPath, express.static("js"));
+app.use(session({
+  secret: "Well-kept secret",
+  resave: false,
+  saveUninitialized: true,
+  cookie: {secure: false},
+}));
 
 const commonUrlPath = "/common";
 const v1UrlPath = "";
@@ -195,7 +204,7 @@ app.get(`${v2UrlPath}`, (request, response) => {
         `${v2ViewsPath}/index.html`,
         {
             ...v2BaseContext,
-            layout: './basev2.html',
+            loggedIn: request.session.loggedIn,
             layout: './basev2.html',
         }
     );
@@ -210,6 +219,7 @@ app.get(`${v2UrlPath}/accessories`, async (request, response) => {
         `${v2ViewsPath}/productpageV2.html`,
         {
             ...v2BaseContext,
+            loggedIn: request.session.loggedIn,
             layout: './basev2.html',
             products: products,
             category: category,
@@ -235,6 +245,7 @@ app.get(`${v2UrlPath}/computers`, async (request, response) => {
         `${v2ViewsPath}/productpageV2.html`,
         {
             ...v2BaseContext,
+            loggedIn: request.session.loggedIn,
             layout: './basev2.html',
             products: products,
             category: category,
@@ -252,6 +263,7 @@ app.get(`${v2UrlPath}/phones`, async (request, response) => {
         `${v2ViewsPath}/productpageV2.html`,
         {
             ...v2BaseContext,
+            loggedIn: request.session.loggedIn,
             layout: './basev2.html',
             products: products,
             category: category,
@@ -273,6 +285,7 @@ app.get(`${v2UrlPath}/tablets`, async (request, response) => {
         `${v2ViewsPath}/productpageV2.html`,
         {
             ...v2BaseContext,
+            loggedIn: request.session.loggedIn,
             layout: './basev2.html',
             products: products,
             category: category,
@@ -290,6 +303,7 @@ app.get(`${v2UrlPath}/laptops`, async (request, response) => {
         `${v2ViewsPath}/productpageV2.html`,
         {
             ...v2BaseContext,
+            loggedIn: request.session.loggedIn,
             layout: './basev2.html',
             products: products,
             category: category,
@@ -338,6 +352,30 @@ app.get(`${v2UrlPath}/about`, (request, response) => {
     )
 })
 
+
+// COMMON
+
+app.post(`${commonUrlPath}/auth`,
+    bodyParser.urlencoded(),
+    async (request, response) => {
+        try {
+            user = await database.getUser({email: request.body.emailaddress, password: request.body.userpassword});
+            response.locals.userId = user['id'];
+            request.session.loggedIn = true;
+            request.session.userId = user['id'];
+            if (request.body.version == 2){
+              response.redirect(v2UrlPath);
+            }
+            else {
+              response.redirect(v1UrlPath);
+            }
+        }
+        catch (error) {
+            console.log(error);
+            response.sendStatus(401);
+        }
+    }
+);
 
 
 app.listen(port, () => {
