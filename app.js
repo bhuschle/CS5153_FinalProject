@@ -176,6 +176,16 @@ app.get(`${v2UrlPath}/laptops`, async (request, response) => {
     );
 });
 
+app.get(`${v2UrlPath}/locations`, (request, response) => {
+    response.render(
+        `${v2ViewsPath}/locationsV2.html`,
+        {
+            ...v2BaseContext,
+            layout: false,
+        }
+    )
+})
+
 
 app.listen(port, () => {
     console.log(`Server listening on port ${port}`);
