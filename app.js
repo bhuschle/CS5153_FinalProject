@@ -302,6 +302,38 @@ app.get(`${v2UrlPath}/locations`, (request, response) => {
     )
 })
 
+app.get(`${v2UrlPath}/signin`, (request, response) => {
+    response.render(
+        `${v2ViewsPath}/signinV2.html`,
+        {
+            ...v2BaseContext,
+            layout: false,
+        }
+    )
+})
+
+app.get(`${v2UrlPath}/signup`, (request, response) => {
+    response.render(
+        `${v2ViewsPath}/createaccountV2.html`,
+        {
+            ...v2BaseContext,
+            layout: false,
+        }
+    )
+})
+
+app.get(`${v2UrlPath}/about`, (request, response) => {
+    response.render(
+        `${v2ViewsPath}/aboutusV2.html`,
+        {
+            ...v2BaseContext,
+            layout: false,
+        }
+    )
+})
+
+
+
 app.listen(port, () => {
   console.log(`Server listening on port ${port}`);
 });
