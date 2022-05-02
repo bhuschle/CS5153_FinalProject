@@ -49,7 +49,7 @@ async function getProducts({name = null, priceRange = null, category = null, bra
     }
 
     
-    for (let i = 0; i < brands.length; i += 1)
+    for (let i = 0; i < brands.length; i += 1) {
         if (i === 0) {
             products = products.whereILike('brand', `%${brands[i]}%`);
         }
