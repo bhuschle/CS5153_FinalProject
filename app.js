@@ -25,7 +25,6 @@ const v1ViewsPath = "./pages";
 const v2ViewsPath = "./v2";
 
 const v2BaseContext = {
-    layout: './basev2.html',
     imageRoot: imagePath,
     urlRoot: v2UrlPath,
 };
@@ -70,6 +69,7 @@ app.get(`${v2UrlPath}`, (request, response) => {
         {
             ...v2BaseContext,
             layout: './basev2.html',
+            layout: './basev2.html',
         }
     );
 });
@@ -84,6 +84,7 @@ app.get(`${v2UrlPath}/accessories`, async (request, response) => {
         `${v2ViewsPath}/productpageV2.html`,
         {
             ...v2BaseContext,
+            layout: './basev2.html',
             products: products,
             category: category,
             brands: brands,
@@ -109,6 +110,7 @@ app.get(`${v2UrlPath}/computers`, async (request, response) => {
         `${v2ViewsPath}/productpageV2.html`,
         {
             ...v2BaseContext,
+            layout: './basev2.html',
             products: products,
             category: category,
             brands: brands,
@@ -126,6 +128,7 @@ app.get(`${v2UrlPath}/phones`, async (request, response) => {
         `${v2ViewsPath}/productpageV2.html`,
         {
             ...v2BaseContext,
+            layout: './basev2.html',
             products: products,
             category: category,
             brands: brands,
@@ -147,6 +150,7 @@ app.get(`${v2UrlPath}/tablets`, async (request, response) => {
         `${v2ViewsPath}/productpageV2.html`,
         {
             ...v2BaseContext,
+            layout: './basev2.html',
             products: products,
             category: category,
             brands: brands,
@@ -164,6 +168,7 @@ app.get(`${v2UrlPath}/laptops`, async (request, response) => {
         `${v2ViewsPath}/productpageV2.html`,
         {
             ...v2BaseContext,
+            layout: './basev2.html',
             products: products,
             category: category,
             brands: brands,
