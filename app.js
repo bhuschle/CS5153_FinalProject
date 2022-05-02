@@ -323,11 +323,14 @@ app.get(`${v2UrlPath}/locations`, (request, response) => {
 })
 
 app.get(`${v2UrlPath}/signin`, (request, response) => {
+    let signInFailed = request.session.signInFailed;
+    request.session.signInFailed = null;
     response.render(
         `${v2ViewsPath}/signinV2.html`,
         {
             ...v2BaseContext,
             layout: false,
+            signInFailed: signInFailed,
         }
     )
 })
@@ -371,8 +374,13 @@ app.post(`${commonUrlPath}/auth`,
             }
         }
         catch (error) {
-            console.log(error);
-            response.sendStatus(401);
+          request.session.signInFailed = true;
+          if (request.body.version == 2){
+            response.redirect(`${v2UrlPath}/signin`);
+          }
+          else {
+            response.redirect(`${v1UrlPath}/signin`);
+          }
         }
     }
 );

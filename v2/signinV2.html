@@ -55,18 +55,23 @@
                         <div class="card-body p-4 p-lg-5" style="color: #4b1b25;">
           
           
-                            <h5 class="fw-normal text-center mb-2 pb-3" style="letter-spacing: 1px;" style="color: #4b1b25;">
-                              <a class="navbar-brand text-white mt-2" href="../main_nosigninV2.html">
-                                <img
-                                    src="../img/TechNStuff/TechNStuffLogo2.png"
-                                    width="30"
-                                    height="30"
-                                    alt="TECH N' STUFF" 
-                                />
-                                </a>
-                              Sign into your account
-                            </h5>
-                            
+                          <h5 class="fw-normal text-center mb-2 pb-3" style="letter-spacing: 1px;" style="color: #4b1b25;">
+                            <a class="navbar-brand text-white mt-2" href="../main_nosigninV2.html">
+                              <img
+                                  src="../img/TechNStuff/TechNStuffLogo2.png"
+                                  width="30"
+                                  height="30"
+                                  alt="TECH N' STUFF"
+                              />
+                              </a>
+                            Sign into your account
+                          </h5>
+
+                          {{#if signInFailed}}
+                          <div class="alert alert-warning" role="alert">
+                            Incorrect email address or password. Please try again.
+                          </div>
+                          {{/if}}
                           <form method="post" action="{{commonUrlRoot}}/auth">
                             <div class="form-outline mb-3">
                               <label class="form-label" for="emailaddress" style="color: #4b1b25;">
