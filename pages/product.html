@@ -2,44 +2,55 @@
   <div class="row">
     <!-- Filter and Sort Products -->
     <div class="col-lg-3">
-        <h5>Filters</h5>
-        <h6>Brands</h6>
-        <form method="get" action="{{urlRoot}}/{{subcategoryId}}">
+      <h5>Filters</h5>
+      <h6>Brands</h6>
+      <form method="get" action="{{urlRoot}}/{{subcategoryId}}">
         <ul class="list-group">
-            <!-- <li class="list-group-item"> <h6>Brand</h6></li>  -->
-            {{#each brands}}
-            <li class="list-group-item">
-                <div class="form-check">
-                    <label for="form-check-label">
-                        <input checked type="checkbox" name="{{this}}" class="form-check-input product-check" value="true" id="brand">{{this}}</inputl>
-                    </label>
-                </div>
-            </li>
-            {{else}}
-            <li class="list-group-item">
-              No brands.
-            </li>
-            {{/each}}
+          <!-- <li class="list-group-item"> <h6>Brand</h6></li>  -->
+          {{#each brands}}
+          <li class="list-group-item">
+            <div class="form-check">
+              <label for="form-check-label">
+                <input
+                  checked
+                  type="checkbox"
+                  name="{{this}}"
+                  class="form-check-input product-check"
+                  value="true"
+                  id="brand"
+                />{{this}}
+              </label>
+            </div>
+          </li>
+          {{else}}
+          <li class="list-group-item">
+            No brands.
+          </li>
+          {{/each}}
         </ul>
-        <br>
+        <br />
         <h5>Sort Products</h5>
-          <div class="form-group">
-            <select name="sortby" class="form-control form-control-md">
-              <option> Best sellers </option>
-              <option> Low-to-high </option>
-              <option> High-to-low </option>
-            </select>
-          </div>
-          <div class="pt-1 mb-3">
-            <input class="btn btn-dark btn-block" type="submit" value="Sort & Filter" style="background-color: #4b1b25;"/>
-          </div>
-        </form>
+        <div class="form-group">
+          <select name="sortby" class="form-control form-control-md">
+            <option> Best sellers </option>
+            <option> Low-to-high </option>
+            <option> High-to-low </option>
+          </select>
+        </div>
+        <div class="pt-1 mb-3">
+          <input
+            class="btn btn-dark btn-block"
+            type="submit"
+            value="Sort & Filter"
+          />
+        </div>
+      </form>
     </div>
 
     <!-- Display products -->
     <div class="col-lg-9">
-      Computers / {{category}}
-      <h4>{{category}}</h4>
+      {{category}} / {{subcategory}}
+      <h4>{{subcategory}}</h4>
 
       <div class="row">
         {{#each products}}

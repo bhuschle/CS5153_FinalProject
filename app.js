@@ -178,21 +178,6 @@ app.get(`${v1UrlPath}/signup/success`, (request, response) => {
 });
 
 app.get(`${v1UrlPath}/desktops`, async (request, response) => {
-  let products = await database.getProducts({ subcategory: "desktops" });
-
-  brands = new Set(products.map((x) => x["brand"]));
-
-  response.render(`${v1ViewsPath}/product.html`, {
-    ...v1BaseContext,
-    layout: "./basev1.html",
-    loggedIn: request.session.loggedIn,
-    products: products,
-    category: "Desktops",
-    brands: brands,
-  });
-});
-
-app.get(`${v2UrlPath}/desktops`, async (request, response) => {
   let subcategoryId = "desktops";
   let products = await database.getProducts({ subcategory: subcategoryId });
   brands = new Set(products.map((x) => x["brand"]));
@@ -210,7 +195,8 @@ app.get(`${v2UrlPath}/desktops`, async (request, response) => {
     layout: "./basev1.html",
     products: products,
     productsString: JSON.stringify(products),
-    category: "Desktops",
+    category: "Computers",
+    subcategory: "Desktops",
     subcategoryId: subcategoryId,
     brands: brands,
   });
@@ -235,7 +221,8 @@ app.get(
       loggedIn: request.session.loggedIn,
       layout: "./basev1.html",
       products: products,
-      category: "Tablets",
+      category: "Computers",
+      subcategory: "Tablets",
       subcategoryId: subcategoryId,
       brands: brands,
     });
@@ -260,7 +247,8 @@ app.get(`${v1UrlPath}/laptops`, async (request, response) => {
     layout: "./basev1.html",
     products: products,
     productsString: JSON.stringify(products),
-    category: "Laptops",
+    category: "Computers",
+    subcategory: "Laptops",
     subcategoryId: subcategoryId,
     brands: brands,
   });
@@ -284,7 +272,8 @@ app.get(`${v1UrlPath}/dslr`, async (request, response) => {
     layout: "./basev1.html",
     products: products,
     productsString: JSON.stringify(products),
-    category: "DSLR",
+    category: "Cameras",
+    subcategory: "DSLR",
     subcategoryId: subcategoryId,
     brands: brands,
   });
@@ -308,7 +297,8 @@ app.get(`${v1UrlPath}/pointshoot`, async (request, response) => {
     layout: "./basev1.html",
     products: products,
     productsString: JSON.stringify(products),
-    category: "Point & Shoot",
+    category: "Cameras",
+    subcategory: "Point & Shoot",
     subcategoryId: subcategoryId,
     brands: brands,
   });
@@ -332,7 +322,8 @@ app.get(`${v1UrlPath}/iphone`, async (request, response) => {
     layout: "./basev1.html",
     products: products,
     productsString: JSON.stringify(products),
-    category: "iPhone",
+    category: "Phones",
+    subcategory: "iPhone",
     subcategoryId: subcategoryId,
     brands: brands,
   });
@@ -356,7 +347,8 @@ app.get(`${v1UrlPath}/samsung`, async (request, response) => {
     layout: "./basev1.html",
     products: products,
     productsString: JSON.stringify(products),
-    category: "Samsung",
+    category: "Phones",
+    subcategory: "Samsung",
     subcategoryId: subcategoryId,
     brands: brands,
   });
@@ -380,7 +372,8 @@ app.get(`${v1UrlPath}/movies`, async (request, response) => {
     layout: "./basev1.html",
     products: products,
     productsString: JSON.stringify(products),
-    category: "Movies",
+    category: "Music & Movies",
+    subcategory: "Movies",
     subcategoryId: subcategoryId,
     brands: brands,
   });
@@ -404,7 +397,8 @@ app.get(`${v1UrlPath}/music`, async (request, response) => {
     layout: "./basev1.html",
     products: products,
     productsString: JSON.stringify(products),
-    category: "Music",
+    category: "Music & Movies",
+    subcategory: "Music",
     subcategoryId: subcategoryId,
     brands: brands,
   });
