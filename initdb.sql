@@ -28,6 +28,11 @@ CREATE TABLE users (
     user_state varchar(50),
     user_country varchar(50),
     user_zip_code varchar(5),
+    card_name VARCHAR(200),
+    card_number VARCHAR(19),
+    card_expiration_date DATE,
+    card_cvv_code VARCHAR(3),
+    card_zip_code VARCHAR(5)
     PRIMARY KEY(id)
 );
 
@@ -52,9 +57,9 @@ INSERT INTO products (product_name, brand, category, subcategory, price, image1_
     'computers',
     'tablets',
     59.99,
-    '/prodImg/kindle.jpg',
-    '/prodImg/kindle.jpg',
-    '/prodImg/kindle.jpg',
+    '/prodImg/computers/tablets/kindle.jpg',
+    '/prodImg/computers/tablets/kindle.jpg',
+    '/prodImg/computers/tablets/kindle.jpg',
     'Picture of Kindle Paperwhite',
     'Picture of Kindle Paperwhite',
     'Picture of Kindle Paperwhite',

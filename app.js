@@ -53,6 +53,7 @@ const v2BaseContext = {
 app.get(`${v1UrlPath}/`, (request, response) => {
   response.render(`${v1ViewsPath}/index.html`, {
     ...v1BaseContext,
+    userFirstName: request.session.firstName,
     loggedIn: request.session.loggedIn,
     layout: "./basev1.html",
   });
@@ -75,7 +76,7 @@ app.get(`${v1UrlPath}/cart`, (request, response) => {
 });
 
 app.get(`${v1UrlPath}/laptops`, async (request, response) => {
-  let products = await database.getProducts({ category: "laptops" });
+  let products = await database.getProducts({ subcategory: "laptops" });
 
   brands = new Set(products.map((x) => x["brand"]));
 
@@ -220,6 +221,7 @@ app.get(`${v2UrlPath}`, (request, response) => {
         `${v2ViewsPath}/index.html`,
         {
             ...v2BaseContext,
+            userFirstName: request.session.firstName,
             loggedIn: request.session.loggedIn,
             layout: './basev2.html',
         }
@@ -227,7 +229,7 @@ app.get(`${v2UrlPath}`, (request, response) => {
 });
 
 app.get(`${v2UrlPath}/account`, (request, response) => {
-  response.render(`${v2ViewsPath}/Account.html`, { layout: false });
+  response.render(`${v2ViewsPath}/account.html`, { layout: false });
 });
 
 app.get(`${v2UrlPath}/cart`, (request, response) => {
@@ -242,9 +244,11 @@ app.get(`${v2UrlPath}/computers`, async (request, response) => {
         `${v2ViewsPath}/productpageV2.html`,
         {
             ...v2BaseContext,
+            userFirstName: request.session.firstName,
             loggedIn: request.session.loggedIn,
             layout: './basev2.html',
             products: products,
+            productsString: JSON.stringify(products),
             category: "Computers",
             brands: brands,
         }
@@ -259,9 +263,11 @@ app.get(`${v2UrlPath}/iphone`, async (request, response) => {
         `${v2ViewsPath}/productpageV2.html`,
         {
             ...v2BaseContext,
+            userFirstName: request.session.firstName,
             loggedIn: request.session.loggedIn,
             layout: './basev2.html',
             products: products,
+            productsString: JSON.stringify(products),
             category: "iPhone",
             brands: brands,
         }
@@ -276,9 +282,11 @@ app.get(`${v2UrlPath}/samsung`, async (request, response) => {
         `${v2ViewsPath}/productpageV2.html`,
         {
             ...v2BaseContext,
+            userFirstName: request.session.firstName,
             loggedIn: request.session.loggedIn,
             layout: './basev2.html',
             products: products,
+            productsString: JSON.stringify(products),
             category: "Samsung",
             brands: brands,
         }
@@ -297,9 +305,11 @@ app.get(`${v2UrlPath}/tablets`, async (request, response) => {
         `${v2ViewsPath}/productpageV2.html`,
         {
             ...v2BaseContext,
+            userFirstName: request.session.firstName,
             loggedIn: request.session.loggedIn,
             layout: './basev2.html',
             products: products,
+            productsString: JSON.stringify(products),
             category: "Tablets",
             brands: brands,
         }
@@ -314,9 +324,11 @@ app.get(`${v2UrlPath}/laptops`, async (request, response) => {
         `${v2ViewsPath}/productpageV2.html`,
         {
             ...v2BaseContext,
+            userFirstName: request.session.firstName,
             loggedIn: request.session.loggedIn,
             layout: './basev2.html',
             products: products,
+            productsString: JSON.stringify(products),
             category: "Laptops",
             brands: brands,
         }
@@ -346,16 +358,6 @@ app.get(`${v2UrlPath}/signin`, (request, response) => {
     )
 })
 
-app.get(`${v2UrlPath}/signup`, (request, response) => {
-    response.render(
-        `${v2ViewsPath}/createaccountV2.html`,
-        {
-            ...v2BaseContext,
-            layout: false,
-        }
-    )
-})
-
 app.get(`${v2UrlPath}/about`, (request, response) => {
     response.render(
         `${v2ViewsPath}/aboutusV2.html`,
@@ -367,13 +369,36 @@ app.get(`${v2UrlPath}/about`, (request, response) => {
 })
 
 app.get(`${v2UrlPath}/signout`, (request, response) => {
-  request.session.destroy((error)=>{});
+    request.session.destroy((error)=>{});
+    response.render(
+        `${v2ViewsPath}/signedoutV2.html`,
+        {
+            ...v2BaseContext,
+            layout: "./authv2.html",
+        }
+    );
+});
+
+app.get(`${v2UrlPath}/signup`, (request, response) => {
+    let passwordMismatch = request.session.passwordMismatch;
+    request.session.passwordMismatch = null;
+    response.render(
+        `${v2ViewsPath}/createaccountV2.html`,
+        {
+          ...v2BaseContext,
+          layout: "./authv2.html",
+          passwordMismatch: passwordMismatch,
+        }
+    );
+});
+
+app.get(`${v2UrlPath}/signup/success`, (request, response) => {
   response.render(
-    `${v2ViewsPath}/signedoutV2.html`,
-    {
-      ...v2BaseContext,
-      layout: "./authv2.html",
-    }
+      `${v2ViewsPath}/createaccountsuccessV2.html`,
+      {
+        ...v2BaseContext,
+        layout: "./authv2.html",
+      }
   );
 });
 
@@ -388,6 +413,7 @@ app.post(`${commonUrlPath}/auth`,
             response.locals.userId = user['id'];
             request.session.loggedIn = true;
             request.session.userId = user['id'];
+            request.session.firstName = user['first_name'];
             if (request.body.version == 2){
               response.redirect(v2UrlPath);
             }
@@ -406,6 +432,40 @@ app.post(`${commonUrlPath}/auth`,
         }
     }
 );
+
+app.post(`${commonUrlPath}/adduser`,
+    bodyParser.urlencoded(),
+    async (request, response) => {
+    if (request.body.userpassword === request.body.reenterpassword) {
+        await database.addUser(
+            request.body.firstname,
+            request.body.lastname,
+            request.body.emailaddress,
+            request.body.userpassword,
+            request.body.address,
+            request.body.city,
+            request.body.state,
+            request.body.country,
+            request.body.zipcode
+        );
+
+        if (request.body.version == 2){
+          response.redirect(`${v2UrlPath}/signup/success`);
+        }
+        else {
+          response.redirect(`${v1UrlPath}/signup/success`);
+        }
+    }
+    else {
+        request.session.passwordMismatch = true;
+        if (request.body.version == 2){
+            response.redirect(`${v2UrlPath}/signup`);
+        }
+        else {
+            response.redirect(`${v1UrlPath}/signup`);
+        }
+    }
+});
 
 
 app.listen(port, () => {
