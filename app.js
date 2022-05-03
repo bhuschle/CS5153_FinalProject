@@ -75,8 +75,7 @@ app.get(`${v1UrlPath}/cart`, (request, response) => {
 });
 
 app.get(`${v1UrlPath}/laptops`, async (request, response) => {
-  let category = "laptops";
-  let products = await database.getProducts({ category: category });
+  let products = await database.getProducts({ category: "laptops" });
 
   brands = new Set(products.map((x) => x["brand"]));
 
@@ -84,14 +83,13 @@ app.get(`${v1UrlPath}/laptops`, async (request, response) => {
     ...v1BaseContext,
     loggedIn: request.session.loggedIn,
     products: products,
-    category: category,
+    category: "Laptops",
     brands: brands,
   });
 });
 
 app.get(`${v1UrlPath}/desktops`, async (request, response) => {
-  let category = "desktops";
-  let products = await database.getProducts({ category: category });
+  let products = await database.getProducts({ subcategory: "desktops" });
 
   brands = new Set(products.map((x) => x["brand"]));
 
@@ -99,14 +97,13 @@ app.get(`${v1UrlPath}/desktops`, async (request, response) => {
     ...v1BaseContext,
     loggedIn: request.session.loggedIn,
     products: products,
-    category: category,
+    category: "Desktops",
     brands: brands,
   });
 });
 
 app.get(`${v1UrlPath}/tablets`, async (request, response) => {
-  let category = "tablets";
-  let products = await database.getProducts({ category: category });
+  let products = await database.getProducts({ subcategory: "tablets" });
 
   brands = new Set(products.map((x) => x["brand"]));
 
@@ -114,14 +111,13 @@ app.get(`${v1UrlPath}/tablets`, async (request, response) => {
     ...v1BaseContext,
     loggedIn: request.session.loggedIn,
     products: products,
-    category: category,
+    category: "Tablets",
     brands: brands,
   });
 });
 
 app.get(`${v1UrlPath}/dslr`, async (request, response) => {
-  let category = "dslr";
-  let products = await database.getProducts({ category: category });
+  let products = await database.getProducts({ subcategory: "dslr" });
 
   brands = new Set(products.map((x) => x["brand"]));
 
@@ -129,14 +125,13 @@ app.get(`${v1UrlPath}/dslr`, async (request, response) => {
     ...v1BaseContext,
     loggedIn: request.session.loggedIn,
     products: products,
-    category: category,
+    category: "DSLR",
     brands: brands,
   });
 });
 
 app.get(`${v1UrlPath}/pointshoot`, async (request, response) => {
-  let category = "pointshoot";
-  let products = await database.getProducts({ category: category });
+  let products = await database.getProducts({ subcategory: "pointshoot" });
 
   brands = new Set(products.map((x) => x["brand"]));
 
@@ -144,14 +139,13 @@ app.get(`${v1UrlPath}/pointshoot`, async (request, response) => {
     ...v1BaseContext,
     loggedIn: request.session.loggedIn,
     products: products,
-    category: category,
+    category: "Point & Shoot",
     brands: brands,
   });
 });
 
 app.get(`${v1UrlPath}/iphone`, async (request, response) => {
-  let category = "iphone";
-  let products = await database.getProducts({ category: category });
+  let products = await database.getProducts({ subcategory: "iphone" });
 
   brands = new Set(products.map((x) => x["brand"]));
 
@@ -159,14 +153,13 @@ app.get(`${v1UrlPath}/iphone`, async (request, response) => {
     ...v1BaseContext,
     loggedIn: request.session.loggedIn,
     products: products,
-    category: category,
+    category: "iPhone",
     brands: brands,
   });
 });
 
 app.get(`${v1UrlPath}/samsung`, async (request, response) => {
-  let category = "samsung";
-  let products = await database.getProducts({ category: category });
+  let products = await database.getProducts({ subcategory: "samsung" });
 
   brands = new Set(products.map((x) => x["brand"]));
 
@@ -174,14 +167,13 @@ app.get(`${v1UrlPath}/samsung`, async (request, response) => {
     ...v1BaseContext,
     loggedIn: request.session.loggedIn,
     products: products,
-    category: category,
+    category: "Samsung",
     brands: brands,
   });
 });
 
 app.get(`${v1UrlPath}/movies`, async (request, response) => {
-  let category = "movies";
-  let products = await database.getProducts({ category: category });
+  let products = await database.getProducts({ subcategory: "movies" });
 
   brands = new Set(products.map((x) => x["brand"]));
 
@@ -189,14 +181,13 @@ app.get(`${v1UrlPath}/movies`, async (request, response) => {
     ...v1BaseContext,
     loggedIn: request.session.loggedIn,
     products: products,
-    category: category,
+    category: "Movies",
     brands: brands,
   });
 });
 
 app.get(`${v1UrlPath}/music`, async (request, response) => {
-  let category = "music";
-  let products = await database.getProducts({ category: category });
+  let products = await database.getProducts({ subcategory: "music" });
 
   brands = new Set(products.map((x) => x["brand"]));
 
@@ -204,7 +195,7 @@ app.get(`${v1UrlPath}/music`, async (request, response) => {
     ...v1BaseContext,
     loggedIn: request.session.loggedIn,
     products: products,
-    category: category,
+    category: "Music",
     brands: brands,
   });
 });
@@ -235,24 +226,6 @@ app.get(`${v2UrlPath}`, (request, response) => {
     );
 });
 
-app.get(`${v2UrlPath}/accessories`, async (request, response) => {
-  let category = "Accessories";
-  let products = await database.getProducts({ category: category });
-
-  brands = new Set(products.map((x) => x["brand"]));
-    response.render(
-        `${v2ViewsPath}/productpageV2.html`,
-        {
-            ...v2BaseContext,
-            loggedIn: request.session.loggedIn,
-            layout: './basev2.html',
-            products: products,
-            category: category,
-            brands: brands,
-        }
-    );
-});
-
 app.get(`${v2UrlPath}/account`, (request, response) => {
   response.render(`${v2ViewsPath}/Account.html`, { layout: false });
 });
@@ -262,8 +235,7 @@ app.get(`${v2UrlPath}/cart`, (request, response) => {
 });
 
 app.get(`${v2UrlPath}/computers`, async (request, response) => {
-  let category = "Computers";
-  let products = await database.getProducts({ category: category });
+  let products = await database.getProducts({ subcategory: "computers" });
 
   brands = new Set(products.map((x) => x["brand"]));
     response.render(
@@ -273,15 +245,14 @@ app.get(`${v2UrlPath}/computers`, async (request, response) => {
             loggedIn: request.session.loggedIn,
             layout: './basev2.html',
             products: products,
-            category: category,
+            category: "Computers",
             brands: brands,
         }
     );
 });
 
-app.get(`${v2UrlPath}/phones`, async (request, response) => {
-  let category = "Phones";
-  let products = await database.getProducts({ category: category });
+app.get(`${v2UrlPath}/iphone`, async (request, response) => {
+  let products = await database.getProducts({ subcategory: "iphone" });
 
   brands = new Set(products.map((x) => x["brand"]));
     response.render(
@@ -291,7 +262,24 @@ app.get(`${v2UrlPath}/phones`, async (request, response) => {
             loggedIn: request.session.loggedIn,
             layout: './basev2.html',
             products: products,
-            category: category,
+            category: "iPhone",
+            brands: brands,
+        }
+    );
+});
+
+app.get(`${v2UrlPath}/samsung`, async (request, response) => {
+  let products = await database.getProducts({ subcategory: "samsung" });
+
+  brands = new Set(products.map((x) => x["brand"]));
+    response.render(
+        `${v2ViewsPath}/productpageV2.html`,
+        {
+            ...v2BaseContext,
+            loggedIn: request.session.loggedIn,
+            layout: './basev2.html',
+            products: products,
+            category: "Samsung",
             brands: brands,
         }
     );
@@ -302,8 +290,7 @@ app.get(`${v2UrlPath}/product`, (request, response) => {
 });
 
 app.get(`${v2UrlPath}/tablets`, async (request, response) => {
-  let category = "Tablets";
-  let products = await database.getProducts({ category: category });
+  let products = await database.getProducts({ subcategory: "tablets" });
 
   brands = new Set(products.map((x) => x["brand"]));
     response.render(
@@ -313,15 +300,14 @@ app.get(`${v2UrlPath}/tablets`, async (request, response) => {
             loggedIn: request.session.loggedIn,
             layout: './basev2.html',
             products: products,
-            category: category,
+            category: "Tablets",
             brands: brands,
         }
     );
 });
 
 app.get(`${v2UrlPath}/laptops`, async (request, response) => {
-  let category = "Laptops";
-  let products = await database.getProducts({ category: category });
+  let products = await database.getProducts({ subcategory: "laptops" });
 
   brands = new Set(products.map((x) => x["brand"]));
     response.render(
@@ -331,7 +317,7 @@ app.get(`${v2UrlPath}/laptops`, async (request, response) => {
             loggedIn: request.session.loggedIn,
             layout: './basev2.html',
             products: products,
-            category: category,
+            category: "Laptops",
             brands: brands,
         }
     );
