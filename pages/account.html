@@ -1,7 +1,67 @@
 <!-- Display listed Account Information -->
 
-<div class="container bg-light my-4 py-2 mx-4 px-2">
-  <h2 class="header">Hello ${USER}</h2>
+<div class="container rounded bg-light mt-5 mb-5">
+  <div class="row">
+    <div class="col-md-3 border-right">
+      <div class="d-flex flex-column align-items-center text-center p-3 py-5">
+        <img src="" alt="" width="150" class="rounded-circle mt5" />
+        <span class="font-weight-bold">{{{first_name}}} {{{last_name}}}</span>
+        <span class="text-black-50">{{{email}}}</span>
+        <span></span>
+      </div>
+      <div class="col-md-5 border-right">
+        <div class="p-3 py-5">
+          <div class="d-flex justify-content-between align-items-center mb-3">
+            <h4 class="text-right">Profile Settings</h4>
+          </div>
+          <div class="row mt-3">
+            <div class="col-md-12">
+              <a>{{{user_address}}}</a>
+            </div>
+            <div class="col-md-12">
+              <a>{{{user_city}}}</a>
+            </div>
+            <div class="col-md-12">
+              <a>{{{user_state}}}</a>
+            </div>
+          </div>
+          <div class="col-md-12">
+            <a>{{{user_country}}}</a>
+          </div>
+          <div class="col-md-12">
+            <a>{{{user_zip_code}}}</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="p-3 py-5">
+        <div class="d-flex justify-content-between align-items-center">
+          <span>Credit Card Info</span>
+        </div>
+        <br />
+        <div class="col-md-12">
+          <a>{{{card_name}}}</a>
+        </div>
+        <br />
+        <div class="col-md-12">
+          <a>{{{card_number}}}</a>
+        </div>
+        <br />
+        <div class="col-md-12">
+          <a>{{{exp_date}}}</a>
+        </div>
+        <br />
+        <div class="col-md-12">
+          <a>{{{cvv_code}}}</a>
+        </div>
+        <br />
+        <div class="col-md-12">
+          <a>{{{card_zipcode}}}</a>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
 
 <!-- Edit Listed Account Information

@@ -227,7 +227,7 @@ app.get(`${v2UrlPath}`, (request, response) => {
 });
 
 app.get(`${v2UrlPath}/account`, (request, response) => {
-  response.render(`${v2ViewsPath}/Account.html`, { layout: false });
+  response.render(`${v2ViewsPath}/account.html`, { layout: false });
 });
 
 app.get(`${v2UrlPath}/cart`, (request, response) => {
