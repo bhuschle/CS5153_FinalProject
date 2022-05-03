@@ -146,6 +146,7 @@
           <div class="nav-item">
             <a class="nav-link" href="/cart">CART</a>
           </div>
+          {{#if loggedIn}}
           <div class="nav-item dropdown">
             <a
               class="nav-link dropdown-toggle"
@@ -160,9 +161,13 @@
             </a>
             <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
               <a class="dropdown-item" href="/account">ACCOUNT</a>
-              <a class="dropdown-item" href="#">SIGNOUT</a>
+              <a class="dropdown-item" href="{{urlRoot}}/signout">SIGN OUT</a>
             </div>
           </div>
+          {{else}}
+          <a class="nav-link" href="{{urlRoot}}/signup">SIGN UP</a>
+          <a class="nav-link" href="{{urlRoot}}/signin">SIGN IN</a>
+          {{/if}}
         </ul>
       </div>
     </nav>

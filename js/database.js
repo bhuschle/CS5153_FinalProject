@@ -118,14 +118,28 @@ async function removeUser(id) {
 module.exports.removeUser = removeUser
 
 
-async function getUserById(id) {
-    return knex(usersTableName)
-    .where({id: id})
+async function getUser({id = null, email = null, password = null} = {}) {
+
+    let user = knex(usersTableName)
+    
+    if (id !== null) {
+        user = user.where("id", id);
+    }
+
+    if (email !== null) {
+        user = user.where("email", email);
+    }
+    
+    if (password !== null) {
+        user = user.andWhere("user_password", password);
+    }
+
+    return await user
     .first()
     .then((row) => JSON.parse(JSON.stringify(row)));
 }
 
-module.exports.getUserById = getUserById;
+module.exports.getUser = getUser;
 
 
 async function addOrder(userId, items) {
