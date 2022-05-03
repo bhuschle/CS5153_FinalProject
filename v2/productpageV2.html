@@ -3,15 +3,16 @@
 
       <!-- Filter and Sort Products -->
       <div class="col-lg-3">
-          <h5>Product Category</h5> 
-          <h6>Brand</h6> 
+          <h5>Filters</h5>
+          <h6>Brands</h6>
+          <form method="get" action="{{urlRoot}}/{{subcategoryId}}">
           <ul class="list-group">
               <!-- <li class="list-group-item"> <h6>Brand</h6></li>  -->
               {{#each brands}}
               <li class="list-group-item">
                   <div class="form-check">
                       <label for="form-check-label">
-                          <input type="checkbox" class="form-check-input product-check" value="" id="brand"> {{this}}
+                          <input type="checkbox" name="{{this}}" class="form-check-input product-check" value="true" id="brand">{{this}}</inputl>
                       </label>
                   </div>
               </li>
@@ -23,13 +24,15 @@
           </ul>
           <br>
           <h5>Sort Products</h5>
-          <form action="">
             <div class="form-group">
-              <select class="form-control form-control-md">
-                <option> Best Sellers </option>
+              <select name="sortby" class="form-control form-control-md">
+                <option> Best sellers </option>
                 <option> Low-to-high </option>
                 <option> High-to-low </option>
               </select>
+            </div>
+            <div class="pt-1 mb-3">
+              <input class="btn btn-dark btn-block" type="submit" value="Sort & Filter" style="background-color: #4b1b25;"/>
             </div>
           </form>
       </div>
