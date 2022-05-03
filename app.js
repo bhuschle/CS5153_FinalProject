@@ -42,7 +42,6 @@ const commonBaseContext = {
 
 const v1BaseContext = {
   ...commonBaseContext,
-  layout: "./basev1.html",
   urlRoot: v1UrlPath,
 };
 
@@ -62,55 +61,6 @@ function filterAndSort(products, brands, sortBy) {
   }
   return products;
 }
-
-app.get(`${v1UrlPath}/locations`, (request, response) => {
-  response.render(`${v1ViewsPath}/locations.html`, {
-    ...v1BaseContext,
-    layout: false,
-  });
-});
-
-app.get(`${v1UrlPath}/signin`, (request, response) => {
-  let signInFailed = request.session.signInFailed;
-  request.session.signInFailed = null;
-  response.render(`${v1ViewsPath}/signin.html`, {
-    ...v2BaseContext,
-    layout: "./auth.html",
-    signInFailed: signInFailed,
-  });
-});
-
-app.get(`${v1UrlPath}/about`, (request, response) => {
-  response.render(`${v1ViewsPath}/aboutus.html`, {
-    ...v1BaseContext,
-    layout: false,
-  });
-});
-
-app.get(`${v1UrlPath}/signout`, (request, response) => {
-  request.session.destroy((error) => {});
-  response.render(`${v1ViewsPath}/signedout.html`, {
-    ...v1BaseContext,
-    layout: "./auth.html",
-  });
-});
-
-app.get(`${v1UrlPath}/signup`, (request, response) => {
-  let passwordMismatch = request.session.passwordMismatch;
-  request.session.passwordMismatch = null;
-  response.render(`${v1ViewsPath}/createaccount.html`, {
-    ...v1BaseContext,
-    layout: "./auth.html",
-    passwordMismatch: passwordMismatch,
-  });
-});
-
-app.get(`${v1UrlPath}/signup/success`, (request, response) => {
-  response.render(`${v1ViewsPath}/createaccountsuccess.html`, {
-    ...v1BaseContext,
-    layout: "./auth.html",
-  });
-});
 
 // V1 INFORMATION
 
@@ -143,6 +93,90 @@ app.get(`${v1UrlPath}/cart`, (request, response) => {
   });
 });
 
+app.get(`${v1UrlPath}/locations`, (request, response) => {
+  response.render(`${v1ViewsPath}/locations.html`, {
+    ...v1BaseContext,
+    layout: "./faqbasev1.html",
+  });
+});
+
+app.get(`${v1UrlPath}/about`, (request, response) => {
+  response.render(`${v1ViewsPath}/aboutus.html`, {
+    ...v1BaseContext,
+    layout: "./faqbasev1.html",
+  });
+});
+
+app.get(`${v1UrlPath}/faq`, (request, response) => {
+  response.render(`${v1ViewsPath}/faq.html`, {
+    ...v1BaseContext,
+    layout: "./faqbasev1.html",
+  });
+});
+
+app.get(`${v1UrlPath}/returnfaq`, (request, response) => {
+  response.render(`${v1ViewsPath}/returnfaq.html`, {
+    ...v1BaseContext,
+    layout: "./faqbasev1.html",
+  });
+});
+
+app.get(`${v1UrlPath}/shippingfaq`, (request, response) => {
+  response.render(`${v1ViewsPath}/shippingfaq.html`, {
+    ...v1BaseContext,
+    layout: "./faqbasev1.html",
+  });
+});
+
+app.get(`${v1UrlPath}/accountfaq`, (request, response) => {
+  response.render(`${v1ViewsPath}/accountfaq.html`, {
+    ...v1BaseContext,
+    layout: "./faqbasev1.html",
+  });
+});
+
+app.get(`${v1UrlPath}/paymentfaq`, (request, response) => {
+  response.render(`${v1ViewsPath}/paymentfaq.html`, {
+    ...v1BaseContext,
+    layout: "./faqbasev1.html",
+  });
+});
+
+app.get(`${v1UrlPath}/signin`, (request, response) => {
+  let signInFailed = request.session.signInFailed;
+  request.session.signInFailed = null;
+  response.render(`${v1ViewsPath}/signin.html`, {
+    ...v2BaseContext,
+    layout: "./auth.html",
+    signInFailed: signInFailed,
+  });
+});
+
+app.get(`${v1UrlPath}/signout`, (request, response) => {
+  request.session.destroy((error) => {});
+  response.render(`${v1ViewsPath}/signedout.html`, {
+    ...v1BaseContext,
+    layout: "./auth.html",
+  });
+});
+
+app.get(`${v1UrlPath}/signup`, (request, response) => {
+  let passwordMismatch = request.session.passwordMismatch;
+  request.session.passwordMismatch = null;
+  response.render(`${v1ViewsPath}/createaccount.html`, {
+    ...v1BaseContext,
+    layout: "./auth.html",
+    passwordMismatch: passwordMismatch,
+  });
+});
+
+app.get(`${v1UrlPath}/signup/success`, (request, response) => {
+  response.render(`${v1ViewsPath}/createaccountsuccess.html`, {
+    ...v1BaseContext,
+    layout: "./auth.html",
+  });
+});
+
 app.get(`${v1UrlPath}/laptops`, async (request, response) => {
   let products = await database.getProducts({ subcategory: "laptops" });
 
@@ -150,6 +184,7 @@ app.get(`${v1UrlPath}/laptops`, async (request, response) => {
 
   response.render(`${v1ViewsPath}/product.html`, {
     ...v1BaseContext,
+    layout: "./basev1.html",
     loggedIn: request.session.loggedIn,
     products: products,
     category: "Laptops",
@@ -164,6 +199,7 @@ app.get(`${v1UrlPath}/desktops`, async (request, response) => {
 
   response.render(`${v1ViewsPath}/product.html`, {
     ...v1BaseContext,
+    layout: "./basev1.html",
     loggedIn: request.session.loggedIn,
     products: products,
     category: "Desktops",
@@ -178,6 +214,7 @@ app.get(`${v1UrlPath}/tablets`, async (request, response) => {
 
   response.render(`${v1ViewsPath}/product.html`, {
     ...v1BaseContext,
+    layout: "./basev1.html",
     loggedIn: request.session.loggedIn,
     products: products,
     category: "Tablets",
@@ -192,6 +229,7 @@ app.get(`${v1UrlPath}/dslr`, async (request, response) => {
 
   response.render(`${v1ViewsPath}/product.html`, {
     ...v1BaseContext,
+    layout: "./basev1.html",
     loggedIn: request.session.loggedIn,
     products: products,
     category: "DSLR",
@@ -206,6 +244,7 @@ app.get(`${v1UrlPath}/pointshoot`, async (request, response) => {
 
   response.render(`${v1ViewsPath}/product.html`, {
     ...v1BaseContext,
+    layout: "./basev1.html",
     loggedIn: request.session.loggedIn,
     products: products,
     category: "Point & Shoot",
@@ -220,6 +259,7 @@ app.get(`${v1UrlPath}/iphone`, async (request, response) => {
 
   response.render(`${v1ViewsPath}/product.html`, {
     ...v1BaseContext,
+    layout: "./basev1.html",
     loggedIn: request.session.loggedIn,
     products: products,
     category: "iPhone",
@@ -234,6 +274,7 @@ app.get(`${v1UrlPath}/samsung`, async (request, response) => {
 
   response.render(`${v1ViewsPath}/product.html`, {
     ...v1BaseContext,
+    layout: "./basev1.html",
     loggedIn: request.session.loggedIn,
     products: products,
     category: "Samsung",
@@ -248,6 +289,7 @@ app.get(`${v1UrlPath}/movies`, async (request, response) => {
 
   response.render(`${v1ViewsPath}/product.html`, {
     ...v1BaseContext,
+    layout: "./basev1.html",
     loggedIn: request.session.loggedIn,
     products: products,
     category: "Movies",
@@ -262,6 +304,7 @@ app.get(`${v1UrlPath}/music`, async (request, response) => {
 
   response.render(`${v1ViewsPath}/product.html`, {
     ...v1BaseContext,
+    layout: "./basev1.html",
     loggedIn: request.session.loggedIn,
     products: products,
     category: "Music",

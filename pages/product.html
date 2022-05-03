@@ -41,10 +41,11 @@
     <div class="col-lg-9">
       Computers / {{category}}
       <h4>{{category}}</h4>
-      {{#each products}}
+
       <div class="row">
+        {{#each products}}
         <div class="col-md d-flex align-items-stretch my-3">
-          <div class="card h-100 rounded" style="width: 15rem">
+          <div class="card h-100 rounded" style="width: 15rem;">
             <img class="card-img-top rounded px-2 py-2" height:"160" width:"160"
             src="{{../imageRoot}}{{this.image1_path}}" alt="{{this.alt1_text}}"
             />

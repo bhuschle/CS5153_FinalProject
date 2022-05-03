@@ -3,11 +3,7 @@ CREATE TABLE products (
     product_name VARCHAR(100) NOT NULL,
     price DECIMAL(8, 2) NOT NULL,
     image1_path VARCHAR(1000),
-    image2_path VARCHAR(1000),
-    image3_path VARCHAR(1000),
     alt1_text VARCHAR(200),
-    alt2_text VARCHAR(200),
-    alt3_text VARCHAR(200),
     category VARCHAR(50),
     subcategory VARCHAR(50),
     brand VARCHAR(100),
@@ -51,7 +47,7 @@ CREATE TABLE order_items (
 );
 
 
-INSERT INTO products (product_name, brand, category, subcategory, price, image1_path, image2_path, image3_path, alt1_text, alt2_text, alt3_text, color, model_number, product_description, sold_count) VALUES
+INSERT INTO products (product_name, brand, category, subcategory, price, image1_path, alt1_text, color, model_number, product_description, sold_count) VALUES
 (
     'Kindle Paperwhite',
     'Amazon',
@@ -59,10 +55,6 @@ INSERT INTO products (product_name, brand, category, subcategory, price, image1_
     'tablets',
     59.99,
     '/prodImg/computers/tablets/kindle.jpg',
-    '/prodImg/computers/tablets/kindle.jpg',
-    '/prodImg/computers/tablets/kindle.jpg',
-    'Picture of Kindle Paperwhite',
-    'Picture of Kindle Paperwhite',
     'Picture of Kindle Paperwhite',
     'black',
     '12345',
@@ -76,10 +68,6 @@ INSERT INTO products (product_name, brand, category, subcategory, price, image1_
     'tablets',
     69.99,
     '/prodImg/computers/tablets/kindle.jpg',
-    '/prodImg/computers/tablets/kindle.jpg',
-    '/prodImg/computers/tablets/kindle.jpg',
-    'Picture of Kindle Paperwhite',
-    'Picture of Kindle Paperwhite',
     'Picture of Kindle Paperwhite',
     'black',
     '12346',
