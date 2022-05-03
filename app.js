@@ -360,16 +360,6 @@ app.get(`${v2UrlPath}/signin`, (request, response) => {
     )
 })
 
-app.get(`${v2UrlPath}/signup`, (request, response) => {
-    response.render(
-        `${v2ViewsPath}/createaccountV2.html`,
-        {
-            ...v2BaseContext,
-            layout: false,
-        }
-    )
-})
-
 app.get(`${v2UrlPath}/about`, (request, response) => {
     response.render(
         `${v2ViewsPath}/aboutusV2.html`,
@@ -381,14 +371,24 @@ app.get(`${v2UrlPath}/about`, (request, response) => {
 })
 
 app.get(`${v2UrlPath}/signout`, (request, response) => {
-  request.session.destroy((error)=>{});
-  response.render(
-    `${v2ViewsPath}/signedoutV2.html`,
-    {
-      ...v2BaseContext,
-      layout: "./authv2.html",
-    }
-  );
+    request.session.destroy((error)=>{});
+    response.render(
+        `${v2ViewsPath}/signedoutV2.html`,
+        {
+            ...v2BaseContext,
+            layout: "./authv2.html",
+        }
+    );
+});
+
+app.get(`${v2UrlPath}/signup`, (request, response) => {
+    response.render(
+        `${v2ViewsPath}/createaccountV2.html`,
+        {
+          ...v2BaseContext,
+          layout: "./authv2.html",
+        }
+    );
 });
 
 
