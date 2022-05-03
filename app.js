@@ -401,6 +401,7 @@ app.post(`${commonUrlPath}/auth`,
             response.locals.userId = user['id'];
             request.session.loggedIn = true;
             request.session.userId = user['id'];
+            request.session.firstName = user['first_name'];
             if (request.body.version == 2){
               response.redirect(v2UrlPath);
             }
