@@ -9,8 +9,8 @@
           width="150px"
           src="https://st3.depositphotos.com/15648834/17930/v/600/depositphotos_179308454-stock-illustration-unknown-person-silhouette-glasses-profile.jpg"
         />
-        <span class="font-weight-bold">{{{this.first_name}}} {{{this.last_name}}}</span>
-        <span class="text-black-50">{{{this.email}}}</span>
+        <span class="font-weight-bold">{{user.first_name}} {{user.last_name}}</span>
+        <span class="text-black-50">{{user.email}}</span>
         <span></span>
       </div>
       <div class="col-md-5 border-right">
@@ -20,20 +20,20 @@
           </div>
           <div class="row mt-3">
             <div class="col-md-12">
-              <span>{{{this.user_address}}}</span>
+              <span>{{user.user_address}}</span>
             </div>
             <div class="col-md-12">
-              <span>{{{this.user_city}}}</span>
+              <span>{{user.user_city}}</span>
             </div>
             <div class="col-md-12">
-              <span>{{{this.user_state}}}</span>
+              <span>{{user.user_state}}</span>
             </div>
           </div>
           <div class="col-md-12">
-            <span>{{{this.user_country}}}</span>
+            <span>{{user.user_country}}</span>
           </div>
           <div class="col-md-12">
-            <span>{{{this.user_zip_code}}}</span>
+            <span>{{user.user_zip_code}}</span>
           </div>
         </div>
         <div class="mt-5 text-center">
@@ -50,23 +50,23 @@
         </div>
         <br />
         <div class="col-md-12">
-          <span>{{{this.card_name}}}</span>
+          <span>{{user.card_name}}</span>
         </div>
         <br />
         <div class="col-md-12">
-          <span>{{{this.card_number}}}</span>
+          <span>{{user.card_number}}</span>
         </div>
         <br />
         <div class="col-md-12">
-          <span>{{{this.exp_date}}}</span>
+          <span>{{user.exp_date}}</span>
         </div>
         <br />
         <div class="col-md-12">
-          <span>{{{this.cvv_code}}}</span>
+          <span>{{user.cvv_code}}</span>
         </div>
         <br />
         <div class="col-md-12">
-          <span>{{{this.card_zipcode}}}</span>
+          <span>{{user.card_zip_code}}</span>
         </div>
       </div>
     </div>
@@ -82,8 +82,8 @@
           width="150px"
           src="https://st3.depositphotos.com/15648834/17930/v/600/depositphotos_179308454-stock-illustration-unknown-person-silhouette-glasses-profile.jpg"
         />
-        <span class="font-weight-bold">{{{this.first_name}}} {{{this.last_name}}}</span>
-        <span class="text-black-50">{{{this.email}}}</span><span> </span>
+        <span class="font-weight-bold">{{user.first_name}} {{user.last_name}}</span>
+        <span class="text-black-50">{{user.email}}</span><span> </span>
       </div>
     </div>
     <div class="col-md-5 border-right">
@@ -98,7 +98,7 @@
               type="text"
               class="form-control"
               placeholder="first name"
-              value=""
+              value="{{user.first_name}}"
             />
           </div>
           <div class="col-md-6">
@@ -106,7 +106,7 @@
             ><input
               type="text"
               class="form-control"
-              value=""
+              value="{{user.last_name}}"
               placeholder="last name"
             />
           </div>
@@ -118,13 +118,13 @@
               type="text"
               class="form-control"
               placeholder="email"
-              value=""
+              value="{{user.email}}"
             />
           </div>
           <div class="col-md-12">
-            <label class="labels">Password</label
+            <label class="labels"> New Password</label
             ><input
-              type="text"
+              type="password"
               class="form-control"
               placeholder="password"
               value=""
@@ -133,7 +133,7 @@
           <div class="col-md-12">
             <label class="labels">Reenter Password</label
             ><input
-              type="text"
+              type="password"
               class="form-control"
               placeholder="password"
               value=""
@@ -145,7 +145,7 @@
               type="text"
               class="form-control"
               placeholder="address"
-              value=""
+              value="{{user.user_address}}"
             />
           </div>
           <div class="col-md-12">
@@ -154,7 +154,7 @@
               type="text"
               class="form-control"
               placeholder="city"
-              value=""
+              value="{{user.user_city}}"
             />
           </div>
           <div class="col-md-12">
@@ -163,7 +163,7 @@
               type="text"
               class="form-control"
               placeholder="state"
-              value=""
+              value="{{user.user_state}}"
             />
           </div>
           <div class="col-md-12">
@@ -172,16 +172,16 @@
               type="text"
               class="form-control"
               placeholder="country"
-              value=""
+              value="{{user.user_country}}"
             />
           </div>
           <div class="col-md-12">
-            <label class="labels">Zip Code</label
+            <label class="labels">ZIP Code</label
             ><input
               type="text"
               class="form-control"
-              placeholder="zip code"
-              value=""
+              placeholder="ZIP code"
+              value="{{user.user_zip_code}}"
             />
           </div>
         </div>
@@ -204,7 +204,7 @@
               type="text"
               class="form-control"
               placeholder="card name"
-              value=""
+              value="{{user.card_name}}"
             />
           </div>
           <div class="col-md-12">
@@ -213,7 +213,7 @@
               type="text"
               class="form-control"
               placeholder="card number"
-              value=""
+              value="{{user.card_number}}"
             />
           </div>
           <div class="col-md-12">
@@ -222,7 +222,7 @@
               type="text"
               class="form-control"
               placeholder="exp date"
-              value=""
+              value="{{user.card_expiration_date}}"
             />
           </div>
           <div class="col-md-12">
@@ -231,16 +231,16 @@
               type="text"
               class="form-control"
               placeholder="cvv code"
-              value=""
+              value="{{user.card_cvv_code}}"
             />
           </div>
           <div class="col-md-12">
-            <label class="labels">Billing Zip Code</label
+            <label class="labels">Billing ZIP Code</label
             ><input
               type="text"
               class="form-control"
               placeholder="billing zip code"
-              value=""
+              value="{{user.card_zip_code}}"
             />
           </div>
         </div>

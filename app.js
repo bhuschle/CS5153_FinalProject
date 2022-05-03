@@ -76,11 +76,15 @@ app.get(`${v1UrlPath}/`, (request, response) => {
   });
 });
 
-app.get(`${v1UrlPath}/account`, (request, response) => {
-  response.render(`${v1ViewsPath}/Account.html`, {
+app.get(`${v1UrlPath}/account`, async (request, response) => {
+  let user = await database.getUser({id: request.session.userId});
+
+  response.render(`${v1ViewsPath}/account.html`, {
     ...v1BaseContext,
+    userFirstName: request.session.firstName,
     loggedIn: request.session.loggedIn,
     layout: "./basev1.html",
+    user: user,
   });
 });
 
