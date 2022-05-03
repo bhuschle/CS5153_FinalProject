@@ -248,6 +248,7 @@ app.get(`${v2UrlPath}/computers`, async (request, response) => {
             loggedIn: request.session.loggedIn,
             layout: './basev2.html',
             products: products,
+            productsString: JSON.stringify(products),
             category: "Computers",
             brands: brands,
         }
@@ -266,6 +267,7 @@ app.get(`${v2UrlPath}/iphone`, async (request, response) => {
             loggedIn: request.session.loggedIn,
             layout: './basev2.html',
             products: products,
+            productsString: JSON.stringify(products),
             category: "iPhone",
             brands: brands,
         }
@@ -284,6 +286,7 @@ app.get(`${v2UrlPath}/samsung`, async (request, response) => {
             loggedIn: request.session.loggedIn,
             layout: './basev2.html',
             products: products,
+            productsString: JSON.stringify(products),
             category: "Samsung",
             brands: brands,
         }
@@ -306,6 +309,7 @@ app.get(`${v2UrlPath}/tablets`, async (request, response) => {
             loggedIn: request.session.loggedIn,
             layout: './basev2.html',
             products: products,
+            productsString: JSON.stringify(products),
             category: "Tablets",
             brands: brands,
         }
@@ -324,6 +328,7 @@ app.get(`${v2UrlPath}/laptops`, async (request, response) => {
             loggedIn: request.session.loggedIn,
             layout: './basev2.html',
             products: products,
+            productsString: JSON.stringify(products),
             category: "Laptops",
             brands: brands,
         }
