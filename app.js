@@ -220,6 +220,7 @@ app.get(`${v2UrlPath}`, (request, response) => {
         `${v2ViewsPath}/index.html`,
         {
             ...v2BaseContext,
+            userFirstName: request.session.firstName,
             loggedIn: request.session.loggedIn,
             layout: './basev2.html',
         }
@@ -242,6 +243,7 @@ app.get(`${v2UrlPath}/computers`, async (request, response) => {
         `${v2ViewsPath}/productpageV2.html`,
         {
             ...v2BaseContext,
+            userFirstName: request.session.firstName,
             loggedIn: request.session.loggedIn,
             layout: './basev2.html',
             products: products,
@@ -259,6 +261,7 @@ app.get(`${v2UrlPath}/iphone`, async (request, response) => {
         `${v2ViewsPath}/productpageV2.html`,
         {
             ...v2BaseContext,
+            userFirstName: request.session.firstName,
             loggedIn: request.session.loggedIn,
             layout: './basev2.html',
             products: products,
@@ -276,6 +279,7 @@ app.get(`${v2UrlPath}/samsung`, async (request, response) => {
         `${v2ViewsPath}/productpageV2.html`,
         {
             ...v2BaseContext,
+            userFirstName: request.session.firstName,
             loggedIn: request.session.loggedIn,
             layout: './basev2.html',
             products: products,
@@ -297,6 +301,7 @@ app.get(`${v2UrlPath}/tablets`, async (request, response) => {
         `${v2ViewsPath}/productpageV2.html`,
         {
             ...v2BaseContext,
+            userFirstName: request.session.firstName,
             loggedIn: request.session.loggedIn,
             layout: './basev2.html',
             products: products,
@@ -314,6 +319,7 @@ app.get(`${v2UrlPath}/laptops`, async (request, response) => {
         `${v2ViewsPath}/productpageV2.html`,
         {
             ...v2BaseContext,
+            userFirstName: request.session.firstName,
             loggedIn: request.session.loggedIn,
             layout: './basev2.html',
             products: products,
@@ -401,6 +407,7 @@ app.post(`${commonUrlPath}/auth`,
             response.locals.userId = user['id'];
             request.session.loggedIn = true;
             request.session.userId = user['id'];
+            request.session.firstName = user['first_name'];
             if (request.body.version == 2){
               response.redirect(v2UrlPath);
             }
