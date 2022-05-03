@@ -62,3 +62,11 @@ INSERT INTO products (product_name, brand, category, subcategory, price, image1_
     '12345',
     'Kindle Paperwhite (8 GB) - Now with a 6.8" display and adjustable warm light - Ad-Supported'
 );
+
+INSERT INTO users (first_name, last_name, email, user_password) VALUES
+(
+    'Test',
+    'User',
+    'testuser@example.com',
+    'testpassword'
+);
