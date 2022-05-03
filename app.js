@@ -18,6 +18,7 @@ const scriptPath = "/static/js";
 
 app.use(imagePath, express.static("img"));
 app.use(scriptPath, express.static("js"));
+app.use(bodyParser.urlencoded({ extended: false }))
 app.use(session({
   secret: "Well-kept secret",
   resave: false,
@@ -47,6 +48,22 @@ const v2BaseContext = {
     ...commonBaseContext,
     urlRoot: v2UrlPath,
 };
+
+
+function filterAndSort(products, brands, sortBy) {
+    products = products.filter(element => brands.includes(element['brand']))
+    if (sortBy === "Low-to-high") {
+        products.sort((a, b) => a['price'] - b['price']);
+    }
+    else if (sortBy === "High-to-low") {
+        products.sort((a, b) => b['price'] - a['price']);
+    }
+    else if (sortBy === "Best sellers") {
+        products.sort((a, b) => b['sold_count'] - a['sold_count']);
+    }
+    return products;
+}
+
 
 // V1 INFORMATION
 
@@ -237,9 +254,16 @@ app.get(`${v2UrlPath}/cart`, (request, response) => {
 });
 
 app.get(`${v2UrlPath}/computers`, async (request, response) => {
-  let products = await database.getProducts({ subcategory: "computers" });
+    let subcategoryId = "computers";
+    let products = await database.getProducts({ subcategory: subcategoryId });
+    brands = new Set(products.map((x) => x["brand"]));
 
-  brands = new Set(products.map((x) => x["brand"]));
+    if (Object.keys(request.query).length !== 0) {
+        let filterBrands = Object.keys(request.query);
+        delete filterBrands['sortby'];
+        products = filterAndSort(products, filterBrands, request.query['sortby']);
+    }
+
     response.render(
         `${v2ViewsPath}/productpageV2.html`,
         {
@@ -250,15 +274,23 @@ app.get(`${v2UrlPath}/computers`, async (request, response) => {
             products: products,
             productsString: JSON.stringify(products),
             category: "Computers",
+            subcategoryId: subcategoryId,
             brands: brands,
         }
     );
 });
 
 app.get(`${v2UrlPath}/iphone`, async (request, response) => {
-  let products = await database.getProducts({ subcategory: "iphone" });
+    let subcategoryId = "computers";
+    let products = await database.getProducts({ subcategory: subcategoryId });
+    brands = new Set(products.map((x) => x["brand"]));
 
-  brands = new Set(products.map((x) => x["brand"]));
+    if (Object.keys(request.query).length !== 0) {
+        let filterBrands = Object.keys(request.query);
+        delete filterBrands['sortby'];
+        products = filterAndSort(products, filterBrands, request.query['sortby']);
+    }
+    
     response.render(
         `${v2ViewsPath}/productpageV2.html`,
         {
@@ -269,15 +301,23 @@ app.get(`${v2UrlPath}/iphone`, async (request, response) => {
             products: products,
             productsString: JSON.stringify(products),
             category: "iPhone",
+            subcategoryId, subcategoryId,
             brands: brands,
         }
     );
 });
 
 app.get(`${v2UrlPath}/samsung`, async (request, response) => {
-  let products = await database.getProducts({ subcategory: "samsung" });
+    let subcategoryId = "samsung";
+    let products = await database.getProducts({ subcategory: subcategoryId });
+    brands = new Set(products.map((x) => x["brand"]));
 
-  brands = new Set(products.map((x) => x["brand"]));
+    if (Object.keys(request.query).length !== 0) {
+        let filterBrands = Object.keys(request.query);
+        delete filterBrands['sortby'];
+        products = filterAndSort(products, filterBrands, request.query['sortby']);
+    }
+
     response.render(
         `${v2ViewsPath}/productpageV2.html`,
         {
@@ -288,6 +328,7 @@ app.get(`${v2UrlPath}/samsung`, async (request, response) => {
             products: products,
             productsString: JSON.stringify(products),
             category: "Samsung",
+            subcategoryId: subcategoryId,
             brands: brands,
         }
     );
@@ -297,29 +338,45 @@ app.get(`${v2UrlPath}/product`, (request, response) => {
   response.render(`${v2ViewsPath}/product.html`, { layout: false });
 });
 
-app.get(`${v2UrlPath}/tablets`, async (request, response) => {
-  let products = await database.getProducts({ subcategory: "tablets" });
+app.get(`${v2UrlPath}/tablets`,
+    bodyParser.urlencoded(),
+    async (request, response) => {
+        let subcategoryId = "tablets";
+        let products = await database.getProducts({ subcategory: subcategoryId });
+        brands = new Set(products.map((x) => x["brand"]));
 
-  brands = new Set(products.map((x) => x["brand"]));
-    response.render(
-        `${v2ViewsPath}/productpageV2.html`,
-        {
-            ...v2BaseContext,
-            userFirstName: request.session.firstName,
-            loggedIn: request.session.loggedIn,
-            layout: './basev2.html',
-            products: products,
-            productsString: JSON.stringify(products),
-            category: "Tablets",
-            brands: brands,
+        if (Object.keys(request.query).length !== 0) {
+            let filterBrands = Object.keys(request.query);
+            delete filterBrands['sortby'];
+            products = filterAndSort(products, filterBrands, request.query['sortby']);
         }
-    );
-});
+
+        response.render(
+            `${v2ViewsPath}/productpageV2.html`,
+            {
+                ...v2BaseContext,
+                loggedIn: request.session.loggedIn,
+                layout: './basev2.html',
+                products: products,
+                category: "Tablets",
+                subcategoryId: subcategoryId,
+                brands: brands,
+            }
+        );
+    }
+);
 
 app.get(`${v2UrlPath}/laptops`, async (request, response) => {
-  let products = await database.getProducts({ subcategory: "laptops" });
+    let subcategoryId = "laptops";
+    let products = await database.getProducts({ subcategory: subcategoryId });
+    brands = new Set(products.map((x) => x["brand"]));
+    
+    if (Object.keys(request.query).length !== 0) {
+        let filterBrands = Object.keys(request.query);
+        delete filterBrands['sortby'];
+        products = filterAndSort(products, filterBrands, request.query['sortby']);
+    }
 
-  brands = new Set(products.map((x) => x["brand"]));
     response.render(
         `${v2ViewsPath}/productpageV2.html`,
         {
@@ -330,6 +387,7 @@ app.get(`${v2UrlPath}/laptops`, async (request, response) => {
             products: products,
             productsString: JSON.stringify(products),
             category: "Laptops",
+            subcategoryId: subcategoryId,
             brands: brands,
         }
     );

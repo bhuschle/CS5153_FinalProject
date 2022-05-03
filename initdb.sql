@@ -12,7 +12,8 @@ CREATE TABLE products (
     subcategory VARCHAR(50),
     brand VARCHAR(100),
     color VARCHAR(20),
-    model_number varchar(100),
+    model_number VARCHAR(100),
+    sold_count INT,
     product_description TEXT,
     PRIMARY KEY(id)
 );
@@ -32,7 +33,7 @@ CREATE TABLE users (
     card_number VARCHAR(19),
     card_expiration_date DATE,
     card_cvv_code VARCHAR(3),
-    card_zip_code VARCHAR(5)
+    card_zip_code VARCHAR(5),
     PRIMARY KEY(id)
 );
 
@@ -50,7 +51,7 @@ CREATE TABLE order_items (
 );
 
 
-INSERT INTO products (product_name, brand, category, subcategory, price, image1_path, image2_path, image3_path, alt1_text, alt2_text, alt3_text, color, model_number, product_description) VALUES
+INSERT INTO products (product_name, brand, category, subcategory, price, image1_path, image2_path, image3_path, alt1_text, alt2_text, alt3_text, color, model_number, product_description, sold_count) VALUES
 (
     'Kindle Paperwhite',
     'Amazon',
@@ -65,7 +66,25 @@ INSERT INTO products (product_name, brand, category, subcategory, price, image1_
     'Picture of Kindle Paperwhite',
     'black',
     '12345',
-    'Kindle Paperwhite (8 GB) - Now with a 6.8" display and adjustable warm light - Ad-Supported'
+    'Kindle Paperwhite (8 GB) - Now with a 6.8" display and adjustable warm light - Ad-Supported',
+    10
+),
+(
+    'Kindle Paperwhite 2',
+    'Amazon',
+    'computers',
+    'tablets',
+    69.99,
+    '/prodImg/computers/tablets/kindle.jpg',
+    '/prodImg/computers/tablets/kindle.jpg',
+    '/prodImg/computers/tablets/kindle.jpg',
+    'Picture of Kindle Paperwhite',
+    'Picture of Kindle Paperwhite',
+    'Picture of Kindle Paperwhite',
+    'black',
+    '12346',
+    'Kindle Paperwhite (8 GB) - Now with a 6.8" display and adjustable warm light - Ad-Supported',
+    20
 );
 
 INSERT INTO users (first_name, last_name, email, user_password) VALUES
