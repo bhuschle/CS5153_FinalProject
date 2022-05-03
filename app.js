@@ -535,9 +535,9 @@ app.post(
       request.session.userId = user["id"];
       request.session.firstName = user["first_name"];
       if (request.body.version == 2) {
-        response.redirect(v2UrlPath);
+        response.redirect(`${v2UrlPath}/`);
       } else {
-        response.redirect(v1UrlPath);
+        response.redirect(`${v1UrlPath}/`);
       }
     } catch (error) {
       request.session.signInFailed = true;

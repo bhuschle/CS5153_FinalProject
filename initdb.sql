@@ -75,7 +75,7 @@ INSERT INTO products (product_name, brand, category, subcategory, price, image1_
     20
 );
 
-INSERT INTO users (first_name, last_name, email, user_password) VALUES
+INSERT INTO users (first_name, last_name, email, user_password, user_address, user_city, user_state, user_country, user_zip_code, car_name, card_number, card_expiration_date, card_cvv_code, card_zip_code) VALUES
 (
     'Test',
     'User',
