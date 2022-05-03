@@ -75,7 +75,7 @@ app.get(`${v1UrlPath}/cart`, (request, response) => {
 });
 
 app.get(`${v1UrlPath}/laptops`, async (request, response) => {
-  let products = await database.getProducts({ category: "laptops" });
+  let products = await database.getProducts({ subcategory: "laptops" });
 
   brands = new Set(products.map((x) => x["brand"]));
 
