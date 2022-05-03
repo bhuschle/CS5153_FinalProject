@@ -329,7 +329,7 @@ app.get(`${v2UrlPath}/signin`, (request, response) => {
         `${v2ViewsPath}/signinV2.html`,
         {
             ...v2BaseContext,
-            layout: false,
+            layout: "./authv2.html",
             signInFailed: signInFailed,
         }
     )
