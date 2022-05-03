@@ -346,16 +346,6 @@ app.get(`${v2UrlPath}/signin`, (request, response) => {
     )
 })
 
-app.get(`${v2UrlPath}/signup`, (request, response) => {
-    response.render(
-        `${v2ViewsPath}/createaccountV2.html`,
-        {
-            ...v2BaseContext,
-            layout: false,
-        }
-    )
-})
-
 app.get(`${v2UrlPath}/about`, (request, response) => {
     response.render(
         `${v2ViewsPath}/aboutusV2.html`,
@@ -367,13 +357,36 @@ app.get(`${v2UrlPath}/about`, (request, response) => {
 })
 
 app.get(`${v2UrlPath}/signout`, (request, response) => {
-  request.session.destroy((error)=>{});
+    request.session.destroy((error)=>{});
+    response.render(
+        `${v2ViewsPath}/signedoutV2.html`,
+        {
+            ...v2BaseContext,
+            layout: "./authv2.html",
+        }
+    );
+});
+
+app.get(`${v2UrlPath}/signup`, (request, response) => {
+    let passwordMismatch = request.session.passwordMismatch;
+    request.session.passwordMismatch = null;
+    response.render(
+        `${v2ViewsPath}/createaccountV2.html`,
+        {
+          ...v2BaseContext,
+          layout: "./authv2.html",
+          passwordMismatch: passwordMismatch,
+        }
+    );
+});
+
+app.get(`${v2UrlPath}/signup/success`, (request, response) => {
   response.render(
-    `${v2ViewsPath}/signedoutV2.html`,
-    {
-      ...v2BaseContext,
-      layout: "./authv2.html",
-    }
+      `${v2ViewsPath}/createaccountsuccessV2.html`,
+      {
+        ...v2BaseContext,
+        layout: "./authv2.html",
+      }
   );
 });
 
@@ -406,6 +419,40 @@ app.post(`${commonUrlPath}/auth`,
         }
     }
 );
+
+app.post(`${commonUrlPath}/adduser`,
+    bodyParser.urlencoded(),
+    async (request, response) => {
+    if (request.body.userpassword === request.body.reenterpassword) {
+        await database.addUser(
+            request.body.firstname,
+            request.body.lastname,
+            request.body.emailaddress,
+            request.body.userpassword,
+            request.body.address,
+            request.body.city,
+            request.body.state,
+            request.body.country,
+            request.body.zipcode
+        );
+
+        if (request.body.version == 2){
+          response.redirect(`${v2UrlPath}/signup/success`);
+        }
+        else {
+          response.redirect(`${v1UrlPath}/signup/success`);
+        }
+    }
+    else {
+        request.session.passwordMismatch = true;
+        if (request.body.version == 2){
+            response.redirect(`${v2UrlPath}/signup`);
+        }
+        else {
+            response.redirect(`${v1UrlPath}/signup`);
+        }
+    }
+});
 
 
 app.listen(port, () => {
