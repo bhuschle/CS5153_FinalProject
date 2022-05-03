@@ -53,6 +53,7 @@ const v2BaseContext = {
 app.get(`${v1UrlPath}/`, (request, response) => {
   response.render(`${v1ViewsPath}/index.html`, {
     ...v1BaseContext,
+    userFirstName: request.session.firstName,
     loggedIn: request.session.loggedIn,
     layout: "./basev1.html",
   });
