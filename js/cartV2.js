@@ -1,8 +1,8 @@
 let carts = document.querySelectorAll('.add-cart');
 
+//NEED HELP WITH THIS PART
 let products = [
-    {
-        name: "TEST",
+    {   name: "TEST ITEM NAME",
         price: 10.00,
         inCart: 0,
     }

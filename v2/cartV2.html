@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-<link href="../assets/dist/css/bootstrap.min.css" rel="stylesheet">
 
 <style>
     .bd-placeholder-img {
@@ -19,8 +18,8 @@
 </style>
 
 
-<!-- Custom styles for this template -->
-<link href="../js/form-validation.css" rel="stylesheet">
+<!-- Custom styles for this template (NEED)-->
+<!-- <link href=/static/js/form-validation.css" rel="stylesheet"> -->
 
 <head>
     <!-- Required meta tags -->
@@ -80,7 +79,7 @@
     <!-- Top navigation bar -->
     <nav class="navbar sticky-top navbar-expand-sm text-white" style="background-color: #4b1b25;">
         <a class="navbar-brand text-white mt-2" href="/mainV2.html">
-            <img src="{{imageRoot}}/TechNStuff/TechNStuffLogo2.png" width="40" height="40" alt="TECH N' STUFF" />
+            <img src="/static/img/TechNStuff/TechNStuffLogo2.png" width="40" height="40" alt="TECH N' STUFF" />
             TECH N' STUFF
         </a>
 
@@ -118,13 +117,15 @@
                 </li>
 
                 <!-- Add to Cart -->
-                <div class="nav-item ">
-                    <a class="text-reset me-3" href="#">
-                        <button type="button" class="btn " style="background-color: #d7cec7; color: #4b1b25 ">
-                            Cart
-                            <span class="badge rounded-pill badge-notification text-white"
-                                style="background-color: #76323f;"> 2 </span>
-                        </button>
+                <div class="nav-item">
+                    <a class="text-reset me-3" href="{{urlRoot}}/v2/cart">
+                        <div class="cart">
+                            <button type="button" class="btn " style="background-color: #d7cec7; color: #4b1b25 ">
+                                Cart
+                                <span class="badge rounded-pill badge-notification text-white" style="background-color: #76323f;"> 0
+                                </span>
+                            </button>
+                        </div>
                     </a>
                 </div>
             </ul>
@@ -231,13 +232,6 @@
                         <div class="products">
                             <!-- code will be inserted here -->
                         </div>
-                    <li class="list-group-item d-flex justify-content-between lh-sm">
-                  <div>
-                    <h6 class="my-0">EXAMPLE product</h6>
-                    <small class="text-muted">Working on this JS to auto populate</small>
-                  </div>
-                  <span class="text-muted">$8</span>
-                </li>
                 <!-- <li class="list-group-item d-flex justify-content-between lh-sm">
                   <div>
                     <h6 class="my-0">Third item</h6>
@@ -286,27 +280,6 @@
                             </div>
 
                             <div class="col-12">
-                                <label for="username" class="form-label">Username</label>
-                                <div class="input-group has-validation">
-                                    <span class="input-group-text">@</span>
-                                    <input type="text" class="form-control" id="username" placeholder="Username"
-                                        required>
-                                    <div class="invalid-feedback">
-                                        Your username is required.
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="col-12">
-                                <label for="email" class="form-label">Email <span
-                                        class="text-muted">(Optional)</span></label>
-                                <input type="email" class="form-control" id="email" placeholder="you@example.com">
-                                <div class="invalid-feedback">
-                                    Please enter a valid email address for shipping updates.
-                                </div>
-                            </div>
-
-                            <div class="col-12">
                                 <label for="address" class="form-label">Address</label>
                                 <input type="text" class="form-control" id="address" placeholder="1234 Main St"
                                     required>
@@ -321,7 +294,7 @@
                                 <input type="text" class="form-control" id="address2" placeholder="Apartment or suite">
                             </div>
 
-                            <div class="col-md-5">
+                            <div class="col-md-3">
                                 <label for="country" class="form-label">Country</label>
                                 <select class="form-select" id="country" required>
                                     <option value="">Choose...</option>
@@ -336,7 +309,7 @@
                                 <label for="state" class="form-label">State</label>
                                 <select class="form-select" id="state" required>
                                     <option value="">Choose...</option>
-                                    <option>California</option>
+                                    <option>Texas</option>
                                 </select>
                                 <div class="invalid-feedback">
                                     Please provide a valid state.
@@ -379,10 +352,6 @@
                             <div class="form-check">
                                 <input id="debit" name="paymentMethod" type="radio" class="form-check-input" required>
                                 <label class="form-check-label" for="debit">Debit card</label>
-                            </div>
-                            <div class="form-check">
-                                <input id="paypal" name="paymentMethod" type="radio" class="form-check-input" required>
-                                <label class="form-check-label" for="paypal">PayPal</label>
                             </div>
                         </div>
 
@@ -468,9 +437,9 @@
         </div>
     </footer>
     <!--Scripts-->
-    <script src="../node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="../js/cartV2.js"></script>
-    <script src="../js/form-validation.js"></script>
+    <!-- NEED HELP LINKING <script src="/static/node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script> -->
+    <script src="/static/js/cartV2.js"></script>
+    <script src="/static/js/form-validation.js"></script>
 </body>
 
 </html>
