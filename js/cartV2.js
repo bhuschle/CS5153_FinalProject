@@ -1,12 +1,7 @@
 let carts = document.querySelectorAll('.add-cart');
 
-//NEED HELP WITH THIS PART
-let products = [
-    {   name: "TEST ITEM NAME",
-        price: 10.00,
-        inCart: 0,
-    }
-];
+//productsArray Ethan helped me create
+let products = productsArray;
 
 
 //whenever add cart button is clicked
@@ -49,14 +44,14 @@ function setItems(product) {
         if (cartItems[product.name] == undefined) {
             cartItems = {
                 ...cartItems,
-                [product.name]: product
+                [product.product_name]: product
             }
         }
-        cartItems[product.name].inCart += 1;
+        cartItems[product.product_name].inCart += 1;
     } else {
         product.inCart = 1;
         cartItems = {
-            [product.name]: product
+            [product.product_name]: product
         }
     }
     localStorage.setItem("productsInCart", JSON.stringify(cartItems));
@@ -85,7 +80,7 @@ function displayCart() {
             productContainer.innerHTML += `
       <li class="list-group-item d-flex justify-content-between lh-sm">
           <div>
-            <h6 class="product-title">${item.name}</h6>
+            <h6 class="product-title">${item.product_name}</h6>
             <small class="quantity-muted">QTY: ${item.inCart}</small>
           </div>
             <span class="price-muted">$${item.inCart * item.price}.00</span>
