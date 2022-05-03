@@ -9,6 +9,11 @@
     </a>
     Create account
 </h5>
+{{#if passwordMismatch}}
+<div class="alert alert-warning" role="alert">
+  Passwords did not match. Please try again.
+</div>
+{{/if}}
 <form method="post" action="{{commonUrlRoot}}/adduser">
   <div class="form-outline mb-2">
     <label class="form-label" for="firstname" style="color: #4b1b25;">
@@ -81,9 +86,8 @@
   </div>
 
   <div class="pt-1 mt-2 mb-4">
-    <a class="text-reset" href="createaccountsuccessV2.html">
-    <button class="btn btn-dark btn-lg btn-block" type="button" style="background-color: #4b1b25;">
-      Create Account</button>
-    </a>
+    <input class="btn btn-dark btn-lg btn-block" type="submit" value="Sign up" style="background-color: #4b1b25;"/>
   </div>
+
+  <input type="hidden" id="version" name="version" value="2">
 </form>
