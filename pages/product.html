@@ -21,9 +21,7 @@
           </div>
         </li>
         {{else}}
-        <li class="list-group-item">
-          No brands.
-        </li>
+        <li class="list-group-item">No brands.</li>
         {{/each}}
       </ul>
       <br />
@@ -31,9 +29,9 @@
       <form action="">
         <div class="form-group">
           <select class="form-control form-control-md">
-            <option> Best Sellers </option>
-            <option> Low-to-high </option>
-            <option> High-to-low </option>
+            <option>Best Sellers</option>
+            <option>Low-to-high</option>
+            <option>High-to-low</option>
           </select>
         </div>
       </form>
@@ -46,15 +44,52 @@
       {{#each products}}
       <div class="row">
         <div class="col-md d-flex align-items-stretch my-3">
-          <div class="card h-100 rounded" style="width: 15rem;">
+          <div class="card h-100 rounded" style="width: 15rem">
             <img class="card-img-top rounded px-2 py-2" height:"160" width:"160"
-            src="{{../imageRoot}}{{this.image1_path}}" alt="{{this.alt1_text}}" />
+            src="{{../imageRoot}}{{this.image1_path}}" alt="{{this.alt1_text}}"
+            />
             <div class="card-body">
               <h5 class="card-title">{{this.product_name}}</h5>
               <h4>${{this.price}}</h4>
-              <button type="button" class="btn btn-dark">
+              <button
+                type="button"
+                class="btn btn-dark"
+                data-toggle="modal"
+                data-target=".bd-example-modal-lg"
+              >
                 MORE INFO
               </button>
+              <div
+                class="modal fade bd-example-modal-lg"
+                tabindex="-1"
+                role="dialog"
+                aria-labelledby="myLargeModalLabel"
+                aria-hidden="true"
+              >
+                <div class="modal-dialog modal-lg">
+                  <div class="col my-4 mx-4">
+                    <div class="card rounded">
+                      <img class="card-img-top rounded" height:"160" width:"160"
+                      src="{{../imageRoot}}{{this.image1_path}}"
+                      alt="{{this.alt1_text}}" />
+                      <div class="card-body">
+                        <h5 class="card-title">{{this.product_name}}</h5>
+                        <p class="card-text">{{this.product_description}}</p>
+                        <p class="card-text">
+                          Category : {{this.category}} / {{this.subcategory}}
+                        </p>
+                        <p class="card-text">Brand : {{this.brand}}</p>
+                        <p class="card-text">Color : {{this.color}}</p>
+                        <p class="card-text">Model : {{this.model_number}}</p>
+                        <p class="card-text">${{this.price}}</p>
+                        <button type="button" class="btn btn-dark">
+                          Add to cart
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
