@@ -4,9 +4,13 @@
   <div class="row">
     <div class="col-md-3 border-right">
       <div class="d-flex flex-column align-items-center text-center p-3 py-5">
-        <img src="" alt="" width="150" class="rounded-circle mt5" />
-        <span class="font-weight-bold">{{{first_name}}} {{{last_name}}}</span>
-        <span class="text-black-50">{{{email}}}</span>
+        <img
+          class="rounded-circle mt-5"
+          width="150px"
+          src="https://st3.depositphotos.com/15648834/17930/v/600/depositphotos_179308454-stock-illustration-unknown-person-silhouette-glasses-profile.jpg"
+        />
+        <span class="font-weight-bold">{{{this.first_name}}} {{{this.last_name}}}</span>
+        <span class="text-black-50">{{{this.email}}}</span>
         <span></span>
       </div>
       <div class="col-md-5 border-right">
@@ -16,134 +20,231 @@
           </div>
           <div class="row mt-3">
             <div class="col-md-12">
-              <a>{{{user_address}}}</a>
+              <span>{{{this.user_address}}}</span>
             </div>
             <div class="col-md-12">
-              <a>{{{user_city}}}</a>
+              <span>{{{this.user_city}}}</span>
             </div>
             <div class="col-md-12">
-              <a>{{{user_state}}}</a>
+              <span>{{{this.user_state}}}</span>
             </div>
           </div>
           <div class="col-md-12">
-            <a>{{{user_country}}}</a>
+            <span>{{{this.user_country}}}</span>
           </div>
           <div class="col-md-12">
-            <a>{{{user_zip_code}}}</a>
+            <span>{{{this.user_zip_code}}}</span>
           </div>
+        </div>
+        <div class="mt-5 text-center">
+          <button class="btn btn-primary profile-button" type="button">
+            Edit Info
+          </button>
         </div>
       </div>
     </div>
-    <div class="col-md-4">
+    <div class="col-md-3">
       <div class="p-3 py-5">
         <div class="d-flex justify-content-between align-items-center">
-          <span>Credit Card Info</span>
+          <h4 class="text-right">Credit Card Info</h4>
         </div>
         <br />
         <div class="col-md-12">
-          <a>{{{card_name}}}</a>
+          <span>{{{this.card_name}}}</span>
         </div>
         <br />
         <div class="col-md-12">
-          <a>{{{card_number}}}</a>
+          <span>{{{this.card_number}}}</span>
         </div>
         <br />
         <div class="col-md-12">
-          <a>{{{exp_date}}}</a>
+          <span>{{{this.exp_date}}}</span>
         </div>
         <br />
         <div class="col-md-12">
-          <a>{{{cvv_code}}}</a>
+          <span>{{{this.cvv_code}}}</span>
         </div>
         <br />
         <div class="col-md-12">
-          <a>{{{card_zipcode}}}</a>
+          <span>{{{this.card_zipcode}}}</span>
         </div>
       </div>
     </div>
   </div>
 </div>
 
-<!-- Edit Listed Account Information
-
-    <div class="container bg-light my-4 py-2 rounded">
-      <h2>My ACCOUNT :</h2>
-      <form>
-        <div class="form-group">
-          <label for="exampleInputEmail1">Email address</label>
-          <input
-            type="email"
-            class="form-control"
-            id="exampleInputEmail1"
-            aria-describedby="emailHelp"
-            placeholder="Enter email"
-          />
-          <small id="emailHelp" class="form-text text-muted"
-            >We'll never share your email with anyone else.</small
-          >
-        </div>
-        <div class="form-group">
-          <label for="exampleInputUsername1">Username</label>
-          <input
-            type="Username"
-            class="form-control"
-            id="exampleInputUsername1"
-            placeholder="Username"
-          />
-        </div>
-        <div class="form-group">
-          <label for="exampleInputPassword1">Password</label>
-          <input
-            type="password"
-            class="form-control"
-            id="exampleInputPassword1"
-            placeholder="Password"
-          />
-        </div>
-        <div class="form-group">
-          <label for="exampleInputAddress1">Address</label>
-          <input
-            type="Address"
-            class="form-control"
-            id="exampleInputAddress1"
-            placeholder="Address"
-          />
-        </div>
-        <div class="form-group">
-          <label for="exampleInputCity1">City</label>
-          <input
-            type="City"
-            class="form-control"
-            id="exampleInputCity1"
-            placeholder="City"
-          />
-        </div>
-        <div class="form-group">
-          <label for="exampleInputState1">State</label>
-          <input
-            type="State"
-            class="form-control"
-            id="exampleInputState1"
-            placeholder="State"
-          />
-        </div>
-        <div class="form-group">
-          <label for="exampleInputZipCode1">Zipcode</label>
-          <input
-            type="ZipCode"
-            class="form-control"
-            id="exampleInputZipCode1"
-            placeholder="ZipCode"
-          />
-        </div>
-        <div class="form-group form-check">
-          <input type="checkbox" class="form-check-input" id="exampleCheck1" />
-          <label class="form-check-label" for="exampleCheck1"
-            >Sign up for our Mailer?</label
-          >
-        </div>
-        <button type="submit" class="btn btn-dark my-4">Submit</button>
-      </form>
+<div class="container rounded bg-light mt-5 mb-5">
+  <div class="row">
+    <div class="col-md-3 border-right">
+      <div class="d-flex flex-column align-items-center text-center p-3 py-5">
+        <img
+          class="rounded-circle mt-5"
+          width="150px"
+          src="https://st3.depositphotos.com/15648834/17930/v/600/depositphotos_179308454-stock-illustration-unknown-person-silhouette-glasses-profile.jpg"
+        />
+        <span class="font-weight-bold">{{{this.first_name}}} {{{this.last_name}}}</span>
+        <span class="text-black-50">{{{this.email}}}</span><span> </span>
+      </div>
     </div>
-
-    Edit Listed Account Information -->
+    <div class="col-md-5 border-right">
+      <div class="p-3 py-5">
+        <div class="d-flex justify-content-between align-items-center mb-3">
+          <h4 class="text-right">Profile Settings</h4>
+        </div>
+        <div class="row mt-2">
+          <div class="col-md-6">
+            <label class="labels">First name</label
+            ><input
+              type="text"
+              class="form-control"
+              placeholder="first name"
+              value=""
+            />
+          </div>
+          <div class="col-md-6">
+            <label class="labels">Last Name</label
+            ><input
+              type="text"
+              class="form-control"
+              value=""
+              placeholder="last name"
+            />
+          </div>
+        </div>
+        <div class="row mt-3">
+          <div class="col-md-12">
+            <label class="labels">Email</label
+            ><input
+              type="text"
+              class="form-control"
+              placeholder="email"
+              value=""
+            />
+          </div>
+          <div class="col-md-12">
+            <label class="labels">Password</label
+            ><input
+              type="text"
+              class="form-control"
+              placeholder="password"
+              value=""
+            />
+          </div>
+          <div class="col-md-12">
+            <label class="labels">Reenter Password</label
+            ><input
+              type="text"
+              class="form-control"
+              placeholder="password"
+              value=""
+            />
+          </div>
+          <div class="col-md-12">
+            <label class="labels">Address</label
+            ><input
+              type="text"
+              class="form-control"
+              placeholder="address"
+              value=""
+            />
+          </div>
+          <div class="col-md-12">
+            <label class="labels">City</label
+            ><input
+              type="text"
+              class="form-control"
+              placeholder="city"
+              value=""
+            />
+          </div>
+          <div class="col-md-12">
+            <label class="labels">State</label
+            ><input
+              type="text"
+              class="form-control"
+              placeholder="state"
+              value=""
+            />
+          </div>
+          <div class="col-md-12">
+            <label class="labels">Country</label
+            ><input
+              type="text"
+              class="form-control"
+              placeholder="country"
+              value=""
+            />
+          </div>
+          <div class="col-md-12">
+            <label class="labels">Zip Code</label
+            ><input
+              type="text"
+              class="form-control"
+              placeholder="zip code"
+              value=""
+            />
+          </div>
+        </div>
+        <div class="mt-5 text-center">
+          <button class="btn btn-primary profile-button" type="button">
+            Save
+          </button>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-3">
+      <div class="p-3 py-5">
+        <div class="d-flex justify-content-between align-items-center mb-3">
+          <h4 class="text-right">Credit Card Settings</h4>
+        </div>
+        <div class="row mt-3">
+          <div class="col-md-12">
+            <label class="labels">Card Name</label
+            ><input
+              type="text"
+              class="form-control"
+              placeholder="card name"
+              value=""
+            />
+          </div>
+          <div class="col-md-12">
+            <label class="labels">Card Number</label
+            ><input
+              type="text"
+              class="form-control"
+              placeholder="card number"
+              value=""
+            />
+          </div>
+          <div class="col-md-12">
+            <label class="labels">Exp Date</label
+            ><input
+              type="text"
+              class="form-control"
+              placeholder="exp date"
+              value=""
+            />
+          </div>
+          <div class="col-md-12">
+            <label class="labels">CVV code</label
+            ><input
+              type="text"
+              class="form-control"
+              placeholder="cvv code"
+              value=""
+            />
+          </div>
+          <div class="col-md-12">
+            <label class="labels">Billing Zip Code</label
+            ><input
+              type="text"
+              class="form-control"
+              placeholder="billing zip code"
+              value=""
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
