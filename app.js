@@ -209,6 +209,19 @@ app.get(`${v1UrlPath}/music`, async (request, response) => {
   });
 });
 
+app.get(`${v1UrlPath}/signout`, (request, response) => {
+  request.session.destroy((error)=>{});
+  response.redirect(`${v1UrlPath}/`)
+  /*response.render(
+    `${v1ViewsPath}/signedout.html`,
+    {
+      ...v1BaseContext,
+      layout: "./authv1.html",
+    }
+  );*/
+});
+
+
 // V2 INFORMATION
 
 app.get(`${v2UrlPath}`, (request, response) => {
