@@ -53,6 +53,7 @@ const v2BaseContext = {
 app.get(`${v1UrlPath}/`, (request, response) => {
   response.render(`${v1ViewsPath}/index.html`, {
     ...v1BaseContext,
+    loggedIn: request.session.loggedIn,
     layout: "./basev1.html",
   });
 });
@@ -60,6 +61,7 @@ app.get(`${v1UrlPath}/`, (request, response) => {
 app.get(`${v1UrlPath}/account`, (request, response) => {
   response.render(`${v1ViewsPath}/Account.html`, {
     ...v1BaseContext,
+    loggedIn: request.session.loggedIn,
     layout: "./basev1.html",
   });
 });
@@ -67,6 +69,7 @@ app.get(`${v1UrlPath}/account`, (request, response) => {
 app.get(`${v1UrlPath}/cart`, (request, response) => {
   response.render(`${v1ViewsPath}/cart.html`, {
     ...v1BaseContext,
+    loggedIn: request.session.loggedIn,
     layout: "./basev1.html",
   });
 });
@@ -79,6 +82,7 @@ app.get(`${v1UrlPath}/laptops`, async (request, response) => {
 
   response.render(`${v1ViewsPath}/product.html`, {
     ...v1BaseContext,
+    loggedIn: request.session.loggedIn,
     products: products,
     category: category,
     brands: brands,
@@ -93,6 +97,7 @@ app.get(`${v1UrlPath}/desktops`, async (request, response) => {
 
   response.render(`${v1ViewsPath}/product.html`, {
     ...v1BaseContext,
+    loggedIn: request.session.loggedIn,
     products: products,
     category: category,
     brands: brands,
@@ -107,6 +112,7 @@ app.get(`${v1UrlPath}/tablets`, async (request, response) => {
 
   response.render(`${v1ViewsPath}/product.html`, {
     ...v1BaseContext,
+    loggedIn: request.session.loggedIn,
     products: products,
     category: category,
     brands: brands,
@@ -121,6 +127,7 @@ app.get(`${v1UrlPath}/dslr`, async (request, response) => {
 
   response.render(`${v1ViewsPath}/product.html`, {
     ...v1BaseContext,
+    loggedIn: request.session.loggedIn,
     products: products,
     category: category,
     brands: brands,
@@ -135,6 +142,7 @@ app.get(`${v1UrlPath}/pointshoot`, async (request, response) => {
 
   response.render(`${v1ViewsPath}/product.html`, {
     ...v1BaseContext,
+    loggedIn: request.session.loggedIn,
     products: products,
     category: category,
     brands: brands,
@@ -149,6 +157,7 @@ app.get(`${v1UrlPath}/iphone`, async (request, response) => {
 
   response.render(`${v1ViewsPath}/product.html`, {
     ...v1BaseContext,
+    loggedIn: request.session.loggedIn,
     products: products,
     category: category,
     brands: brands,
@@ -163,6 +172,7 @@ app.get(`${v1UrlPath}/samsung`, async (request, response) => {
 
   response.render(`${v1ViewsPath}/product.html`, {
     ...v1BaseContext,
+    loggedIn: request.session.loggedIn,
     products: products,
     category: category,
     brands: brands,
@@ -177,6 +187,7 @@ app.get(`${v1UrlPath}/movies`, async (request, response) => {
 
   response.render(`${v1ViewsPath}/product.html`, {
     ...v1BaseContext,
+    loggedIn: request.session.loggedIn,
     products: products,
     category: category,
     brands: brands,
@@ -191,11 +202,25 @@ app.get(`${v1UrlPath}/music`, async (request, response) => {
 
   response.render(`${v1ViewsPath}/product.html`, {
     ...v1BaseContext,
+    loggedIn: request.session.loggedIn,
     products: products,
     category: category,
     brands: brands,
   });
 });
+
+app.get(`${v1UrlPath}/signout`, (request, response) => {
+  request.session.destroy((error)=>{});
+  response.redirect(`${v1UrlPath}/`)
+  /*response.render(
+    `${v1ViewsPath}/signedout.html`,
+    {
+      ...v1BaseContext,
+      layout: "./authv1.html",
+    }
+  );*/
+});
+
 
 // V2 INFORMATION
 
