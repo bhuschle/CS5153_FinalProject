@@ -85,11 +85,24 @@ app.get(`${v1UrlPath}/account`, async (request, response) => {
   });
 });
 
-app.get(`${v1UrlPath}/cart`, (request, response) => {
+app.get(`${v1UrlPath}/cart`, async (request, response) => {
+  let name = request.query["name"];
+  let price = request.query["price"];
+  if (price != null || name != null) database.addToOrder(name, price);
+
+  let orders = await database.getOrder();
+  let user = await database.getUser({ id: request.session.userId });
+
+  let total = await database.getOrderTotal();
+
   response.render(`${v1ViewsPath}/cart.html`, {
     ...v1BaseContext,
+    userFirstName: request.session.firstName,
     loggedIn: request.session.loggedIn,
     layout: "./basev1.html",
+    order: orders,
+    user: user,
+    total: total,
   });
 });
 
@@ -177,6 +190,13 @@ app.get(`${v1UrlPath}/signup/success`, (request, response) => {
   });
 });
 
+app.get(`${v1UrlPath}/purchasesucc`, (request, response) => {
+  response.render(`${v1ViewsPath}/purchasesucc.html`, {
+    ...v1BaseContext,
+    layout: "./auth.html",
+  });
+});
+
 app.get(`${v1UrlPath}/productinfo`, async (request, response) => {
   let product = await database.getProductById(request.query["id"]);
 
@@ -215,8 +235,7 @@ app.get(`${v1UrlPath}/desktops`, async (request, response) => {
   });
 });
 
-app.get(
-  `${v1UrlPath}/tablets`,
+app.get(`${v1UrlPath}/tablets`,
   bodyParser.urlencoded(),
   async (request, response) => {
     let subcategoryId = "tablets";
@@ -523,8 +542,7 @@ app.get(`${v2UrlPath}/product`, (request, response) => {
   response.render(`${v2ViewsPath}/product.html`, { layout: false });
 });
 
-app.get(
-  `${v2UrlPath}/tablets`,
+app.get(`${v2UrlPath}/tablets`,
   bodyParser.urlencoded(),
   async (request, response) => {
     let subcategoryId = "tablets";
@@ -593,7 +611,56 @@ app.get(`${v2UrlPath}/signin`, (request, response) => {
 app.get(`${v2UrlPath}/about`, (request, response) => {
   response.render(`${v2ViewsPath}/aboutusV2.html`, {
     ...v2BaseContext,
-    layout: false,
+    layout: "./helpv2.html",
+  });
+});
+
+app.get(`${v2UrlPath}/faq`, (request, response) => {
+  response.render(`${v2ViewsPath}/faqV2.html`, {
+    ...v2BaseContext,
+    layout: "./helpv2.html",
+  });
+});
+
+app.get(`${v2UrlPath}/faq/accounts`, (request, response) => {
+  response.render(`${v2ViewsPath}/accountsfaqV2.html`, {
+    ...v2BaseContext,
+    layout: "./helpv2.html",
+  });
+});
+
+app.get(`${v2UrlPath}/faq/returns`, (request, response) => {
+  response.render(`${v2ViewsPath}/returnfaqV2.html`, {
+    ...v2BaseContext,
+    layout: "./helpv2.html",
+  });
+});
+
+app.get(`${v2UrlPath}/faq/payments`, (request, response) => {
+  response.render(`${v2ViewsPath}/paymentsfaqV2.html`, {
+    ...v2BaseContext,
+    layout: "./helpv2.html",
+  });
+});
+
+app.get(`${v2UrlPath}/faq/shipping`, (request, response) => {
+  response.render(`${v2ViewsPath}/shippingfaqV2.html`, {
+    ...v2BaseContext,
+    layout: "./helpv2.html",
+  });
+});
+
+app.get(`${v2UrlPath}/terms`, (request, response) => {
+  response.render(`${v2ViewsPath}/terms&conditionsV2.html`, {
+    ...v2BaseContext,
+    layout: "./helpv2.html",
+  });
+});
+
+app.get(`${v2UrlPath}/contact`, (request, response) => {
+  response.render(`${v2ViewsPath}/contactusV2.html`, {
+    ...v2BaseContext,
+    layout: "./helpv2.html",
   });
 });
 
@@ -624,8 +691,7 @@ app.get(`${v2UrlPath}/signup/success`, (request, response) => {
 
 // COMMON
 
-app.post(
-  `${commonUrlPath}/auth`,
+app.post(`${commonUrlPath}/auth`,
   bodyParser.urlencoded(),
   async (request, response) => {
     try {
@@ -653,8 +719,7 @@ app.post(
   }
 );
 
-app.post(
-  `${commonUrlPath}/adduser`,
+app.post(`${commonUrlPath}/adduser`,
   bodyParser.urlencoded(),
   async (request, response) => {
     if (request.body.userpassword === request.body.reenterpassword) {
@@ -677,6 +742,31 @@ app.post(
       } else {
         response.redirect(`${v1UrlPath}/signup`);
       }
+    }
+  }
+);
+
+app.post(
+  `${commonUrlPath}/addtocart`,
+  //bodyParser.urlencoded(),
+  async (request, response) => {
+    if (request.body.version == 1) {
+      response.redirect(`${v1UrlPath}/cart`);
+    } else {
+      response.redirect(`${v2UrlPath}/cart`);
+    }
+  }
+);
+
+app.post(
+  `${commonUrlPath}/purchase`,
+  //bodyParser.urlencoded(),
+  async (request, response) => {
+    database.addToOrder(request.query["id"]);
+    if (request.body.version == 1) {
+      response.redirect(`${v1UrlPath}/purchasesucc`);
+    } else {
+      response.redirect(`${v2UrlPath}/purchasesucc`);
     }
   }
 );

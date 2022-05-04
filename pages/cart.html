@@ -4,30 +4,50 @@
   <div class="row">
     <div class="col">
       <div class="col my-4 mx-4">
-        <div class="card rounded" style="width: 18rem;">
-          <img
-            id="productImage"
-            class="card-img-top rounded"
-            style="height: 13.5rem;"
-            src=""
-            alt="Card image cap"
-          />
-          <div class="card-body">
-            <h5 id="productName" class="card-title"></h5>
-            <p id="productPrice" class="card-text"></p>
+        <div>
+          {{#each order}}
+          <div class="row">
+            <p>
+              {{this.id}} - {{this.order_name}} - {{this.order_price}}
+            </p>
           </div>
+          {{else}}
+          <p>No products to display.</p>
+          {{/each}}
         </div>
+        <p>Total : {{total}}</p>
       </div>
     </div>
     <div class="col-6">
-      <form>
+      <form method="post" action="{{commonUrlRoot}}/purchase">
+        <div class="row mt-2">
+          <div class="col-md-6">
+            <label class="labels">First name</label
+            ><input
+              type="text"
+              class="form-control"
+              placeholder="first name"
+              value="{{user.first_name}}"
+            />
+          </div>
+          <div class="col-md-6">
+            <label class="labels">Last Name</label
+            ><input
+              type="text"
+              class="form-control"
+              value="{{user.last_name}}"
+              placeholder="last name"
+            />
+          </div>
+        </div>
         <div class="form-group">
           <label for="exampleInputAddress1">Address</label>
           <input
             type="Address"
             class="form-control"
             id="exampleInputAddress1"
-            placeholder="Address"
+            placeholder="address"
+            value="{{user.user_address}}"
           />
         </div>
         <div class="form-group">
@@ -37,6 +57,7 @@
             class="form-control"
             id="exampleInputCity1"
             placeholder="City"
+            value="{{user.user_city}}"
           />
         </div>
         <div class="form-group">
@@ -46,6 +67,7 @@
             class="form-control"
             id="exampleInputState1"
             placeholder="State"
+            value="{{user.user_state}}"
           />
         </div>
         <div class="form-group">
@@ -55,11 +77,11 @@
             class="form-control"
             id="exampleInputZipCode1"
             placeholder="ZipCode"
+            value="{{user.user_zip_code}}"
           />
         </div>
-        <button type="submit" class="btn btn-primary my-4" onclick="Purchase()">
-          Checkout
-        </button>
+        <input class="btn btn-dark btn-block" type="submit" value="CHECKOUT" />
+        <input type="hidden" id="version" name="version" value="1" />
       </form>
     </div>
   </div>
