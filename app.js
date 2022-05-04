@@ -648,12 +648,7 @@ app.post(
         request.body.firstname,
         request.body.lastname,
         request.body.emailaddress,
-        request.body.userpassword,
-        request.body.address,
-        request.body.city,
-        request.body.state,
-        request.body.country,
-        request.body.zipcode
+        request.body.userpassword
       );
 
       if (request.body.version == 2) {
