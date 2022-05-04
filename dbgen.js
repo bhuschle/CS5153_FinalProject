@@ -17,16 +17,19 @@ for (let i = 0; i < f.length; i += 1) {
     if (i === 0) {
         numberValueCols.push(f[i].indexOf("price"));
         numberValueCols.push(f[i].indexOf("sold_count"));
-        s += `INSERT INTO tables (${l}) VALUES\n`;
+        s += `INSERT INTO products (${l}) VALUES\n`;
     }
     else {
         s += "("
         for (let j = 0; j < f[i].length; j += 1) {
-            if (numberValueCols.includes(j)) {
+            if (f[i][j] === ""){
+                s += "NULL";
+            }
+            else if (numberValueCols.includes(j)) {
                 s += f[i][j];
             }
             else {
-                s += `'${f[i][j]}'`;
+                s += `"${f[i][j]}"`;
             }
 
             if (j !== f[i].length - 1) {
