@@ -235,8 +235,7 @@ app.get(`${v1UrlPath}/desktops`, async (request, response) => {
   });
 });
 
-app.get(
-  `${v1UrlPath}/tablets`,
+app.get(`${v1UrlPath}/tablets`,
   bodyParser.urlencoded(),
   async (request, response) => {
     let subcategoryId = "tablets";
@@ -543,8 +542,7 @@ app.get(`${v2UrlPath}/product`, (request, response) => {
   response.render(`${v2ViewsPath}/product.html`, { layout: false });
 });
 
-app.get(
-  `${v2UrlPath}/tablets`,
+app.get(`${v2UrlPath}/tablets`,
   bodyParser.urlencoded(),
   async (request, response) => {
     let subcategoryId = "tablets";
@@ -613,7 +611,56 @@ app.get(`${v2UrlPath}/signin`, (request, response) => {
 app.get(`${v2UrlPath}/about`, (request, response) => {
   response.render(`${v2ViewsPath}/aboutusV2.html`, {
     ...v2BaseContext,
-    layout: false,
+    layout: "./helpv2.html",
+  });
+});
+
+app.get(`${v2UrlPath}/faq`, (request, response) => {
+  response.render(`${v2ViewsPath}/faqV2.html`, {
+    ...v2BaseContext,
+    layout: "./helpv2.html",
+  });
+});
+
+app.get(`${v2UrlPath}/faq/accounts`, (request, response) => {
+  response.render(`${v2ViewsPath}/accountsfaqV2.html`, {
+    ...v2BaseContext,
+    layout: "./helpv2.html",
+  });
+});
+
+app.get(`${v2UrlPath}/faq/returns`, (request, response) => {
+  response.render(`${v2ViewsPath}/returnfaqV2.html`, {
+    ...v2BaseContext,
+    layout: "./helpv2.html",
+  });
+});
+
+app.get(`${v2UrlPath}/faq/payments`, (request, response) => {
+  response.render(`${v2ViewsPath}/paymentsfaqV2.html`, {
+    ...v2BaseContext,
+    layout: "./helpv2.html",
+  });
+});
+
+app.get(`${v2UrlPath}/faq/shipping`, (request, response) => {
+  response.render(`${v2ViewsPath}/shippingfaqV2.html`, {
+    ...v2BaseContext,
+    layout: "./helpv2.html",
+  });
+});
+
+app.get(`${v2UrlPath}/terms`, (request, response) => {
+  response.render(`${v2ViewsPath}/terms&conditionsV2.html`, {
+    ...v2BaseContext,
+    layout: "./helpv2.html",
+  });
+});
+
+app.get(`${v2UrlPath}/contact`, (request, response) => {
+  response.render(`${v2ViewsPath}/contactusV2.html`, {
+    ...v2BaseContext,
+    layout: "./helpv2.html",
   });
 });
 
@@ -644,8 +691,7 @@ app.get(`${v2UrlPath}/signup/success`, (request, response) => {
 
 // COMMON
 
-app.post(
-  `${commonUrlPath}/auth`,
+app.post(`${commonUrlPath}/auth`,
   bodyParser.urlencoded(),
   async (request, response) => {
     try {
@@ -673,8 +719,7 @@ app.post(
   }
 );
 
-app.post(
-  `${commonUrlPath}/adduser`,
+app.post(`${commonUrlPath}/adduser`,
   bodyParser.urlencoded(),
   async (request, response) => {
     if (request.body.userpassword === request.body.reenterpassword) {
