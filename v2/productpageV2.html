@@ -15,7 +15,7 @@
                 {{#each brands}}
                 <li class="list-group-item">
                     <div class="form-check">
-                        <label for="form-check-label">
+                        <label class="mb-0" for="form-check">
                             <input checked type="checkbox" name="{{this}}" class="form-check-input product-check" value="true" id="brand">{{this}}</inputl>
                         </label>
                     </div>
@@ -71,7 +71,7 @@
                                     data-toggle="modal"
                                     data-target=".bd-example-modal-lg"
                                     style = "background-color: #4b1b25; color:white">
-                                    MORE INFO
+                                    More Info
                             </button>
                             <div
                                 class="modal fade bd-example-modal-lg"
@@ -83,7 +83,7 @@
                                 <div class="modal-dialog modal-lg">
                                     <div class="col my-4 mx-4">
                                         <div class="card rounded">
-                                            <img class="card-img-top rounded" height:"160" width:"160"
+                                            <img class="card-img-top rounded" height="160" width="160"
                                             src="{{../imageRoot}}{{this.image1_path}}"
                                             alt="{{this.alt1_text}}" />
                                             <div class="card-body">
