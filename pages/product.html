@@ -10,7 +10,7 @@
           {{#each brands}}
           <li class="list-group-item">
             <div class="form-check">
-              <label for="form-check-label">
+              <label class="mb-0" for="form-check">
                 <input
                   checked
                   type="checkbox"
@@ -41,7 +41,7 @@
           <input
             class="btn btn-dark btn-block"
             type="submit"
-            value="Sort & Filter"
+            value="SORT & FILTER"
           />
         </div>
       </form>
@@ -69,7 +69,7 @@
             <div class="card-footer">
               <form action="{{urlRoot}}/productinfo" method="GET">
                 <input type="hidden" name="id" id="id" value="{{this.id}}" />
-                <button class="btn btn-dark">MORE INFO</button>
+                <button class="btn btn-dark w-100">MORE INFO</button>
               </form>
             </div>
           </div>
