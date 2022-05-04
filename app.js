@@ -171,7 +171,7 @@ app.get(`${v1UrlPath}/signup`, (request, response) => {
 });
 
 app.get(`${v1UrlPath}/signup/success`, (request, response) => {
-  response.render(`${v1ViewsPath}/createaccountsuccess.html`, {
+  response.render(`${v1ViewsPath}/createaccountsucc.html`, {
     ...v1BaseContext,
     layout: "./auth.html",
   });
