@@ -40,10 +40,10 @@ CREATE TABLE orders (
 );
 
 CREATE TABLE order_items (
-    order_id INT NOT NULL,
-    product_id INT NOT NULL,
-    quantity INT NOT NULL,
-    PRIMARY KEY(order_id, product_id)
+    id INT NOT NULL AUTO_INCREMENT,
+    order_name VARCHAR(100) NOT NULL,
+    order_price INT NOT NULL,
+    PRIMARY KEY(id)
 );
 
 

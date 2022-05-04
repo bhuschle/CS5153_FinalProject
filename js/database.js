@@ -213,3 +213,44 @@ async function getOrderById(id) {
 }
 
 module.exports.getOrderById = getOrderById;
+
+async function addToOrder(name, price) {
+  await knex(orderItemsTableName).insert({
+    order_name: name,
+    order_price: price,
+  });
+}
+
+module.exports.addToOrder = addToOrder;
+
+async function getOrder({ name = null, price = null } = {}) {
+  let order = knex(orderItemsTableName);
+
+  return order.then(function (r) {
+    return JSON.parse(JSON.stringify(r));
+  });
+}
+
+module.exports.getOrder = getOrder;
+
+async function removeOrders() {
+  await knex(orderItemsTableName)
+    .where(id > 0)
+    .del();
+}
+
+module.exports.removeOrders = removeOrders;
+
+async function getOrderTotal() {
+  let order = await knex(orderItemsTableName);
+  let total = 0;
+
+  if (order.length > 0) {
+    order.forEach((element) => {
+      total = total + element["price"];
+    });
+  }
+
+  return total;
+}
+module.exports.getOrderTotal = getOrderTotal;

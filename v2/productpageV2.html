@@ -1,3 +1,4 @@
+
 <script type="application/javascript">
     var productsArray = {{{productsString}}};
 </script>
@@ -15,7 +16,7 @@
                 {{#each brands}}
                 <li class="list-group-item">
                     <div class="form-check">
-                        <label for="form-check-label">
+                        <label class="mb-0" for="form-check">
                             <input checked type="checkbox" name="{{this}}" class="form-check-input product-check" value="true" id="brand">{{this}}</inputl>
                         </label>
                     </div>
@@ -63,7 +64,7 @@
                             class="card-link"
                             >${{this.price}}</a
                             >
-                            <div>
+                            
                             <!-- modal to display detailed product description -->
                             <button
                                     type="button"
@@ -71,12 +72,8 @@
                                     data-toggle="modal"
                                     data-target=".bd-example-modal-lg"
                                     style = "background-color: #4b1b25; color:white">
-                                    MORE INFO
+                                    More Info
                             </button>
-                            <button type="button" class="add-cart cart" style="background-color: #4b1b25; color:white">
-                                Add to Cart
-                            </button>
-                            </div>
                             <div
                                 class="modal fade bd-example-modal-lg"
                                 tabindex="-1"
@@ -87,7 +84,7 @@
                                 <div class="modal-dialog modal-lg">
                                     <div class="col my-4 mx-4">
                                         <div class="card rounded">
-                                            <img class="card-img-top rounded" height:"160" width:"160"
+                                            <img class="card-img-top rounded" height="160" width="160"
                                             src="{{../imageRoot}}{{this.image1_path}}"
                                             alt="{{this.alt1_text}}" />
                                             <div class="card-body">
@@ -101,9 +98,9 @@
                                                 <p class="card-text">Model : {{this.model_number}}</p>
                                                 <p class="card-text">${{this.price}}</p>
 
-                                                <!-- <button type="button" class="btn ml-4 " style = "background-color: #4b1b25; color:white">
+                                                <button type="button" class="btn ml-4 " style = "background-color: #4b1b25; color:white">
                                                     Add to Cart  
-                                                </button> -->
+                                                </button>
                                             </div>
                                             <!-- card body -->
                                         </div>

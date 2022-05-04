@@ -34,7 +34,7 @@
   <body>
     <style type="text/css">
       body {
-        background: grey !important;
+        background: lightgrey !important;
       }
 
       .navbar {
@@ -166,13 +166,13 @@
               <a class="dropdown-item" href="/signout">SIGN OUT</a>
             </div>
           </div>
-          {{else}}
-          <a class="nav-link" href="/signup">SIGN UP</a>
-          <a class="nav-link" href="/signin">SIGN IN</a>
-          {{/if}}
           <div class="nav-item">
             <a class="nav-link" href="/cart">CART</a>
           </div>
+          {{else}}
+          <a class="nav-link text-dark" href="/signup">SIGN UP</a>
+          <a class="nav-link text-dark" href="/signin">SIGN IN</a>
+          {{/if}}
         </ul>
       </div>
     </nav>
