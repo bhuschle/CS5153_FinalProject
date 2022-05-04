@@ -21,7 +21,30 @@
             <p class="card-text">Color : {{prod.color}}</p>
             <p class="card-text">Model : {{prod.model_number}}</p>
             <p class="card-text">${{prod.price}}</p>
-            <a class="text-dark" href="#">ADD TO CART</a>
+            {{#if loggedIn}}
+            <form method="get" action="/cart">
+              <div class="row pt-4 mt-2 px-3 mb-4">
+                <input
+                  type="hidden"
+                  name="name"
+                  id="name"
+                  value="{{prod.product_name}}"
+                />
+                <input
+                  type="hidden"
+                  name="price"
+                  id="price"
+                  value="{{prod.price}}"
+                />
+                <input
+                  class="btn btn-dark btn-block"
+                  type="submit"
+                  value="ADD TO CART"
+                />
+              </div>
+              <input type="hidden" id="version" name="version" value="1" />
+            </form>
+            {{/if}}
           </div>
         </div>
       </div>

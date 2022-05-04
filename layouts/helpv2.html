@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+      <!-- Required meta tags -->
+      <meta charset="utf-8" />
+      <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
+
+      <!-- Bootstrap 4 CSS -->
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css"
+      integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+      crossorigin="anonymous"
+      />
+
+      <!-- jQuery -->
+      <script
+      src="https://code.jquery.com/jquery-3.3.1.slim.min.js" 
+      integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+      crossorigin="anonymous"
+      ></script>
+
+      <!-- Popper.js -->
+      <script
+      src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js"
+      integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+      crossorigin="anonymous"
+      ></script>
+
+      <!-- Bootstrap 4 Javascript -->
+      <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js"
+      integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+      crossorigin="anonymous"
+      ></script>
+
+
+      <link rel="shortcut icon" type="image/png" href="{{imageRoot}}/TechNStuff/TechNStuffLogo2.png" />
+      <title>Tech N' Stuff</title>
+
+      <!-- css for this page -->
+      <style>
+          
+        .cardHelp {
+            border: 1px solid #4b1b25; 
+            /* border-color: #4b1b25; */
+            /* background: #eee */
+        }
+
+        .searchHelp {
+            width: 80%;
+            margin-bottom: auto;
+            margin-top: 20px;
+            height: 50px;
+            background-color: #fff;
+            border: 1.5px solid #4b1b25; 
+            padding: 10px;
+            border-radius: 5px
+        }
+
+        .searchHelp-input {
+            color: white;
+            border: 0;
+            outline: 0;
+            background: none;
+            width: 0;
+            margin-top: 5px;
+            caret-color: transparent;
+            line-height: 20px;
+            transition: width 0.4s linear
+        }
+
+        .searchHelp .searchHelp-input {
+            padding: 0 10px;
+            width: 100%;
+            caret-color: #4b1b25;
+            font-size: 19px;
+            font-weight: 300;
+            color: black;
+            transition: width 0.4s linear
+        }
+
+        /* .search-icon {
+            height: 34px;
+            width: 34px;
+            float: right;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            background-color: #536bf6;
+            font-size: 10px;
+            bottom: 30px;
+            position: relative;
+            border-radius: 5px
+        }
+
+        .search-icon:hover {
+            color: #fff !important
+        } */
+
+        .helplink, .helplink:hover {
+            color:#4b1b25 ;
+            /* text-decoration: none */
+        }
+
+        .cardHelp-inner {
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            /* min-width: 0; */
+            /* word-wrap: break-word; */
+            background-color: #d7cec7;
+            /* background-clip: border-box;  */
+            border: 1px solid #4b1b25;
+            border-radius: .25rem; 
+            /* border: none; */
+            /* cursor: pointer; */
+            /* transition: all 2s */
+        }
+
+        /* .card-inner:hover {
+            transform: scale(1.1)
+        } */
+
+            .mg-text span{
+            font-size: 16px
+        }
+            /*
+        .mg-text {
+            line-height: 14px
+        } */
+      </style>
+  </head>
+
+  <body>
+    <nav class="navbar sticky-top navbar-expand-sm text-white" style="background-color: #4b1b25;">
+      <a class="navbar-brand text-white mt-2" href="{{urlRoot}}">
+      <img
+          src="{{imageRoot}}/TechNStuff/TechNStuffLogo2.png"
+          width="40"
+          height="40"
+          alt="TECH N' STUFF" 
+      />
+      TECH N' STUFF
+      </a>
+    </nav>
+
+    {{{body}}}
+
+    <footer class="text-center text-lg-start text-white fixed-bottom" style="background-color: #4b1b25; height: 2rem;">
+        <div class="text-center p-1">
+            © 2022 Copyright: Tech N' Stuff
+      </div>
+    </footer>
+  </body>
+</html>
