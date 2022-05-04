@@ -76,19 +76,32 @@ async function getProducts({name = null, priceRange = null, category = null, sub
 module.exports.getProducts = getProducts;
 
 
-async function addUser(firstName, lastName, emailAddress, password, address, city, state, country, zipCode) {
+async function addUser(firstName, lastName, emailAddress, password, {address = null, city = null, state = null, country = null, zipCode = null} = {}) {
+    let u = {
+        first_name: firstName,
+        last_name: lastName,
+        email: emailAddress,
+        user_password: password
+    };
+
+    if (address !== null) {
+        u['user_address'] = address;
+    }
+    if (city !== null) {
+        u['user_city'] = city;
+    }
+    if (state !== null) {
+        u['user_state'] = state;
+    }
+    if (country !== null) {
+        u['user_country'] = country;
+    }
+    if (zipCode !== null) {
+        u['user_zip_code'] = zipCode;
+    }
+
     await knex(usersTableName)
-        .insert({
-            first_name: firstName,
-            last_name: lastName,
-            email: emailAddress,
-            user_password: password,
-            user_address: address,
-            user_city: city,
-            user_state: state,
-            user_country: country,
-            user_zip_code: zipCode
-        });
+    .insert(u);
 }
 
 module.exports.addUser = addUser;

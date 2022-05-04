@@ -171,7 +171,7 @@ app.get(`${v1UrlPath}/signup`, (request, response) => {
 });
 
 app.get(`${v1UrlPath}/signup/success`, (request, response) => {
-  response.render(`${v1ViewsPath}/createaccountsuccess.html`, {
+  response.render(`${v1ViewsPath}/createaccountsucc.html`, {
     ...v1BaseContext,
     layout: "./auth.html",
   });
@@ -648,12 +648,7 @@ app.post(
         request.body.firstname,
         request.body.lastname,
         request.body.emailaddress,
-        request.body.userpassword,
-        request.body.address,
-        request.body.city,
-        request.body.state,
-        request.body.country,
-        request.body.zipcode
+        request.body.userpassword
       );
 
       if (request.body.version == 2) {
