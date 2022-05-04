@@ -85,11 +85,24 @@ app.get(`${v1UrlPath}/account`, async (request, response) => {
   });
 });
 
-app.get(`${v1UrlPath}/cart`, (request, response) => {
+app.get(`${v1UrlPath}/cart`, async (request, response) => {
+  let name = request.query["name"];
+  let price = request.query["price"];
+  if (price != null || name != null) database.addToOrder(name, price);
+
+  let orders = await database.getOrder();
+  let user = await database.getUser({ id: request.session.userId });
+
+  let total = await database.getOrderTotal();
+
   response.render(`${v1ViewsPath}/cart.html`, {
     ...v1BaseContext,
+    userFirstName: request.session.firstName,
     loggedIn: request.session.loggedIn,
     layout: "./basev1.html",
+    order: orders,
+    user: user,
+    total: total,
   });
 });
 
@@ -172,6 +185,13 @@ app.get(`${v1UrlPath}/signup`, (request, response) => {
 
 app.get(`${v1UrlPath}/signup/success`, (request, response) => {
   response.render(`${v1ViewsPath}/createaccountsucc.html`, {
+    ...v1BaseContext,
+    layout: "./auth.html",
+  });
+});
+
+app.get(`${v1UrlPath}/purchasesucc`, (request, response) => {
+  response.render(`${v1ViewsPath}/purchasesucc.html`, {
     ...v1BaseContext,
     layout: "./auth.html",
   });
@@ -677,6 +697,31 @@ app.post(
       } else {
         response.redirect(`${v1UrlPath}/signup`);
       }
+    }
+  }
+);
+
+app.post(
+  `${commonUrlPath}/addtocart`,
+  //bodyParser.urlencoded(),
+  async (request, response) => {
+    if (request.body.version == 1) {
+      response.redirect(`${v1UrlPath}/cart`);
+    } else {
+      response.redirect(`${v2UrlPath}/cart`);
+    }
+  }
+);
+
+app.post(
+  `${commonUrlPath}/purchase`,
+  //bodyParser.urlencoded(),
+  async (request, response) => {
+    database.addToOrder(request.query["id"]);
+    if (request.body.version == 1) {
+      response.redirect(`${v1UrlPath}/purchasesucc`);
+    } else {
+      response.redirect(`${v2UrlPath}/purchasesucc`);
     }
   }
 );
