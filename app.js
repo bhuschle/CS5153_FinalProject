@@ -233,7 +233,7 @@ app.get(`${v2UrlPath}/account`, (request, response) => {
 });
 
 app.get(`${v2UrlPath}/cart`, (request, response) => {
-  response.render(`${v2ViewsPath}/cartV2.html`, { layout: false });
+  response.render(`${v2ViewsPath}/cartV2.html`, { layout: './basev2.html' });
 });
 
 app.get(`${v2UrlPath}/computers`, async (request, response) => {

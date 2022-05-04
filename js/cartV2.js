@@ -92,7 +92,7 @@ function displayCart() {
         <div class="cartTotal">
         <h6 class="product-title">Total (USD)</h6>
         </div>
-        <strong>$${cartCost}.00</strong>
+        <strong>$${cartCost}</strong>
       </li>
     `;
     }
