@@ -37,7 +37,7 @@ async function removeProduct(id) {
 
 module.exports.removeProduct = removeProduct;
 
-async function getProducts({name = null, priceRange = null, category = null, brands = []} = {}) {
+async function getProducts({name = null, priceRange = null, category = null, subcategory = null, brands = []} = {}) {
     let products = knex(productsTableName);
 
     if (name !== null) {
@@ -46,6 +46,10 @@ async function getProducts({name = null, priceRange = null, category = null, bra
 
     if (category !== null) {
         products = products.whereILike('category', `%${category}%`);
+    }
+
+    if (subcategory !== null) {
+        products = products.whereILike('subcategory', `%${subcategory}%`);
     }
 
     
