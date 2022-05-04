@@ -63,7 +63,7 @@
                             class="card-link"
                             >${{this.price}}</a
                             >
-                            
+                            <div>
                             <!-- modal to display detailed product description -->
                             <button
                                     type="button"
@@ -73,6 +73,10 @@
                                     style = "background-color: #4b1b25; color:white">
                                     MORE INFO
                             </button>
+                            <button type="button" class="add-cart cart" style="background-color: #4b1b25; color:white">
+                                Add to Cart
+                            </button>
+                            </div>
                             <div
                                 class="modal fade bd-example-modal-lg"
                                 tabindex="-1"
@@ -97,9 +101,9 @@
                                                 <p class="card-text">Model : {{this.model_number}}</p>
                                                 <p class="card-text">${{this.price}}</p>
 
-                                                <button type="button" class="btn ml-4 " style = "background-color: #4b1b25; color:white">
+                                                <!-- <button type="button" class="btn ml-4 " style = "background-color: #4b1b25; color:white">
                                                     Add to Cart  
-                                                </button>
+                                                </button> -->
                                             </div>
                                             <!-- card body -->
                                         </div>
