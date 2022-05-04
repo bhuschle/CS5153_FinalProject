@@ -146,7 +146,7 @@ app.get(`${v1UrlPath}/signin`, (request, response) => {
   let signInFailed = request.session.signInFailed;
   request.session.signInFailed = null;
   response.render(`${v1ViewsPath}/signin.html`, {
-    ...v2BaseContext,
+    ...v1BaseContext,
     layout: "./auth.html",
     signInFailed: signInFailed,
   });
@@ -174,6 +174,19 @@ app.get(`${v1UrlPath}/signup/success`, (request, response) => {
   response.render(`${v1ViewsPath}/createaccountsucc.html`, {
     ...v1BaseContext,
     layout: "./auth.html",
+  });
+});
+
+app.get(`${v1UrlPath}/productinfo`, async (request, response) => {
+  let product = await database.getProductById(request.query["id"]);
+
+  response.render(`${v1ViewsPath}/productinfo.html`, {
+    ...v1BaseContext,
+    userFirstName: request.session.firstName,
+    loggedIn: request.session.loggedIn,
+    layout: "./basev1.html",
+    prod: product,
+    productsString: JSON.stringify(product),
   });
 });
 
@@ -432,8 +445,8 @@ app.get(`${v2UrlPath}/cart`, (request, response) => {
   response.render(`${v2ViewsPath}/cartV2.html`, { layout: false });
 });
 
-app.get(`${v2UrlPath}/computers`, async (request, response) => {
-  let subcategoryId = "computers";
+app.get(`${v2UrlPath}/desktops`, async (request, response) => {
+  let subcategoryId = "desktops";
   let products = await database.getProducts({ subcategory: subcategoryId });
   brands = new Set(products.map((x) => x["brand"]));
 
@@ -451,13 +464,14 @@ app.get(`${v2UrlPath}/computers`, async (request, response) => {
     products: products,
     productsString: JSON.stringify(products),
     category: "Computers",
+    subcategory: "Desktops",
     subcategoryId: subcategoryId,
     brands: brands,
   });
 });
 
 app.get(`${v2UrlPath}/iphone`, async (request, response) => {
-  let subcategoryId = "computers";
+  let subcategoryId = "iphone";
   let products = await database.getProducts({ subcategory: subcategoryId });
   brands = new Set(products.map((x) => x["brand"]));
 
@@ -474,9 +488,9 @@ app.get(`${v2UrlPath}/iphone`, async (request, response) => {
     layout: "./basev2.html",
     products: products,
     productsString: JSON.stringify(products),
-    category: "iPhone",
-    subcategoryId,
-    subcategoryId,
+    category: "Phones",
+    subcategory: "iPhone",
+    subcategoryId: subcategoryId,
     brands: brands,
   });
 });

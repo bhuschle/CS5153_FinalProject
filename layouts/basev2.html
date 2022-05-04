@@ -72,7 +72,7 @@
       class="navbar sticky-top navbar-expand-sm text-white"
       style="background-color: #4b1b25;"
     >
-      <a class="navbar-brand text-white mt-2" href="{{urlRoot}}">
+      <a class="navbar-brand text-white mt-2" href="">
         <img
           src="{{imageRoot}}/TechNStuff/TechNStuffLogo2.png"
           width="40"
@@ -128,19 +128,15 @@
               Hi {{userFirstName}}
             </a>
             <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-              <a class="dropdown-item" href="{{urlRoot}}/myaccountV2.html"
-                >Account</a
-              >
-              <a class="dropdown-item" href="{{urlRoot}}/myordersV2.html"
-                >Orders</a
-              >
-              <a class="dropdown-item" href="{{urlRoot}}/signout">Sign Out</a>
+              <a class="dropdown-item" href="/myaccountV2.html">Account</a>
+              <a class="dropdown-item" href="/myordersV2.html">Orders</a>
+              <a class="dropdown-item" href="/signout">Sign Out</a>
             </div>
           </li>
           {{else}}
           <a
             class="nav-item ml-4 mr-2 mt-2 text-nowrap"
-            href="{{urlRoot}}/signup"
+            href="/signup"
             aria-expanded="false"
             style="color: white;"
           >
@@ -148,7 +144,7 @@
           </a>
           <a
             class="nav-item ml-2 mr-4 mt-2 text-nowrap"
-            href="{{urlRoot}}/signin"
+            href="/signin"
             aria-expanded="false"
             style="color: white;"
           >
@@ -158,7 +154,7 @@
 
           <!-- Add to Cart -->
           <div class="nav-item">
-            <a class="text-reset me-3" href="{{urlRoot}}/cart">
+            <a class="text-reset me-3" href="/cart">
               <button
                 type="button"
                 class="btn"
@@ -213,9 +209,9 @@
               Computers
             </a>
             <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-              <a class="dropdown-item" href="{{urlRoot}}/laptops">Laptops</a>
-              <a class="dropdown-item" href="{{urlRoot}}/desktops">Desktops</a>
-              <a class="dropdown-item" href="{{urlRoot}}/tablets">Tablets</a>
+              <a class="dropdown-item" href="/laptops">Laptops</a>
+              <a class="dropdown-item" href="/desktops">Desktops</a>
+              <a class="dropdown-item" href="/tablets">Tablets</a>
             </div>
           </li>
 
@@ -233,11 +229,11 @@
               Cameras
             </a>
             <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-              <a class="dropdown-item" href="{{urlRoot}}/dslrV2.html">DSLR</a>
-              <a class="dropdown-item" href="{{urlRoot}}/point&shootV2.html"
+              <a class="dropdown-item" href="/dslr">DSLR</a>
+              <a class="dropdown-item" href="/pointshoot"
                 >Point & Shoot Cameras</a
               >
-              <!-- <a class="dropdown-item" href="{{urlRoot}}/instantprintcameraV2.html">Instant Print Cameras</a> -->
+              <!-- <a class="dropdown-item" href="/instantprintcameraV2.html">Instant Print Cameras</a> -->
             </div>
           </li>
 
@@ -255,11 +251,9 @@
               Cell Phones
             </a>
             <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-              <a class="dropdown-item" href="{{urlRoot}}/phones">iPhones</a>
-              <a class="dropdown-item" href="{{urlRoot}}/samsungV2.html"
-                >Samsung</a
-              >
-              <!-- <a class="dropdown-item" href="{{urlRoot}}/verizonV2.html">Verizon</a> -->
+              <a class="dropdown-item" href="/iphone">iPhones</a>
+              <a class="dropdown-item" href="/samsung">Samsung</a>
+              <!-- <a class="dropdown-item" href="/verizonV2.html">Verizon</a> -->
             </div>
           </li>
 
@@ -277,13 +271,9 @@
               Movies & Music
             </a>
             <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-              <a class="dropdown-item" href="{{urlRoot}}/laptopsV2.html"
-                >Movies</a
-              >
-              <a class="dropdown-item" href="{{urlRoot}}/laptopsV2.html"
-                >Music</a
-              >
-              <!-- <a class="dropdown-item" href="{{urlRoot}}/laptopsV2.html">TV Shows</a> -->
+              <a class="dropdown-item" href="/movies">Movies</a>
+              <a class="dropdown-item" href="/music">Music</a>
+              <!-- <a class="dropdown-item" href="/laptopsV2.html">TV Shows</a> -->
             </div>
           </li>
         </ul>
@@ -306,10 +296,8 @@
               class="dropdown-menu dropdown-menu-right"
               aria-labelledby="navbarDropdownMenuLink"
             >
-              <a class="dropdown-item" href="{{urlRoot}}/faqV2.html">FAQ</a>
-              <a class="dropdown-item" href="{{urlRoot}}/contactusV2.html"
-                >Contact Us</a
-              >
+              <a class="dropdown-item" href="/faq">FAQ</a>
+              <a class="dropdown-item" href="/contactus">Contact Us</a>
             </div>
           </li>
         </ul>
@@ -330,15 +318,12 @@
             <h5 class="text-uppercase" style="color: #4b1b25;">About Us</h5>
             <ul class="list-unstyled mb-0">
               <li>
-                <a
-                  href="{{urlRoot}}/aboutusV2.html"
-                  class="footerLink"
-                  style="color: #4b1b25;"
+                <a href="/aboutus" class="footerLink" style="color: #4b1b25;"
                   >About Tech N' Stuff</a
                 >
               </li>
               <li>
-                <a href="{{urlRoot}}/locations" class="footerLink">Locations</a>
+                <a href="/locations" class="footerLink">Locations</a>
               </li>
             </ul>
           </div>
@@ -353,9 +338,7 @@
                 >
               </li>
               <li>
-                <a href="{{urlRoot}}/returnfaqV2.html" class="footerLink"
-                  >Return Policy</a
-                >
+                <a href="/returnfaq" class="footerLink">Return Policy</a>
               </li>
             </ul>
           </div>
