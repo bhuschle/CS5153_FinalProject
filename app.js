@@ -88,7 +88,9 @@ app.get(`${v1UrlPath}/account`, async (request, response) => {
 app.get(`${v1UrlPath}/cart`, async (request, response) => {
   let name = request.query["name"];
   let price = request.query["price"];
-  if (price != null || name != null) database.addToOrder(name, price);
+  if (price != null || name != null) {
+    database.addToOrder(name, price);
+  }
 
   let orders = await database.getOrder();
   let user = await database.getUser({ id: request.session.userId });
@@ -235,7 +237,8 @@ app.get(`${v1UrlPath}/desktops`, async (request, response) => {
   });
 });
 
-app.get(`${v1UrlPath}/tablets`,
+app.get(
+  `${v1UrlPath}/tablets`,
   bodyParser.urlencoded(),
   async (request, response) => {
     let subcategoryId = "tablets";
@@ -542,7 +545,8 @@ app.get(`${v2UrlPath}/product`, (request, response) => {
   response.render(`${v2ViewsPath}/product.html`, { layout: false });
 });
 
-app.get(`${v2UrlPath}/tablets`,
+app.get(
+  `${v2UrlPath}/tablets`,
   bodyParser.urlencoded(),
   async (request, response) => {
     let subcategoryId = "tablets";
@@ -692,7 +696,8 @@ app.get(`${v2UrlPath}/signup/success`, (request, response) => {
 
 // COMMON
 
-app.post(`${commonUrlPath}/auth`,
+app.post(
+  `${commonUrlPath}/auth`,
   bodyParser.urlencoded(),
   async (request, response) => {
     try {
@@ -720,7 +725,8 @@ app.post(`${commonUrlPath}/auth`,
   }
 );
 
-app.post(`${commonUrlPath}/adduser`,
+app.post(
+  `${commonUrlPath}/adduser`,
   bodyParser.urlencoded(),
   async (request, response) => {
     if (request.body.userpassword === request.body.reenterpassword) {
