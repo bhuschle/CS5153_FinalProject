@@ -2,94 +2,80 @@
   <div class="row">
     <!-- Filter and Sort Products -->
     <div class="col-lg-3">
-      <h5>Product Category</h5>
-      <h6>Brand</h6>
-      <ul class="list-group">
-        <!-- <li class="list-group-item"> <h6>Brand</h6></li>  -->
-        {{#each brands}}
-        <li class="list-group-item">
-          <div class="form-check">
-            <label for="form-check-label">
-              <input
-                type="checkbox"
-                class="form-check-input product-check"
-                value=""
-                id="brand"
-              />
-              {{this}}
-            </label>
-          </div>
-        </li>
-        {{else}}
-        <li class="list-group-item">No brands.</li>
-        {{/each}}
-      </ul>
-      <br />
-      <h5>Sort Products</h5>
-      <form action="">
+      <h5>Filters</h5>
+      <h6>Brands</h6>
+      <form method="get" action="{{urlRoot}}/{{subcategoryId}}">
+        <ul class="list-group">
+          <!-- <li class="list-group-item"> <h6>Brand</h6></li>  -->
+          {{#each brands}}
+          <li class="list-group-item">
+            <div class="form-check">
+              <label for="form-check-label">
+                <input
+                  checked
+                  type="checkbox"
+                  name="{{this}}"
+                  class="form-check-input product-check"
+                  value="true"
+                  id="brand"
+                />{{this}}
+              </label>
+            </div>
+          </li>
+          {{else}}
+          <li class="list-group-item">
+            No brands.
+          </li>
+          {{/each}}
+        </ul>
+        <br />
+        <h5>Sort Products</h5>
         <div class="form-group">
-          <select class="form-control form-control-md">
-            <option>Best Sellers</option>
-            <option>Low-to-high</option>
-            <option>High-to-low</option>
+          <select name="sortby" class="form-control form-control-md">
+            <option> Best sellers </option>
+            <option> Low-to-high </option>
+            <option> High-to-low </option>
           </select>
+        </div>
+        <div class="pt-1 mb-3">
+          <input
+            class="btn btn-dark btn-block"
+            type="submit"
+            value="Sort & Filter"
+          />
         </div>
       </form>
     </div>
 
     <!-- Display products -->
     <div class="col-lg-9">
-      Computers / {{category}}
-      <h4>{{category}}</h4>
-      {{#each products}}
-      <div class="row">
+      {{category}} / {{subcategory}}
+      <h4>{{subcategory}}</h4>
+
+      <div class="row col-centered">
+        {{#each products}}
         <div class="col-md d-flex align-items-stretch my-3">
-          <div class="card h-100 rounded" style="width: 15rem">
-            <img class="card-img-top rounded px-2 py-2" height:"160" width:"160"
-            src="{{../imageRoot}}{{this.image1_path}}" alt="{{this.alt1_text}}"
+          <div class="card h-100 rounded" style="width: 15rem;">
+            <img
+              class="card-img-top text-center rounded"
+              style="height: 13rem; width: 13rem;"
+              src="{{../imageRoot}}{{this.image1_path}}"
+              alt="{{this.alt1_text}}"
             />
             <div class="card-body">
               <h5 class="card-title">{{this.product_name}}</h5>
               <h4>${{this.price}}</h4>
-              <button
-                type="button"
-                class="btn btn-dark"
-                data-toggle="modal"
-                data-target=".bd-example-modal-lg"
-              >
-                MORE INFO
-              </button>
-              <div
-                class="modal fade bd-example-modal-lg"
-                tabindex="-1"
-                role="dialog"
-                aria-labelledby="myLargeModalLabel"
-                aria-hidden="true"
-              >
-                <div class="modal-dialog modal-lg">
-                  <div class="col my-4 mx-4">
-                    <div class="card rounded">
-                      <img class="card-img-top rounded" height:"160" width:"160"
-                      src="{{../imageRoot}}{{this.image1_path}}"
-                      alt="{{this.alt1_text}}" />
-                      <div class="card-body">
-                        <h5 class="card-title">{{this.product_name}}</h5>
-                        <p class="card-text">{{this.product_description}}</p>
-                        <p class="card-text">
-                          Category : {{this.category}} / {{this.subcategory}}
-                        </p>
-                        <p class="card-text">Brand : {{this.brand}}</p>
-                        <p class="card-text">Color : {{this.color}}</p>
-                        <p class="card-text">Model : {{this.model_number}}</p>
-                        <p class="card-text">${{this.price}}</p>
-                        <button type="button" class="btn btn-dark">
-                          Add to cart
-                        </button>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
+            </div>
+            <div class="card-footer">
+              <form action="{{urlRoot}}/productinfo" method="GET">
+                <input
+                  class="invisible"
+                  name="id"
+                  id="id"
+                  value="{{this.id}}"
+                />
+                <button class="btn btn-dark">MORE INFO</button>
+              </form>
             </div>
           </div>
         </div>

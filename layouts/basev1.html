@@ -44,6 +44,10 @@
       .nav-link:hover {
         font-weight: bold;
       }
+
+      .card {
+        float: left;
+      }
     </style>
 
     <nav
@@ -143,9 +147,6 @@
               Search
             </button>--->
           </form>
-          <div class="nav-item">
-            <a class="nav-link" href="/cart">CART</a>
-          </div>
           {{#if loggedIn}}
           <div class="nav-item dropdown">
             <a
@@ -157,17 +158,21 @@
               aria-haspopup="true"
               aria-expanded="false"
             >
-              {{userFirstName}}
+              USER INFO
             </a>
             <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
               <a class="dropdown-item" href="/account">ACCOUNT</a>
-              <a class="dropdown-item" href="{{urlRoot}}/signout">SIGN OUT</a>
+              <div class="dropdown-divider"></div>
+              <a class="dropdown-item" href="/signout">SIGN OUT</a>
             </div>
           </div>
           {{else}}
-          <a class="nav-link" href="{{urlRoot}}/signup">SIGN UP</a>
-          <a class="nav-link" href="{{urlRoot}}/signin">SIGN IN</a>
+          <a class="nav-link" href="/signup">SIGN UP</a>
+          <a class="nav-link" href="/signin">SIGN IN</a>
           {{/if}}
+          <div class="nav-item">
+            <a class="nav-link" href="/cart">CART</a>
+          </div>
         </ul>
       </div>
     </nav>
@@ -177,7 +182,7 @@
     <!-- footer section -->
     <footer
       class="text-center text-lg-start text-white"
-      style="background-color: #3e4551"
+      style="background-color: #3e4551;"
     >
       <!-- 1st footer -->
       <div class="container p-4 pb-0">
@@ -186,14 +191,10 @@
             <h5 class="text-uppercase">About Us</h5>
             <ul class="list-unstyled mb-0">
               <li>
-                <a href="{{urlRoot}}/aboutusV2.html" class="footerLink"
-                  >About Tech N' Stuff</a
-                >
+                <a href="/about" class="footerLink">About Tech N' Stuff</a>
               </li>
               <li>
-                <a href="{{urlRoot}}/locationsV2.html" class="footerLink"
-                  >Locations</a
-                >
+                <a href="/locations" class="footerLink">Locations</a>
               </li>
             </ul>
           </div>
@@ -201,12 +202,10 @@
             <h5 class="text-uppercase">Customer Service</h5>
             <ul class="list-unstyled mb-0">
               <li>
-                <a href="{{urlRoot}}/faqV2.html" class="footerLink">FAQ</a>
+                <a href="/faq" class="footerLink">FAQ</a>
               </li>
               <li>
-                <a href="{{urlRoot}}/returnfaqV2.html" class="footerLink"
-                  >Return Policy</a
-                >
+                <a href="/returnfaq" class="footerLink">Return Policy</a>
               </li>
             </ul>
           </div>
@@ -222,7 +221,10 @@
       </div>
 
       <!-- Copyright -->
-      <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2)">
+      <div
+        class="text-center p-3"
+        style="background-color: rgba(0, 0, 0, 0.2);"
+      >
         © 2020 Copyright:
         <a class="text-white" href="localhost:8080/">Tech N' Stuff</a>
       </div>

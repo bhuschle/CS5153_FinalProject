@@ -1,0 +1,58 @@
+<h5>
+  <a class="navbar-brand text-white mt-2" href="../main_nosigninV2.html">
+    <img
+      src="{{imageRoot}}/TechNStuff/TechNStuffLogo.png"
+      width="30"
+      height="30"
+      alt="TECH N' STUFF"
+    />
+  </a>
+  Create account
+</h5>
+{{#if passwordMismatch}}
+<div class="alert alert-warning" role="alert">
+  Passwords did not match. Please try again.
+</div>
+{{/if}}
+<form method="post" action="{{commonUrlRoot}}/adduser">
+  <div class="row form-outline px-3 mb-2">
+    <div class="col pl-0">
+      <label class="form-label" for="firstname">
+        First name
+      </label>
+      <input type="text" id="firstname" name="firstname" class="form-control form-control-lg" style="border-color: #4b1b25;"/>
+    </div>
+    <div class="col pr-0">
+      <label class="form-label" for="lastname">
+        Last name
+      </label>
+      <input type="text" id="lastname" name="lastname" class="form-control form-control-lg" style="border-color: #4b1b25;"/>
+    </div>
+  </div>
+
+  <div class="row form-outline px-3 mb-2">
+    <label class="form-label" for="emailaddress">
+      Email address
+    </label>
+    <input type="email" id="emailaddress" name="emailaddress" class="form-control form-control-lg" style="border-color: #4b1b25;"/>
+  </div>
+
+  <div class="row form-outline px-3 mb-2">
+    <div class="col pl-0">
+      <label class="form-label" for="userpassword">
+        Password
+      </label>
+      <input type="password" id="userpassword" name="userpassword" class="form-control form-control-lg" style="border-color: #4b1b25;"/>
+    </div>
+    <div class="col pr-0">
+      <label class="form-label" for="reenterpassword">
+        Re-enter Password
+      </label>
+      <input type="password" id="reenterpassword" name="reenterpassword" class="form-control form-control-lg" style="border-color: #4b1b25;"/>
+    </div>
+  </div>
+  <div class="row pt-4 mt-2 px-3 mb-4">
+    <input class="btn btn-dark btn-lg btn-block" type="submit" value="Sign up"/>
+  </div>
+  <input type="hidden" id="version" name="version" value="1">
+</form>
