@@ -161,13 +161,9 @@
                 style="background-color: #d7cec7; color: #4b1b25;"
               >
                 Cart
-                <span
-                  class="badge rounded-pill badge-notification text-white"
-                  style="background-color: #76323f;"
-                >
-                  1
-                </span>
+                <span class="badge rounded-pill badge-notification text-white" style="background-color: #76323f;"> 0 </span>
               </button>
+              </div>
             </a>
           </div>
         </ul>
@@ -352,13 +348,42 @@
         </div>
       </div>
 
-      <!-- 2nd footer -->
-      <div
-        class="text-center p-1"
-        style="background-color: #4b1b25; height: 2rem;"
-      >
-        © 2022 Copyright: Tech N' Stuff
-      </div>
-    </footer>
-  </body>
-</html>
+        <!-- 1st footer -->
+        <div class="container p-4 pb-0">        
+          <div class="row">
+  
+            <div class="col-lg-4 col-md-6 mb-4 mb-md-0">
+                <h5 class="text-uppercase" style="color: #4b1b25">About Us</h5>
+                <ul class="list-unstyled mb-0">
+                    <li> <a href="{{urlRoot}}/aboutusV2.html" class="footerLink" style="color: #4b1b25">About Tech N' Stuff</a> </li>
+                    <li> <a href="{{urlRoot}}/locations" class="footerLink">Locations</a> </li>
+                </ul>
+            </div>
+            <div class="col-lg-4 col-md-6 mb-4 mb-md-0">
+                <h5 class="text-uppercase" style="color: #4b1b25">Customer Service</h5>
+                <ul class="list-unstyled mb-0">
+                    <li> <a href="{{urlRoot}}/faqV2.html" class="footerLink" style="color: #4b1b25">FAQ</a> </li>
+                    <li> <a href="{{urlRoot}}/returnfaqV2.html" class="footerLink">Return Policy</a> </li>
+                </ul>
+            </div>
+            <div class="col-lg-4 col-md-6 mb-4 mb-md-0">
+                <h5 class="text-uppercase">Contact Us</h5>
+                <p> Call us: 123-456-7890  (Mon-Fri 8am-6pm CST) <br/>
+                    Email: customercare@technstuff.com <br/>
+                </p>
+            </div>
+  
+          </div>     
+        </div>
+        
+        <!-- 2nd footer -->
+        <div class="text-center p-1" style="background-color: #4b1b25; height:2rem">
+            © 2022 Copyright: Tech N' Stuff
+        </div>
+      </footer>
+      
+      <!--SCRIPTS-->
+      <script src="/static/js/cartV2.js"></script>
+      
+    </body>
+  </html>
