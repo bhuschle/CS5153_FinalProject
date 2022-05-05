@@ -459,10 +459,15 @@ app.get(`${v2UrlPath}`, (request, response) => {
   });
 });
 
-app.get(`${v2UrlPath}/account`, (request, response) => {
-  response.render(`${v2ViewsPath}/account.html`, {
+app.get(`${v2UrlPath}/account`, async (request, response) => {
+  let user = await database.getUser({ id: request.session.userId });
+
+  response.render(`${v2ViewsPath}/myaccountV2.html`, {
     ...v2BaseContext,
-    layout: false
+    layout: "./basev2.html",
+    userFirstName: request.session.firstName,
+    loggedIn: request.session.loggedIn,
+    user: user,
   });
 });
 
