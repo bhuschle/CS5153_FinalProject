@@ -2,6 +2,13 @@
 
 CS 5153 Final Project E-Commerce website
 
+## Running the Project
+You will need Docker installed. Run the project with:
+
+```docker compose up```
+
+Visit the website at http://localhost:8080 for version 1 and http://localhost:8080/v2 for version 2.
+
 ## Group Members Listed
 
 Brandon Huschle - VTF657  
