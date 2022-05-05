@@ -581,6 +581,102 @@ app.get(`${v2UrlPath}/samsung`, async (request, response) => {
   });
 });
 
+app.get(`${v2UrlPath}/dslr`, async (request, response) => {
+  let subcategoryId = "dslr";
+  let products = await database.getProducts({ subcategory: subcategoryId });
+  brands = new Set(products.map((x) => x["brand"]));
+
+  if (Object.keys(request.query).length !== 0) {
+    let filterBrands = Object.keys(request.query);
+    delete filterBrands["sortby"];
+    products = filterAndSort(products, filterBrands, request.query["sortby"]);
+  }
+
+  response.render(`${v2ViewsPath}/productpageV2.html`, {
+    ...v2BaseContext,
+    userFirstName: request.session.firstName,
+    loggedIn: request.session.loggedIn,
+    layout: "./basev2.html",
+    products: products,
+    productsString: JSON.stringify(products),
+    category: "DSLR",
+    subcategoryId: subcategoryId,
+    brands: brands,
+  });
+});
+
+app.get(`${v2UrlPath}/pointshoot`, async (request, response) => {
+  let subcategoryId = "pointshoot";
+  let products = await database.getProducts({ subcategory: subcategoryId });
+  brands = new Set(products.map((x) => x["brand"]));
+
+  if (Object.keys(request.query).length !== 0) {
+    let filterBrands = Object.keys(request.query);
+    delete filterBrands["sortby"];
+    products = filterAndSort(products, filterBrands, request.query["sortby"]);
+  }
+
+  response.render(`${v2ViewsPath}/productpageV2.html`, {
+    ...v2BaseContext,
+    userFirstName: request.session.firstName,
+    loggedIn: request.session.loggedIn,
+    layout: "./basev2.html",
+    products: products,
+    productsString: JSON.stringify(products),
+    category: "Point & Shoot",
+    subcategoryId: subcategoryId,
+    brands: brands,
+  });
+});
+
+app.get(`${v2UrlPath}/movies`, async (request, response) => {
+  let subcategoryId = "movies";
+  let products = await database.getProducts({ subcategory: subcategoryId });
+  brands = new Set(products.map((x) => x["brand"]));
+
+  if (Object.keys(request.query).length !== 0) {
+    let filterBrands = Object.keys(request.query);
+    delete filterBrands["sortby"];
+    products = filterAndSort(products, filterBrands, request.query["sortby"]);
+  }
+
+  response.render(`${v2ViewsPath}/productpageV2.html`, {
+    ...v2BaseContext,
+    userFirstName: request.session.firstName,
+    loggedIn: request.session.loggedIn,
+    layout: "./basev2.html",
+    products: products,
+    productsString: JSON.stringify(products),
+    category: "Movies",
+    subcategoryId: subcategoryId,
+    brands: brands,
+  });
+});
+
+app.get(`${v2UrlPath}/music`, async (request, response) => {
+  let subcategoryId = "music";
+  let products = await database.getProducts({ subcategory: subcategoryId });
+  brands = new Set(products.map((x) => x["brand"]));
+
+  if (Object.keys(request.query).length !== 0) {
+    let filterBrands = Object.keys(request.query);
+    delete filterBrands["sortby"];
+    products = filterAndSort(products, filterBrands, request.query["sortby"]);
+  }
+
+  response.render(`${v2ViewsPath}/productpageV2.html`, {
+    ...v2BaseContext,
+    userFirstName: request.session.firstName,
+    loggedIn: request.session.loggedIn,
+    layout: "./basev2.html",
+    products: products,
+    productsString: JSON.stringify(products),
+    category: "Music",
+    subcategoryId: subcategoryId,
+    brands: brands,
+  });
+});
+
 app.get(`${v2UrlPath}/product`, (request, response) => {
   response.render(`${v2ViewsPath}/product.html`, { layout: false });
 });
