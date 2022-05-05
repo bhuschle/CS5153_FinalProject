@@ -83,7 +83,7 @@ function displayCart() {
             <h6 class="product-title">${item.product_name}</h6>
             <small class="quantity-muted">QTY: ${item.inCart}</small>
           </div>
-            <span class="price-muted">$${item.inCart * item.price}.00</span>
+            <span class="price-muted">$${item.inCart * item.price}</span>
       </li>
       `;
         });
