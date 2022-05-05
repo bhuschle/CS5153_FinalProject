@@ -495,6 +495,7 @@ app.get(`${v1UrlPath}/search`,
 
 app.get(`${v2UrlPath}`, async (request, response) => {
   let products = await database.getAllProducts();
+  let featured = await database.getProductById(4);
   let brands = Array.from(new Set(products.map(x => x["brand"])));
   products = filterAndSort(products, brands, "Best sellers");
   
@@ -502,6 +503,7 @@ app.get(`${v2UrlPath}`, async (request, response) => {
     ...v2BaseContext,
     userFirstName: request.session.firstName,
     loggedIn: request.session.loggedIn,
+    featured: featured,
     products: products,
     layout: "./basev2.html",
   });

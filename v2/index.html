@@ -6,18 +6,19 @@
     <div class="card justify-content-center mx-4 my-4">
       <img
         class="card-img-top rounded"
-        style="height: 35rem; object-fit: cover;"
-        src="{{imageRoot}}/test/MacbookPro.webp"
+        style="height: 40rem; object-fit: contain;"
+        src="{{imageRoot}}/{{featured.image1_path}}"
         alt="Card image cap"
       />
       <div class="card-body">
-        <h5 class="card-title">2021 Macbook Pro 14"</h5>
+        <h5 class="card-title">{{featured.product_name}}</h5>
         <p class="card-text">
-          The most powerful Macbook Pro ever is here! 
+          {{featured.product_description}} 
         </p>
-        <a href="pages/product.html" class="card-link">More Info</a>
-        <a href="./pages/cart.html?price=1999.00&name=2021%20Macbook%20Pro%2014&image=..%2Fimg%2FprodImg%2Fmacbook.jpg" class="card-link"> 
-          $1,999.00 </a>
+        <form action="{{urlRoot}}/productinfo" method="GET">
+          <input type="hidden" name="id" id="id" value="{{featured.id}}" />
+          <button class="btn btn-lg w-100" style = "background-color: #4b1b25; color:white">More Info</button>
+        </form>
       </div>
     </div> 
 
