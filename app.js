@@ -79,14 +79,21 @@ app.get(`${v1UrlPath}/`, async (request, response) => {
 });
 
 app.get(`${v1UrlPath}/account`, async (request, response) => {
+  let passwordMismatch = request.session.passwordMismatch;
+  request.session.passwordMismatch = null;
+  
+  let updateSuccess = request.session.updateSuccess;
+  request.session.updateSuccess = null;
   let user = await database.getUser({ id: request.session.userId });
 
   response.render(`${v1ViewsPath}/account.html`, {
     ...v1BaseContext,
+    layout: "./basev1.html",
     userFirstName: request.session.firstName,
     loggedIn: request.session.loggedIn,
-    layout: "./basev1.html",
     user: user,
+    passwordMismatch: passwordMismatch,
+    updateSuccess: updateSuccess,
   });
 });
 
@@ -495,17 +502,45 @@ app.get(`${v2UrlPath}`, (request, response) => {
   });
 });
 
-app.get(`${v2UrlPath}/account`, (request, response) => {
-  response.render(`${v2ViewsPath}/account.html`, {
+app.get(`${v2UrlPath}/account`, async (request, response) => {
+  let passwordMismatch = request.session.passwordMismatch;
+  request.session.passwordMismatch = null;
+  
+  let updateSuccess = request.session.updateSuccess;
+  request.session.updateSuccess = null;
+  let user = await database.getUser({ id: request.session.userId });
+
+  response.render(`${v2ViewsPath}/myaccountV2.html`, {
     ...v2BaseContext,
-    layout: false
+    layout: "./basev2.html",
+    userFirstName: request.session.firstName,
+    loggedIn: request.session.loggedIn,
+    user: user,
+    passwordMismatch: passwordMismatch,
+    updateSuccess: updateSuccess,
   });
 });
 
 app.get(`${v2UrlPath}/cart`, (request, response) => {
   response.render(`${v2ViewsPath}/cartV2.html`,{
     ...v2BaseContext,
+    userFirstName: request.session.firstName,
+    loggedIn: request.session.loggedIn,
     layout: './basev2.html'
+  });
+});
+
+app.get(`${v2UrlPath}/checkoutV2`, (request, response) => {
+  response.render(`${v2ViewsPath}/checkoutV2.html`, {
+    ...v2BaseContext,
+    layout: './basev2.html'
+  });
+});
+
+app.get(`${v2UrlPath}/purchasesuccV2`, (request, response) => {
+  response.render(`${v2ViewsPath}/purchasesuccV2.html`, {
+    ...v2BaseContext,
+    layout: './authv2.html'
   });
 });
 
@@ -699,6 +734,7 @@ app.get(
 
     response.render(`${v2ViewsPath}/productpageV2.html`, {
       ...v2BaseContext,
+      userFirstName: request.session.firstName,
       loggedIn: request.session.loggedIn,
       layout: "./basev2.html",
       products: products,
@@ -750,6 +786,7 @@ app.get(`${v2UrlPath}/search`,
 
     response.render(`${v2ViewsPath}/productpageV2.html`, {
       ...v2BaseContext,
+      userFirstName: request.session.firstName,
       loggedIn: request.session.loggedIn,
       layout: "./basev2.html",
       products: products,
@@ -766,7 +803,8 @@ app.get(`${v2UrlPath}/search`,
 app.get(`${v2UrlPath}/locations`, (request, response) => {
   response.render(`${v2ViewsPath}/locationsV2.html`, {
     ...v2BaseContext,
-    layout: false,
+    layout:"./basev2.html",
+    userFirstName: request.session.firstName,
   });
 });
 
@@ -784,6 +822,8 @@ app.get(`${v2UrlPath}/about`, (request, response) => {
   response.render(`${v2ViewsPath}/aboutusV2.html`, {
     ...v2BaseContext,
     layout: "./basev2.html",
+    loggedIn: request.session.loggedIn,
+    userFirstName: request.session.firstName,
   });
 });
 
@@ -791,6 +831,8 @@ app.get(`${v2UrlPath}/faq`, (request, response) => {
   response.render(`${v2ViewsPath}/faqV2.html`, {
     ...v2BaseContext,
     layout: "./basev2.html",
+    loggedIn: request.session.loggedIn,
+    userFirstName: request.session.firstName,
   });
 });
 
@@ -798,6 +840,8 @@ app.get(`${v2UrlPath}/faq/accounts`, (request, response) => {
   response.render(`${v2ViewsPath}/accountsfaqV2.html`, {
     ...v2BaseContext,
     layout: "./basev2.html",
+    loggedIn: request.session.loggedIn,
+    userFirstName: request.session.firstName,
   });
 });
 
@@ -805,6 +849,8 @@ app.get(`${v2UrlPath}/faq/returns`, (request, response) => {
   response.render(`${v2ViewsPath}/returnfaqV2.html`, {
     ...v2BaseContext,
     layout: "./basev2.html",
+    loggedIn: request.session.loggedIn,
+    userFirstName: request.session.firstName,
   });
 });
 
@@ -812,6 +858,8 @@ app.get(`${v2UrlPath}/faq/payments`, (request, response) => {
   response.render(`${v2ViewsPath}/paymentsfaqV2.html`, {
     ...v2BaseContext,
     layout: "./basev2.html",
+    loggedIn: request.session.loggedIn,
+    userFirstName: request.session.firstName,
   });
 });
 
@@ -819,6 +867,8 @@ app.get(`${v2UrlPath}/faq/shipping`, (request, response) => {
   response.render(`${v2ViewsPath}/shippingfaqV2.html`, {
     ...v2BaseContext,
     layout: "./basev2.html",
+    loggedIn: request.session.loggedIn,
+    userFirstName: request.session.firstName,
   });
 });
 
@@ -826,6 +876,8 @@ app.get(`${v2UrlPath}/terms`, (request, response) => {
   response.render(`${v2ViewsPath}/terms&conditionsV2.html`, {
     ...v2BaseContext,
     layout: "./basev2.html",
+    loggedIn: request.session.loggedIn,
+    userFirstName: request.session.firstName,
   });
 });
 
@@ -833,6 +885,8 @@ app.get(`${v2UrlPath}/contact`, (request, response) => {
   response.render(`${v2ViewsPath}/contactusV2.html`, {
     ...v2BaseContext,
     layout: "./basev2.html",
+    loggedIn: request.session.loggedIn,
+    userFirstName: request.session.firstName,
   });
 });
 
@@ -841,6 +895,8 @@ app.get(`${v2UrlPath}/signout`, (request, response) => {
   response.render(`${v2ViewsPath}/signedoutV2.html`, {
     ...v2BaseContext,
     layout: "./authv2.html",
+    loggedIn: request.session.loggedIn,
+    userFirstName: request.session.firstName,
   });
 });
 
@@ -943,6 +999,49 @@ app.post(
     }
   }
 );
+
+app.post(`${commonUrlPath}/edituser`, async (request, response) => {
+    let password = null;
+    if (request.body.newpassword !== "") {
+      password = request.body.newpassword;
+
+      if (password !== request.body.reenterpassword) {
+        request.session.passwordMismatch = true;
+        if (request.body.version == 2) {
+          response.redirect(`${v2UrlPath}/account`);
+          return;
+        } else {
+          response.redirect(`${v1UrlPath}/account`);
+          return;
+        }
+      }
+    }
+
+    await database.editUser(
+      request.body.id,
+      request.body.firstname,
+      request.body.lastname,
+      request.body.email,
+      request.body.address,
+      request.body.city,
+      request.body.state,
+      request.body.country,
+      request.body.zipcode,
+      request.body.cardname,
+      request.body.cardnumber,
+      request.body.expirationdate,
+      request.body.cvvcode,
+      request.body.billingzipcode,
+      password
+    );
+    request.session.updateSuccess = true;
+
+    if (request.body.version == 1) {
+      response.redirect(`${v1UrlPath}/account`);
+    } else {
+      response.redirect(`${v2UrlPath}/account`);
+    }
+});
 
 app.listen(port, () => {
   console.log(`Server listening on port ${port}`);

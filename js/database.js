@@ -152,29 +152,28 @@ async function addUser(
 
 module.exports.addUser = addUser;
 
-async function editUser(
-  id,
-  firstName,
-  lastName,
-  emailAddress,
-  password,
-  address,
-  city,
-  state,
-  country,
-  zipCode
-) {
-  await knex(usersTableName).where({ id: id }).update({
+async function editUser(id, firstName, lastName, emailAddress, address, city, state, country, zipCode, cardName, cardNumber, cardExpirationDate, cardCvvCode, cardZipCode, password = null) {
+  let u = {
     first_name: firstName,
     last_name: lastName,
     email: emailAddress,
-    user_password: password,
     user_address: address,
     user_city: city,
     user_state: state,
     user_country: country,
     user_zip_code: zipCode,
-  });
+    card_name: cardName,
+    card_number: cardNumber,
+    card_expiration_date: cardExpirationDate,
+    card_cvv_code: cardCvvCode,
+    card_zip_code: cardZipCode
+  };
+
+  if (password != null) {
+    u["user_password"] = password;
+  }
+
+  await knex(usersTableName).where({ id: id }).update(u);
 }
 
 module.exports.editUser = editUser;
