@@ -29,30 +29,33 @@
             <p class="card-text">Model : N/A</p>
             {{/if}}
             <p class="card-text">${{prod.price}}</p>
-            {{#if loggedIn}}
-            <form method="get" action="/cart">
-              <div class="row pt-4 mt-2 px-3 mb-4">
-                <input
-                  type="hidden"
-                  name="name"
-                  id="name"
-                  value="{{prod.product_name}}"
-                />
-                <input
-                  type="hidden"
-                  name="price"
-                  id="price"
-                  value="{{prod.price}}"
-                />
-                <input
-                  class="btn btn-dark btn-block"
-                  type="submit"
-                  value="ADD TO CART"
-                />
-              </div>
-              <input type="hidden" id="version" name="version" value="1" />
-            </form>
-            {{/if}}
+            <div class="row pt-4 mt-2 px-3 mb-4">
+              {{#if loggedIn}}
+              <form method="get" action="/cart">
+                  <input
+                    type="hidden"
+                    name="name"
+                    id="name"
+                    value="{{prod.product_name}}"
+                  />
+                  <input
+                    type="hidden"
+                    name="price"
+                    id="price"
+                    value="{{prod.price}}"
+                  />
+                  <input
+                    class="btn btn-dark btn-block"
+                    type="submit"
+                    value="ADD TO CART"
+                  />
+                
+                <input type="hidden" id="version" name="version" value="1" />
+              </form>
+              {{else}}
+              <h6><a href="/signin">Sign in</a> or <a href="/signup">sign up</a> to add products to cart.</h6>
+              {{/if}}
+            </div>
           </div>
         </div>
       </div>

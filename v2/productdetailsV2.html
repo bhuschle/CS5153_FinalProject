@@ -29,6 +29,8 @@
               <div>
                 <button class="add-cart cart btn btn-lg w-100" style="background-color: #1a4918; color:white"> Add to cart </button>
               </div>
+              {{else}}
+              <h6><a href="{{urlRoot}}/signin">Sign in</a> or <a href="{{urlRoot}}/signup">sign up</a> to add products to cart.</h6>
               {{/if}}
             </div>
           </div>

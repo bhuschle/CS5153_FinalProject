@@ -8,7 +8,7 @@
         class="card-img-top rounded"
         style="height: 40rem; object-fit: contain;"
         src="{{imageRoot}}/{{featured.image1_path}}"
-        alt="Card image cap"
+        alt="{{featured.alt1_text}}"
       />
       <div class="card-body">
         <h5 class="card-title">{{featured.product_name}}</h5>
@@ -63,11 +63,13 @@
               <button class="btn w-100" style = "background-color: #4b1b25; color:white">More Info</button>
             </form>
           </div>
+          {{#if ../loggedIn}}
           <div class="card-footer">
                 <div>
                   <button class="add-cart cart btn w-100" style="background-color: #1a4918; color:white"> Add to cart </button>
                 </div>
           </div>
+          {{/if}}
         </div>
       </div>
       {{else}}

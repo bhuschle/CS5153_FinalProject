@@ -78,11 +78,13 @@
                   <button class="btn w-100" style = "background-color: #4b1b25; color:white">More Info</button>
                 </form>
               </div>
+              {{#if ../loggedIn}}
               <div class="card-footer">
-                    <div>
-                      <button class="add-cart cart btn w-100" style="background-color: #1a4918; color:white"> Add to cart </button>
-                    </div>
+                <div>
+                  <button class="add-cart cart btn w-100" style="background-color: #1a4918; color:white"> Add to cart </button>
+                </div>
               </div>
+              {{/if}}
             </div>
           </div>
           {{else}}
