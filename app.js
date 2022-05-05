@@ -79,15 +79,21 @@ app.get(`${v1UrlPath}/`, async (request, response) => {
 });
 
 app.get(`${v1UrlPath}/account`, async (request, response) => {
+  let passwordMismatch = request.session.passwordMismatch;
+  request.session.passwordMismatch = null;
+  
+  let updateSuccess = request.session.updateSuccess;
+  request.session.updateSuccess = null;
   let user = await database.getUser({ id: request.session.userId });
 
   response.render(`${v1ViewsPath}/account.html`, {
     ...v1BaseContext,
-    userFirstName: request.session.firstName,
-    userId: request.session.userId,
-    loggedIn: request.session.loggedIn,
     layout: "./basev1.html",
+    userFirstName: request.session.firstName,
+    loggedIn: request.session.loggedIn,
     user: user,
+    passwordMismatch: passwordMismatch,
+    updateSuccess: updateSuccess,
   });
 });
 
