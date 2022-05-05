@@ -65,8 +65,115 @@
       .navbar-toggler .navbar-toggler-icon {
         background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(75, 27, 37, 1)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 8h24M4 16h24M4 24h24'/%3E%3C/svg%3E");
       }
+
+      #pagecontainer {
+            min-height: 100%;
+        }
+
+        #footer {
+            position: relative;
+            height: 150px;            /* Footer height */
+            clear:both;
+        }
+
+
+        html,body{
+            height:100%;
+        }
+          
+      .cardHelp {
+          border: 1px solid #4b1b25; 
+          /* border-color: #4b1b25; */
+          /* background: #eee */
+      }
+
+      .searchHelp {
+          width: 80%;
+          margin-bottom: auto;
+          margin-top: 20px;
+          height: 50px;
+          background-color: #fff;
+          border: 1.5px solid #4b1b25; 
+          padding: 10px;
+          border-radius: 5px
+      }
+
+      .searchHelp-input {
+          color: white;
+          border: 0;
+          outline: 0;
+          background: none;
+          width: 0;
+          margin-top: 5px;
+          caret-color: transparent;
+          line-height: 20px;
+          transition: width 0.4s linear
+      }
+
+      .searchHelp .searchHelp-input {
+          padding: 0 10px;
+          width: 100%;
+          caret-color: #4b1b25;
+          font-size: 19px;
+          font-weight: 300;
+          color: black;
+          transition: width 0.4s linear
+      }
+
+      /* .search-icon {
+          height: 34px;
+          width: 34px;
+          float: right;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          color: white;
+          background-color: #536bf6;
+          font-size: 10px;
+          bottom: 30px;
+          position: relative;
+          border-radius: 5px
+      }
+
+      .search-icon:hover {
+          color: #fff !important
+      } */
+
+      .helplink, .helplink:hover {
+          color:#4b1b25 ;
+          /* text-decoration: none */
+      }
+
+      .cardHelp-inner {
+          position: relative;
+          display: flex;
+          flex-direction: column;
+          /* min-width: 0; */
+          /* word-wrap: break-word; */
+          background-color: #d7cec7;
+          /* background-clip: border-box;  */
+          border: 1px solid #4b1b25;
+          border-radius: .25rem; 
+          /* border: none; */
+          /* cursor: pointer; */
+          /* transition: all 2s */
+      }
+
+      /* .card-inner:hover {
+          transform: scale(1.1)
+      } */
+
+          .mg-text span{
+          font-size: 16px
+      }
+          /*
+      .mg-text {
+          line-height: 14px
+      } */
     </style>
 
+<div id="pagecontainer">
+  <div>
     <!-- Top navigation bar -->
     <nav
       class="navbar sticky-top navbar-expand-sm text-white"
@@ -300,13 +407,17 @@
 
     {{{ body }}}
 
+    </div>
+  </div>
+
     <!-- footer section -->
     <footer
+      id="footer"
       class="text-center text-lg-start text-white"
       style="background-color: #d7cec7;"
     >
       <!-- 1st footer -->
-      <div class="container p-4 pb-0">
+      <div class="container px-4 pt-4">
         <div class="row">
           <div class="col-lg-4 col-md-6 mb-4 mb-md-0">
             <h5 class="text-uppercase" style="color: #4b1b25;">About Us</h5>
@@ -345,34 +456,6 @@
           </div>
         </div>
       </div>
-
-        <!-- 1st footer -->
-        <div class="container p-4 pb-0">        
-          <div class="row">
-  
-            <div class="col-lg-4 col-md-6 mb-4 mb-md-0">
-                <h5 class="text-uppercase" style="color: #4b1b25">About Us</h5>
-                <ul class="list-unstyled mb-0">
-                    <li> <a href="{{urlRoot}}/aboutusV2.html" class="footerLink" style="color: #4b1b25">About Tech N' Stuff</a> </li>
-                    <li> <a href="{{urlRoot}}/locations" class="footerLink">Locations</a> </li>
-                </ul>
-            </div>
-            <div class="col-lg-4 col-md-6 mb-4 mb-md-0">
-                <h5 class="text-uppercase" style="color: #4b1b25">Customer Service</h5>
-                <ul class="list-unstyled mb-0">
-                    <li> <a href="{{urlRoot}}/faqV2.html" class="footerLink" style="color: #4b1b25">FAQ</a> </li>
-                    <li> <a href="{{urlRoot}}/returnfaqV2.html" class="footerLink">Return Policy</a> </li>
-                </ul>
-            </div>
-            <div class="col-lg-4 col-md-6 mb-4 mb-md-0">
-                <h5 class="text-uppercase">Contact Us</h5>
-                <p> Call us: 123-456-7890  (Mon-Fri 8am-6pm CST) <br/>
-                    Email: customercare@technstuff.com <br/>
-                </p>
-            </div>
-  
-          </div>     
-        </div>
         
         <!-- 2nd footer -->
         <div class="text-center p-1" style="background-color: #4b1b25; height:2rem">

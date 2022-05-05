@@ -460,11 +460,17 @@ app.get(`${v2UrlPath}`, (request, response) => {
 });
 
 app.get(`${v2UrlPath}/account`, (request, response) => {
-  response.render(`${v2ViewsPath}/account.html`, { layout: false });
+  response.render(`${v2ViewsPath}/account.html`, {
+    ...v2BaseContext,
+    layout: false
+  });
 });
 
 app.get(`${v2UrlPath}/cart`, (request, response) => {
-  response.render(`${v2ViewsPath}/cartV2.html`, { layout: './basev2.html' });
+  response.render(`${v2ViewsPath}/cartV2.html`,{
+    ...v2BaseContext,
+    layout: './basev2.html'
+  });
 });
 
 app.get(`${v2UrlPath}/desktops`, async (request, response) => {
@@ -645,56 +651,56 @@ app.get(`${v2UrlPath}/signin`, (request, response) => {
 app.get(`${v2UrlPath}/about`, (request, response) => {
   response.render(`${v2ViewsPath}/aboutusV2.html`, {
     ...v2BaseContext,
-    layout: "./helpv2.html",
+    layout: "./basev2.html",
   });
 });
 
 app.get(`${v2UrlPath}/faq`, (request, response) => {
   response.render(`${v2ViewsPath}/faqV2.html`, {
     ...v2BaseContext,
-    layout: "./helpv2.html",
+    layout: "./basev2.html",
   });
 });
 
 app.get(`${v2UrlPath}/faq/accounts`, (request, response) => {
   response.render(`${v2ViewsPath}/accountsfaqV2.html`, {
     ...v2BaseContext,
-    layout: "./helpv2.html",
+    layout: "./basev2.html",
   });
 });
 
 app.get(`${v2UrlPath}/faq/returns`, (request, response) => {
   response.render(`${v2ViewsPath}/returnfaqV2.html`, {
     ...v2BaseContext,
-    layout: "./helpv2.html",
+    layout: "./basev2.html",
   });
 });
 
 app.get(`${v2UrlPath}/faq/payments`, (request, response) => {
   response.render(`${v2ViewsPath}/paymentsfaqV2.html`, {
     ...v2BaseContext,
-    layout: "./helpv2.html",
+    layout: "./basev2.html",
   });
 });
 
 app.get(`${v2UrlPath}/faq/shipping`, (request, response) => {
   response.render(`${v2ViewsPath}/shippingfaqV2.html`, {
     ...v2BaseContext,
-    layout: "./helpv2.html",
+    layout: "./basev2.html",
   });
 });
 
 app.get(`${v2UrlPath}/terms`, (request, response) => {
   response.render(`${v2ViewsPath}/terms&conditionsV2.html`, {
     ...v2BaseContext,
-    layout: "./helpv2.html",
+    layout: "./basev2.html",
   });
 });
 
 app.get(`${v2UrlPath}/contact`, (request, response) => {
   response.render(`${v2ViewsPath}/contactusV2.html`, {
     ...v2BaseContext,
-    layout: "./helpv2.html",
+    layout: "./basev2.html",
   });
 });
 
