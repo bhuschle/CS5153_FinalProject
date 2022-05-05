@@ -65,6 +65,26 @@
       .navbar-toggler .navbar-toggler-icon {
         background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(75, 27, 37, 1)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 8h24M4 16h24M4 24h24'/%3E%3C/svg%3E");
       }
+
+      #pagecontainer {
+            min-height: 100%;
+        }
+
+        #contentwrap {
+            overflow:auto;
+        }
+
+        #footer {
+            position: relative;
+            height: 150px;            /* Footer height */
+            clear:both;
+        }
+
+
+        html,body{
+            height:100%;
+        }
+          
       .cardHelp {
           border: 1px solid #4b1b25; 
           /* border-color: #4b1b25; */
@@ -391,8 +411,12 @@
 
     {{{ body }}}
 
+    </div>
+  </div>
+
     <!-- footer section -->
     <footer
+      id="footer"
       class="text-center text-lg-start text-white"
       style="background-color: #d7cec7;"
     >
