@@ -547,18 +547,6 @@ app.get(`${v2UrlPath}/checkoutV2`, async (request, response) => {
   });
 });
 
-
-app.get(`${v2UrlPath}/productinfo`, async (request, response) => {
-  let product = await database.getProductById(request.query["id"]);
-
-  response.render(`${v2ViewsPath}/productdetailsV2.html`, {
-    ...v2BaseContext,
-    userFirstName: request.session.firstName,
-    loggedIn: request.session.loggedIn,
-    layout: "./basev2.html",
-    prod: product,
-    productsString: JSON.stringify(product),
-
 app.get(`${v2UrlPath}/purchasesuccV2`, (request, response) => {
   response.render(`${v2ViewsPath}/purchasesuccV2.html`, {
     ...v2BaseContext,
