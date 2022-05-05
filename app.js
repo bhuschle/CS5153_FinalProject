@@ -499,6 +499,19 @@ app.get(`${v2UrlPath}/cart`, (request, response) => {
   });
 });
 
+app.get(`${v2UrlPath}/productinfo`, async (request, response) => {
+  let product = await database.getProductById(request.query["id"]);
+
+  response.render(`${v2ViewsPath}/productdetailsV2.html`, {
+    ...v2BaseContext,
+    userFirstName: request.session.firstName,
+    loggedIn: request.session.loggedIn,
+    layout: "./basev2.html",
+    prod: product,
+    productsString: JSON.stringify(product),
+  });
+});
+
 app.get(`${v2UrlPath}/desktops`, async (request, response) => {
   let subcategoryId = "desktops";
   let products = await database.getProducts({ subcategory: subcategoryId });

@@ -1,4 +1,7 @@
 
+<script type="application/javascript">
+  var productsArray = [{{{productsString}}}];
+</script>
 <div class="row">
     <div class="container-fluid">
       <div class="card mb-3 mx-4 my-4">
@@ -23,26 +26,9 @@
               <p class="card-text">Model : {{prod.model_number}}</p>
               <p class="card-text">${{prod.price}}</p>
               {{#if loggedIn}}
-              <form method="get" action="/cart">
-                <div class="row pt-4 mt-2 px-3 mb-4">
-                  <input
-                    type="hidden"
-                    name="name"
-                    id="name"
-                    value="{{prod.product_name}}"
-                  />
-                  <input
-                    type="hidden"
-                    name="price"
-                    id="price"
-                    value="{{prod.price}}"
-                  />
-                  <div>
-                    <button class="add-cart cart btn w-100" style="background-color: #1a4918; color:white"> ADD TO CART </button>
-                  </div>
-                </div>
-                <input type="hidden" id="version" name="version" value="1" />
-              </form>
+              <div>
+                <button class="add-cart cart btn btn-lg w-100" style="background-color: #1a4918; color:white"> Add to cart </button>
+              </div>
               {{/if}}
             </div>
           </div>
