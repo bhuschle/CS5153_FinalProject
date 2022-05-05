@@ -478,6 +478,20 @@ app.get(`${v2UrlPath}/cart`, (request, response) => {
   });
 });
 
+app.get(`${v2UrlPath}/checkoutV2`, (request, response) => {
+  response.render(`${v2ViewsPath}/checkoutV2.html`, {
+    ...v2BaseContext,
+    layout: './basev2.html'
+  });
+});
+
+app.get(`${v2UrlPath}/purchasesuccV2`, (request, response) => {
+  response.render(`${v2ViewsPath}/purchasesuccV2.html`, {
+    ...v2BaseContext,
+    layout: './authv2.html'
+  });
+});
+
 app.get(`${v2UrlPath}/desktops`, async (request, response) => {
   let subcategoryId = "desktops";
   let products = await database.getProducts({ subcategory: subcategoryId });
