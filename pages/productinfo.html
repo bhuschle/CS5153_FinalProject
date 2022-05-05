@@ -5,7 +5,7 @@
         <div class="col-md-4 text-center border-right">
           <img
             class="card-img-top rounded px-2 my-2"
-            style="height: 25rem; object-fit: contain;"
+            style="height: 25rem; object-fit: contain"
             src="/static/img/{{prod.image1_path}}"
             alt="{{prod.alt1_text}}"
           />
@@ -22,8 +22,7 @@
             <p class="card-text">Color : {{prod.color}}</p>
             {{else}}
             <p class="card-text">Color : N/A</p>
-            {{/if}}
-            {{#if prod.model_number}}
+            {{/if}} {{#if prod.model_number}}
             <p class="card-text">Model : {{prod.model_number}}</p>
             {{else}}
             <p class="card-text">Model : N/A</p>
@@ -31,29 +30,30 @@
             <p class="card-text">${{prod.price}}</p>
             <div class="row pt-4 mt-2 px-3 mb-4">
               {{#if loggedIn}}
-              <form method="get" action="/cart">
-                  <input
-                    type="hidden"
-                    name="name"
-                    id="name"
-                    value="{{prod.product_name}}"
-                  />
-                  <input
-                    type="hidden"
-                    name="price"
-                    id="price"
-                    value="{{prod.price}}"
-                  />
-                  <input
-                    class="btn btn-dark btn-block"
-                    type="submit"
-                    value="ADD TO CART"
-                  />
-                
-                <input type="hidden" id="version" name="version" value="1" />
+              <form method="get" action="/addtocart">
+                <input
+                  type="hidden"
+                  name="name"
+                  id="name"
+                  value="{{prod.product_name}}"
+                />
+                <input
+                  type="hidden"
+                  name="price"
+                  id="price"
+                  value="{{prod.price}}"
+                />
+                <input
+                  class="btn btn-dark btn-block"
+                  type="submit"
+                  value="ADD TO CART"
+                />
               </form>
               {{else}}
-              <h6><a href="/signin">Sign in</a> or <a href="/signup">sign up</a> to add products to cart.</h6>
+              <h6>
+                <a href="/signin">Sign in</a> or
+                <a href="/signup">sign up</a> to add products to cart.
+              </h6>
               {{/if}}
             </div>
           </div>

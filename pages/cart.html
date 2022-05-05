@@ -8,14 +8,13 @@
           {{#each order}}
           <div class="row">
             <p>
-              {{this.id}} - {{this.order_name}} - {{this.order_price}}
+              {{this.order_name}} - {{this.order_price}}
             </p>
           </div>
           {{else}}
           <p>No products to display.</p>
           {{/each}}
         </div>
-        <p>Total : {{total}}</p>
       </div>
     </div>
     <div class="col-6">

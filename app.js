@@ -4,6 +4,7 @@ const bodyParser = require("body-parser");
 const express = require("express");
 const handlebars = require("express-handlebars");
 const session = require("express-session");
+const { syncBuiltinESMExports } = require("module");
 const app = express();
 const port = 8080;
 
@@ -50,6 +51,10 @@ const v2BaseContext = {
   urlRoot: v2UrlPath,
 };
 
+function sleep(millis) {
+  return new Promise((resolve) => setTimeout(resolve, millis));
+}
+
 function filterAndSort(products, brands, sortBy) {
   products = products.filter((element) => brands.includes(element["brand"]));
   if (sortBy === "Low-to-high") {
@@ -81,7 +86,7 @@ app.get(`${v1UrlPath}/`, async (request, response) => {
 app.get(`${v1UrlPath}/account`, async (request, response) => {
   let passwordMismatch = request.session.passwordMismatch;
   request.session.passwordMismatch = null;
-  
+
   let updateSuccess = request.session.updateSuccess;
   request.session.updateSuccess = null;
   let user = await database.getUser({ id: request.session.userId });
@@ -97,14 +102,27 @@ app.get(`${v1UrlPath}/account`, async (request, response) => {
   });
 });
 
-app.get(`${v1UrlPath}/cart`, async (request, response) => {
+app.get(`${v1UrlPath}/addtocart`, async (request, response) => {
   let name = request.query["name"];
   let price = request.query["price"];
   if (price != null || name != null) {
     database.addToOrder(name, price);
-    response.redirect(`${v1UrlPath}/cart`);
   }
 
+  const util = require("util");
+  const sleep = util.promisify(setTimeout);
+
+  await sleep(2000);
+
+  response.redirect(`${v1UrlPath}/cart`);
+
+  response.render(`${v1ViewsPath}/addtocart.html`, {
+    ...v1BaseContext,
+    layout: "./auth.html",
+  });
+});
+
+app.get(`${v1UrlPath}/cart`, async (request, response) => {
   let orders = await database.getOrder();
   let user = await database.getUser({ id: request.session.userId });
 
@@ -462,7 +480,8 @@ app.get(`${v1UrlPath}/signout`, (request, response) => {
   });
 });
 
-app.get(`${v1UrlPath}/search`,
+app.get(
+  `${v1UrlPath}/search`,
   bodyParser.urlencoded(),
   async (request, response) => {
     let query = request.query["query"];
@@ -496,9 +515,9 @@ app.get(`${v1UrlPath}/search`,
 app.get(`${v2UrlPath}`, async (request, response) => {
   let products = await database.getAllProducts();
   let featured = await database.getProductById(4);
-  let brands = Array.from(new Set(products.map(x => x["brand"])));
+  let brands = Array.from(new Set(products.map((x) => x["brand"])));
   products = filterAndSort(products, brands, "Best sellers");
-  
+
   response.render(`${v2ViewsPath}/index.html`, {
     ...v2BaseContext,
     userFirstName: request.session.firstName,
@@ -512,7 +531,7 @@ app.get(`${v2UrlPath}`, async (request, response) => {
 app.get(`${v2UrlPath}/account`, async (request, response) => {
   let passwordMismatch = request.session.passwordMismatch;
   request.session.passwordMismatch = null;
-  
+
   let updateSuccess = request.session.updateSuccess;
   request.session.updateSuccess = null;
   let user = await database.getUser({ id: request.session.userId });
@@ -529,11 +548,11 @@ app.get(`${v2UrlPath}/account`, async (request, response) => {
 });
 
 app.get(`${v2UrlPath}/cart`, (request, response) => {
-  response.render(`${v2ViewsPath}/cartV2.html`,{
+  response.render(`${v2ViewsPath}/cartV2.html`, {
     ...v2BaseContext,
     userFirstName: request.session.firstName,
     loggedIn: request.session.loggedIn,
-    layout: './basev2.html'
+    layout: "./basev2.html",
   });
 });
 
@@ -541,17 +560,15 @@ app.get(`${v2UrlPath}/checkoutV2`, async (request, response) => {
   let user = await database.getUser({ id: request.session.userId });
   response.render(`${v2ViewsPath}/checkoutV2.html`, {
     ...v2BaseContext,
-    layout: './basev2.html',
+    layout: "./basev2.html",
     user: user,
-
   });
 });
 
 app.get(`${v2UrlPath}/purchasesuccV2`, (request, response) => {
   response.render(`${v2ViewsPath}/purchasesuccV2.html`, {
     ...v2BaseContext,
-    layout: './authv2.html'
-
+    layout: "./authv2.html",
   });
 });
 
@@ -781,7 +798,8 @@ app.get(`${v2UrlPath}/laptops`, async (request, response) => {
   });
 });
 
-app.get(`${v2UrlPath}/search`,
+app.get(
+  `${v2UrlPath}/search`,
   bodyParser.urlencoded(),
   async (request, response) => {
     let query = request.query["query"];
@@ -814,7 +832,7 @@ app.get(`${v2UrlPath}/search`,
 app.get(`${v2UrlPath}/locations`, (request, response) => {
   response.render(`${v2ViewsPath}/locationsV2.html`, {
     ...v2BaseContext,
-    layout:"./basev2.html",
+    layout: "./basev2.html",
     userFirstName: request.session.firstName,
   });
 });
@@ -988,18 +1006,6 @@ app.post(
 );
 
 app.post(
-  `${commonUrlPath}/addtocart`,
-  bodyParser.urlencoded(),
-  async (request, response) => {
-    if (request.body.version == 1) {
-      response.redirect(`${v1UrlPath}/cart`);
-    } else {
-      response.redirect(`${v2UrlPath}/cart`);
-    }
-  }
-);
-
-app.post(
   `${commonUrlPath}/purchase`,
   bodyParser.urlencoded(),
   async (request, response) => {
@@ -1012,46 +1018,46 @@ app.post(
 );
 
 app.post(`${commonUrlPath}/edituser`, async (request, response) => {
-    let password = null;
-    if (request.body.newpassword !== "") {
-      password = request.body.newpassword;
+  let password = null;
+  if (request.body.newpassword !== "") {
+    password = request.body.newpassword;
 
-      if (password !== request.body.reenterpassword) {
-        request.session.passwordMismatch = true;
-        if (request.body.version == 2) {
-          response.redirect(`${v2UrlPath}/account`);
-          return;
-        } else {
-          response.redirect(`${v1UrlPath}/account`);
-          return;
-        }
+    if (password !== request.body.reenterpassword) {
+      request.session.passwordMismatch = true;
+      if (request.body.version == 2) {
+        response.redirect(`${v2UrlPath}/account`);
+        return;
+      } else {
+        response.redirect(`${v1UrlPath}/account`);
+        return;
       }
     }
+  }
 
-    await database.editUser(
-      request.body.id,
-      request.body.firstname,
-      request.body.lastname,
-      request.body.email,
-      request.body.address,
-      request.body.city,
-      request.body.state,
-      request.body.country,
-      request.body.zipcode,
-      request.body.cardname,
-      request.body.cardnumber,
-      request.body.expirationdate,
-      request.body.cvvcode,
-      request.body.billingzipcode,
-      password
-    );
-    request.session.updateSuccess = true;
+  await database.editUser(
+    request.body.id,
+    request.body.firstname,
+    request.body.lastname,
+    request.body.email,
+    request.body.address,
+    request.body.city,
+    request.body.state,
+    request.body.country,
+    request.body.zipcode,
+    request.body.cardname,
+    request.body.cardnumber,
+    request.body.expirationdate,
+    request.body.cvvcode,
+    request.body.billingzipcode,
+    password
+  );
+  request.session.updateSuccess = true;
 
-    if (request.body.version == 1) {
-      response.redirect(`${v1UrlPath}/account`);
-    } else {
-      response.redirect(`${v2UrlPath}/account`);
-    }
+  if (request.body.version == 1) {
+    response.redirect(`${v1UrlPath}/account`);
+  } else {
+    response.redirect(`${v2UrlPath}/account`);
+  }
 });
 
 app.listen(port, () => {
