@@ -84,6 +84,7 @@ app.get(`${v1UrlPath}/account`, async (request, response) => {
   response.render(`${v1ViewsPath}/account.html`, {
     ...v1BaseContext,
     userFirstName: request.session.firstName,
+    userId: request.session.userId,
     loggedIn: request.session.loggedIn,
     layout: "./basev1.html",
     user: user,
@@ -465,6 +466,11 @@ app.get(`${v2UrlPath}`, (request, response) => {
 });
 
 app.get(`${v2UrlPath}/account`, async (request, response) => {
+  let passwordMismatch = request.session.passwordMismatch;
+  request.session.passwordMismatch = null;
+  
+  let updateSuccess = request.session.updateSuccess;
+  request.session.updateSuccess = null;
   let user = await database.getUser({ id: request.session.userId });
 
   response.render(`${v2ViewsPath}/myaccountV2.html`, {
@@ -473,6 +479,8 @@ app.get(`${v2UrlPath}/account`, async (request, response) => {
     userFirstName: request.session.firstName,
     loggedIn: request.session.loggedIn,
     user: user,
+    passwordMismatch: passwordMismatch,
+    updateSuccess: updateSuccess,
   });
 });
 
@@ -845,6 +853,49 @@ app.post(
     }
   }
 );
+
+app.post(`${commonUrlPath}/edituser`, async (request, response) => {
+    let password = null;
+    if (request.body.newpassword !== "") {
+      password = request.body.newpassword;
+
+      if (password !== request.body.reenterpassword) {
+        request.session.passwordMismatch = true;
+        if (request.body.version == 2) {
+          response.redirect(`${v2UrlPath}/account`);
+          return;
+        } else {
+          response.redirect(`${v1UrlPath}/account`);
+          return;
+        }
+      }
+    }
+
+    await database.editUser(
+      request.body.id,
+      request.body.firstname,
+      request.body.lastname,
+      request.body.email,
+      request.body.address,
+      request.body.city,
+      request.body.state,
+      request.body.country,
+      request.body.zipcode,
+      request.body.cardname,
+      request.body.cardnumber,
+      request.body.expirationdate,
+      request.body.cvvcode,
+      request.body.billingzipcode,
+      password
+    );
+    request.session.updateSuccess = true;
+
+    if (request.body.version == 1) {
+      response.redirect(`${v1UrlPath}/account`);
+    } else {
+      response.redirect(`${v2UrlPath}/account`);
+    }
+});
 
 app.listen(port, () => {
   console.log(`Server listening on port ${port}`);
