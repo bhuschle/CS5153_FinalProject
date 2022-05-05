@@ -85,6 +85,23 @@ async function getProducts({
 
 module.exports.getProducts = getProducts;
 
+
+async function searchProducts(query) {
+  let products = knex(productsTableName)
+  .whereILike("product_name", `%${query}%`)
+  .orWhereILike("category", `%${query}%`)
+  .orWhereILike("subcategory", `%${query}%`)
+  .orWhereILike("brand", `%${query}%`)
+  .orWhereILike("model_number", `%${query}%`)
+
+  return products.then(function (r) {
+    return JSON.parse(JSON.stringify(r));
+  });
+}
+
+module.exports.searchProducts = searchProducts;
+
+
 async function addUser(
   firstName,
   lastName,

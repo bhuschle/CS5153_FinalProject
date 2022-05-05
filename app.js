@@ -596,6 +596,35 @@ app.get(`${v2UrlPath}/laptops`, async (request, response) => {
   });
 });
 
+app.get(`${v2UrlPath}/search`,
+  bodyParser.urlencoded(),
+  async (request, response) => {
+    let query = request.query["query"];
+    delete request.query["query"];
+    let products = await database.searchProducts(query);
+    brands = new Set(products.map((x) => x["brand"]));
+
+    if (Object.keys(request.query).length !== 0) {
+      let filterBrands = Object.keys(request.query);
+      delete filterBrands["sortby"];
+      products = filterAndSort(products, filterBrands, request.query["sortby"]);
+    }
+
+    response.render(`${v2ViewsPath}/productpageV2.html`, {
+      ...v2BaseContext,
+      loggedIn: request.session.loggedIn,
+      layout: "./basev2.html",
+      products: products,
+      productsString: JSON.stringify(products),
+      category: "Search",
+      subcategory: "Results",
+      subcategoryId: "search",
+      query: query,
+      brands: brands,
+    });
+  }
+);
+
 app.get(`${v2UrlPath}/locations`, (request, response) => {
   response.render(`${v2ViewsPath}/locationsV2.html`, {
     ...v2BaseContext,
