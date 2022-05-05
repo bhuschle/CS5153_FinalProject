@@ -474,6 +474,8 @@ app.get(`${v2UrlPath}/account`, async (request, response) => {
 app.get(`${v2UrlPath}/cart`, (request, response) => {
   response.render(`${v2ViewsPath}/cartV2.html`,{
     ...v2BaseContext,
+    userFirstName: request.session.firstName,
+    loggedIn: request.session.loggedIn,
     layout: './basev2.html'
   });
 });
@@ -572,6 +574,7 @@ app.get(
 
     response.render(`${v2ViewsPath}/productpageV2.html`, {
       ...v2BaseContext,
+      userFirstName: request.session.firstName,
       loggedIn: request.session.loggedIn,
       layout: "./basev2.html",
       products: products,
@@ -623,6 +626,7 @@ app.get(`${v2UrlPath}/search`,
 
     response.render(`${v2ViewsPath}/productpageV2.html`, {
       ...v2BaseContext,
+      userFirstName: request.session.firstName,
       loggedIn: request.session.loggedIn,
       layout: "./basev2.html",
       products: products,
@@ -639,7 +643,8 @@ app.get(`${v2UrlPath}/search`,
 app.get(`${v2UrlPath}/locations`, (request, response) => {
   response.render(`${v2ViewsPath}/locationsV2.html`, {
     ...v2BaseContext,
-    layout: false,
+    layout:"./basev2.html",
+    userFirstName: request.session.firstName,
   });
 });
 
@@ -657,6 +662,8 @@ app.get(`${v2UrlPath}/about`, (request, response) => {
   response.render(`${v2ViewsPath}/aboutusV2.html`, {
     ...v2BaseContext,
     layout: "./basev2.html",
+    loggedIn: request.session.loggedIn,
+    userFirstName: request.session.firstName,
   });
 });
 
@@ -664,6 +671,8 @@ app.get(`${v2UrlPath}/faq`, (request, response) => {
   response.render(`${v2ViewsPath}/faqV2.html`, {
     ...v2BaseContext,
     layout: "./basev2.html",
+    loggedIn: request.session.loggedIn,
+    userFirstName: request.session.firstName,
   });
 });
 
@@ -671,6 +680,8 @@ app.get(`${v2UrlPath}/faq/accounts`, (request, response) => {
   response.render(`${v2ViewsPath}/accountsfaqV2.html`, {
     ...v2BaseContext,
     layout: "./basev2.html",
+    loggedIn: request.session.loggedIn,
+    userFirstName: request.session.firstName,
   });
 });
 
@@ -678,6 +689,8 @@ app.get(`${v2UrlPath}/faq/returns`, (request, response) => {
   response.render(`${v2ViewsPath}/returnfaqV2.html`, {
     ...v2BaseContext,
     layout: "./basev2.html",
+    loggedIn: request.session.loggedIn,
+    userFirstName: request.session.firstName,
   });
 });
 
@@ -685,6 +698,8 @@ app.get(`${v2UrlPath}/faq/payments`, (request, response) => {
   response.render(`${v2ViewsPath}/paymentsfaqV2.html`, {
     ...v2BaseContext,
     layout: "./basev2.html",
+    loggedIn: request.session.loggedIn,
+    userFirstName: request.session.firstName,
   });
 });
 
@@ -692,6 +707,8 @@ app.get(`${v2UrlPath}/faq/shipping`, (request, response) => {
   response.render(`${v2ViewsPath}/shippingfaqV2.html`, {
     ...v2BaseContext,
     layout: "./basev2.html",
+    loggedIn: request.session.loggedIn,
+    userFirstName: request.session.firstName,
   });
 });
 
@@ -699,6 +716,8 @@ app.get(`${v2UrlPath}/terms`, (request, response) => {
   response.render(`${v2ViewsPath}/terms&conditionsV2.html`, {
     ...v2BaseContext,
     layout: "./basev2.html",
+    loggedIn: request.session.loggedIn,
+    userFirstName: request.session.firstName,
   });
 });
 
@@ -706,6 +725,8 @@ app.get(`${v2UrlPath}/contact`, (request, response) => {
   response.render(`${v2ViewsPath}/contactusV2.html`, {
     ...v2BaseContext,
     layout: "./basev2.html",
+    loggedIn: request.session.loggedIn,
+    userFirstName: request.session.firstName,
   });
 });
 
@@ -714,6 +735,8 @@ app.get(`${v2UrlPath}/signout`, (request, response) => {
   response.render(`${v2ViewsPath}/signedoutV2.html`, {
     ...v2BaseContext,
     layout: "./authv2.html",
+    loggedIn: request.session.loggedIn,
+    userFirstName: request.session.firstName,
   });
 });
 
