@@ -537,6 +537,15 @@ app.get(`${v2UrlPath}/cart`, (request, response) => {
   });
 });
 
+app.get(`${v2UrlPath}/checkoutV2`, (request, response) => {
+  response.render(`${v2ViewsPath}/checkoutV2.html`, {
+    ...v2BaseContext,
+
+    layout: './basev2.html'
+  });
+});
+
+
 app.get(`${v2UrlPath}/productinfo`, async (request, response) => {
   let product = await database.getProductById(request.query["id"]);
 
@@ -547,6 +556,12 @@ app.get(`${v2UrlPath}/productinfo`, async (request, response) => {
     layout: "./basev2.html",
     prod: product,
     productsString: JSON.stringify(product),
+
+app.get(`${v2UrlPath}/purchasesuccV2`, (request, response) => {
+  response.render(`${v2ViewsPath}/purchasesuccV2.html`, {
+    ...v2BaseContext,
+    layout: './authv2.html'
+
   });
 });
 
