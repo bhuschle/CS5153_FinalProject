@@ -46,7 +46,7 @@
             <input
               class="btn btn-block"
               type="submit"
-              value="SORT & FILTER"
+              value="Sort & Filter"
               style = "background-color: #4b1b25; color:white"
             />
           </div>
@@ -58,13 +58,13 @@
         {{category}} / {{subcategory}}
         <h4>{{subcategory}}</h4>
   
-        <div class="row col-centered">
+        <div class="row d-flex flex-wrap col-centered">
           {{#each products}}
-          <div class="col-md d-flex align-items-stretch my-3">
+          <div class="m-2">
             <div class="card h-100 rounded" style="width: 15rem;">
               <img
-                class="card-img-top text-center rounded"
-                style="height: 13rem; width: 13rem;"
+                class="card-img-top w-100 text-center rounded"
+                style="height: 12rem; object-fit: contain;"
                 src="{{../imageRoot}}{{this.image1_path}}"
                 alt="{{this.alt1_text}}"
               />
@@ -75,7 +75,7 @@
               <div class="card-footer">
                 <form action="{{urlRoot}}/productdetailsV2" method="GET">
                   <input type="hidden" name="id" id="id" value="{{this.id}}" />
-                  <button class="btn w-100" style = "background-color: #4b1b25; color:white">MORE INFO</button>
+                  <button class="btn w-100" style = "background-color: #4b1b25; color:white">More Info</button>
                 </form>
               </div>
               <div class="card-footer">

@@ -85,6 +85,15 @@ async function getProducts({
 
 module.exports.getProducts = getProducts;
 
+async function getAllProducts() {
+  let products = knex(productsTableName);
+
+  return products.then(function (r) {
+    return JSON.parse(JSON.stringify(r));
+  });
+}
+
+module.exports.getAllProducts = getAllProducts;
 
 async function searchProducts(query) {
   let products = knex(productsTableName)

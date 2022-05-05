@@ -64,12 +64,17 @@ function filterAndSort(products, brands, sortBy) {
 
 // V1 INFORMATION
 
-app.get(`${v1UrlPath}/`, (request, response) => {
+app.get(`${v1UrlPath}/`, async (request, response) => {
+  let products = await database.getAllProducts();
+  let macbook = await database.getProductById(4);
+
   response.render(`${v1ViewsPath}/index.html`, {
     ...v1BaseContext,
     userFirstName: request.session.firstName,
     loggedIn: request.session.loggedIn,
     layout: "./basev1.html",
+    prod: products,
+    mac: macbook,
   });
 });
 
@@ -460,11 +465,17 @@ app.get(`${v2UrlPath}`, (request, response) => {
 });
 
 app.get(`${v2UrlPath}/account`, (request, response) => {
-  response.render(`${v2ViewsPath}/account.html`, { layout: false });
+  response.render(`${v2ViewsPath}/account.html`, {
+    ...v2BaseContext,
+    layout: false
+  });
 });
 
 app.get(`${v2UrlPath}/cart`, (request, response) => {
-  response.render(`${v2ViewsPath}/cartV2.html`, { layout: './basev2.html' });
+  response.render(`${v2ViewsPath}/cartV2.html`,{
+    ...v2BaseContext,
+    layout: './basev2.html'
+  });
 });
 
 app.get(`${v2UrlPath}/desktops`, async (request, response) => {
@@ -645,56 +656,56 @@ app.get(`${v2UrlPath}/signin`, (request, response) => {
 app.get(`${v2UrlPath}/about`, (request, response) => {
   response.render(`${v2ViewsPath}/aboutusV2.html`, {
     ...v2BaseContext,
-    layout: "./helpv2.html",
+    layout: "./basev2.html",
   });
 });
 
 app.get(`${v2UrlPath}/faq`, (request, response) => {
   response.render(`${v2ViewsPath}/faqV2.html`, {
     ...v2BaseContext,
-    layout: "./helpv2.html",
+    layout: "./basev2.html",
   });
 });
 
 app.get(`${v2UrlPath}/faq/accounts`, (request, response) => {
   response.render(`${v2ViewsPath}/accountsfaqV2.html`, {
     ...v2BaseContext,
-    layout: "./helpv2.html",
+    layout: "./basev2.html",
   });
 });
 
 app.get(`${v2UrlPath}/faq/returns`, (request, response) => {
   response.render(`${v2ViewsPath}/returnfaqV2.html`, {
     ...v2BaseContext,
-    layout: "./helpv2.html",
+    layout: "./basev2.html",
   });
 });
 
 app.get(`${v2UrlPath}/faq/payments`, (request, response) => {
   response.render(`${v2ViewsPath}/paymentsfaqV2.html`, {
     ...v2BaseContext,
-    layout: "./helpv2.html",
+    layout: "./basev2.html",
   });
 });
 
 app.get(`${v2UrlPath}/faq/shipping`, (request, response) => {
   response.render(`${v2ViewsPath}/shippingfaqV2.html`, {
     ...v2BaseContext,
-    layout: "./helpv2.html",
+    layout: "./basev2.html",
   });
 });
 
 app.get(`${v2UrlPath}/terms`, (request, response) => {
   response.render(`${v2ViewsPath}/terms&conditionsV2.html`, {
     ...v2BaseContext,
-    layout: "./helpv2.html",
+    layout: "./basev2.html",
   });
 });
 
 app.get(`${v2UrlPath}/contact`, (request, response) => {
   response.render(`${v2ViewsPath}/contactusV2.html`, {
     ...v2BaseContext,
-    layout: "./helpv2.html",
+    layout: "./basev2.html",
   });
 });
 
