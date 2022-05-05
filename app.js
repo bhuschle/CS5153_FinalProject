@@ -64,12 +64,17 @@ function filterAndSort(products, brands, sortBy) {
 
 // V1 INFORMATION
 
-app.get(`${v1UrlPath}/`, (request, response) => {
+app.get(`${v1UrlPath}/`, async (request, response) => {
+  let products = await database.getAllProducts();
+  let macbook = await database.getProductById(4);
+
   response.render(`${v1ViewsPath}/index.html`, {
     ...v1BaseContext,
     userFirstName: request.session.firstName,
     loggedIn: request.session.loggedIn,
     layout: "./basev1.html",
+    prod: products,
+    mac: macbook,
   });
 });
 
