@@ -5,7 +5,7 @@
         <div class="col-md-4 text-center border-right">
           <img
             class="card-img-top rounded mx-2 my-2"
-            style="height: 25rem; width: 25rem;"
+            style="height: 25rem; object-fit: contain;"
             src="/static/img/{{prod.image1_path}}"
             alt="{{prod.alt1_text}}"
           />
@@ -18,8 +18,16 @@
               Category : {{prod.category}} / {{prod.subcategory}}
             </p>
             <p class="card-text">Brand : {{prod.brand}}</p>
+            {{#if prod.color}}
             <p class="card-text">Color : {{prod.color}}</p>
+            {{else}}
+            <p class="card-text">Color : N/A</p>
+            {{/if}}
+            {{#if prod.model_number}}
             <p class="card-text">Model : {{prod.model_number}}</p>
+            {{else}}
+            <p class="card-text">Model : N/A</p>
+            {{/if}}
             <p class="card-text">${{prod.price}}</p>
             {{#if loggedIn}}
             <form method="get" action="/cart">
