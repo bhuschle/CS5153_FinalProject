@@ -259,9 +259,7 @@ async function getOrder({ name = null, price = null } = {}) {
 module.exports.getOrder = getOrder;
 
 async function removeOrders() {
-  await knex(orderItemsTableName)
-    .where(id > 0)
-    .del();
+  await knex(orderItemsTableName).del();
 }
 
 module.exports.removeOrders = removeOrders;

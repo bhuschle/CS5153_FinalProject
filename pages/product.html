@@ -5,6 +5,7 @@
       <h5>Filters</h5>
       <h6>Brands</h6>
       <form method="get" action="{{urlRoot}}/{{subcategoryId}}">
+        <input type="hidden" name="query" value="{{query}}"/>
         <ul class="list-group">
           <!-- <li class="list-group-item"> <h6>Brand</h6></li>  -->
           {{#each brands}}

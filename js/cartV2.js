@@ -46,6 +46,7 @@ function setItems(product) {
                 ...cartItems,
                 [product.product_name]: product
             }
+            cartItems[product.product_name].inCart = 0;
         }
         cartItems[product.product_name].inCart += 1;
     } else {

@@ -102,6 +102,7 @@ app.get(`${v1UrlPath}/cart`, async (request, response) => {
   let price = request.query["price"];
   if (price != null || name != null) {
     database.addToOrder(name, price);
+    response.redirect(`${v1UrlPath}/cart`);
   }
 
   let orders = await database.getOrder();
@@ -205,6 +206,7 @@ app.get(`${v1UrlPath}/signup/success`, (request, response) => {
 });
 
 app.get(`${v1UrlPath}/purchasesucc`, (request, response) => {
+  database.removeOrders();
   response.render(`${v1ViewsPath}/purchasesucc.html`, {
     ...v1BaseContext,
     layout: "./auth.html",
@@ -460,6 +462,35 @@ app.get(`${v1UrlPath}/signout`, (request, response) => {
   });
 });
 
+app.get(`${v1UrlPath}/search`,
+  bodyParser.urlencoded(),
+  async (request, response) => {
+    let query = request.query["query"];
+    delete request.query["query"];
+    let products = await database.searchProducts(query);
+    brands = new Set(products.map((x) => x["brand"]));
+
+    if (Object.keys(request.query).length !== 0) {
+      let filterBrands = Object.keys(request.query);
+      delete filterBrands["sortby"];
+      products = filterAndSort(products, filterBrands, request.query["sortby"]);
+    }
+
+    response.render(`${v1ViewsPath}/product.html`, {
+      ...v1BaseContext,
+      loggedIn: request.session.loggedIn,
+      layout: "./basev1.html",
+      products: products,
+      productsString: JSON.stringify(products),
+      category: "Search",
+      subcategory: "Results",
+      subcategoryId: "search",
+      query: query,
+      brands: brands,
+    });
+  }
+);
+
 // V2 INFORMATION
 
 app.get(`${v2UrlPath}`, (request, response) => {
@@ -581,6 +612,102 @@ app.get(`${v2UrlPath}/samsung`, async (request, response) => {
     products: products,
     productsString: JSON.stringify(products),
     category: "Samsung",
+    subcategoryId: subcategoryId,
+    brands: brands,
+  });
+});
+
+app.get(`${v2UrlPath}/dslr`, async (request, response) => {
+  let subcategoryId = "dslr";
+  let products = await database.getProducts({ subcategory: subcategoryId });
+  brands = new Set(products.map((x) => x["brand"]));
+
+  if (Object.keys(request.query).length !== 0) {
+    let filterBrands = Object.keys(request.query);
+    delete filterBrands["sortby"];
+    products = filterAndSort(products, filterBrands, request.query["sortby"]);
+  }
+
+  response.render(`${v2ViewsPath}/productpageV2.html`, {
+    ...v2BaseContext,
+    userFirstName: request.session.firstName,
+    loggedIn: request.session.loggedIn,
+    layout: "./basev2.html",
+    products: products,
+    productsString: JSON.stringify(products),
+    category: "DSLR",
+    subcategoryId: subcategoryId,
+    brands: brands,
+  });
+});
+
+app.get(`${v2UrlPath}/pointshoot`, async (request, response) => {
+  let subcategoryId = "pointshoot";
+  let products = await database.getProducts({ subcategory: subcategoryId });
+  brands = new Set(products.map((x) => x["brand"]));
+
+  if (Object.keys(request.query).length !== 0) {
+    let filterBrands = Object.keys(request.query);
+    delete filterBrands["sortby"];
+    products = filterAndSort(products, filterBrands, request.query["sortby"]);
+  }
+
+  response.render(`${v2ViewsPath}/productpageV2.html`, {
+    ...v2BaseContext,
+    userFirstName: request.session.firstName,
+    loggedIn: request.session.loggedIn,
+    layout: "./basev2.html",
+    products: products,
+    productsString: JSON.stringify(products),
+    category: "Point & Shoot",
+    subcategoryId: subcategoryId,
+    brands: brands,
+  });
+});
+
+app.get(`${v2UrlPath}/movies`, async (request, response) => {
+  let subcategoryId = "movies";
+  let products = await database.getProducts({ subcategory: subcategoryId });
+  brands = new Set(products.map((x) => x["brand"]));
+
+  if (Object.keys(request.query).length !== 0) {
+    let filterBrands = Object.keys(request.query);
+    delete filterBrands["sortby"];
+    products = filterAndSort(products, filterBrands, request.query["sortby"]);
+  }
+
+  response.render(`${v2ViewsPath}/productpageV2.html`, {
+    ...v2BaseContext,
+    userFirstName: request.session.firstName,
+    loggedIn: request.session.loggedIn,
+    layout: "./basev2.html",
+    products: products,
+    productsString: JSON.stringify(products),
+    category: "Movies",
+    subcategoryId: subcategoryId,
+    brands: brands,
+  });
+});
+
+app.get(`${v2UrlPath}/music`, async (request, response) => {
+  let subcategoryId = "music";
+  let products = await database.getProducts({ subcategory: subcategoryId });
+  brands = new Set(products.map((x) => x["brand"]));
+
+  if (Object.keys(request.query).length !== 0) {
+    let filterBrands = Object.keys(request.query);
+    delete filterBrands["sortby"];
+    products = filterAndSort(products, filterBrands, request.query["sortby"]);
+  }
+
+  response.render(`${v2ViewsPath}/productpageV2.html`, {
+    ...v2BaseContext,
+    userFirstName: request.session.firstName,
+    loggedIn: request.session.loggedIn,
+    layout: "./basev2.html",
+    products: products,
+    productsString: JSON.stringify(products),
+    category: "Music",
     subcategoryId: subcategoryId,
     brands: brands,
   });
@@ -850,7 +977,7 @@ app.post(
 
 app.post(
   `${commonUrlPath}/addtocart`,
-  //bodyParser.urlencoded(),
+  bodyParser.urlencoded(),
   async (request, response) => {
     if (request.body.version == 1) {
       response.redirect(`${v1UrlPath}/cart`);
@@ -862,9 +989,8 @@ app.post(
 
 app.post(
   `${commonUrlPath}/purchase`,
-  //bodyParser.urlencoded(),
+  bodyParser.urlencoded(),
   async (request, response) => {
-    database.addToOrder(request.query["id"]);
     if (request.body.version == 1) {
       response.redirect(`${v1UrlPath}/purchasesucc`);
     } else {
