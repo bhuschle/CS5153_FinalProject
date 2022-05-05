@@ -6,18 +6,19 @@
     <div class="card justify-content-center mx-4 my-4">
       <img
         class="card-img-top rounded"
-        style="height: 35rem; object-fit: cover;"
-        src="{{imageRoot}}/test/MacbookPro.webp"
-        alt="Card image cap"
+        style="height: 40rem; object-fit: contain;"
+        src="{{imageRoot}}/{{featured.image1_path}}"
+        alt="{{featured.alt1_text}}"
       />
       <div class="card-body">
-        <h5 class="card-title">2021 Macbook Pro 14"</h5>
+        <h5 class="card-title">{{featured.product_name}}</h5>
         <p class="card-text">
-          The most powerful Macbook Pro ever is here! 
+          {{featured.product_description}} 
         </p>
-        <a href="pages/product.html" class="card-link">More Info</a>
-        <a href="./pages/cart.html?price=1999.00&name=2021%20Macbook%20Pro%2014&image=..%2Fimg%2FprodImg%2Fmacbook.jpg" class="card-link"> 
-          $1,999.00 </a>
+        <form action="{{urlRoot}}/productinfo" method="GET">
+          <input type="hidden" name="id" id="id" value="{{featured.id}}" />
+          <button class="btn btn-lg w-100" style = "background-color: #4b1b25; color:white">More Info</button>
+        </form>
       </div>
     </div> 
 
@@ -38,133 +39,40 @@
 
 
     <!-- Shop products -->
-    <div class="container-fluid mx-4 my-4">
-      <h4>Shop Products</h4>
+    <div class="container-fluid px-4 my-4">
+      <h4>Best selling products</h4>
     </div>
 
-    <div class="container-fluid">
-      <div class="row">
-        <div class="col my-2 mx-2">
-          <div class="card rounded" style="width: 16rem;">
-            <img
-              class="card-img-top rounded px-2 py-2"
-              style="height: 13.5rem;"
-              src="{{imageRoot}}/prodImg/kindle.jpg"
-              alt="Card image cap"
-            />
-            <div class="card-body">
-              <h5 class="card-title">Kindle - black</h5>
-              <p class="card-text">
-                Purpose-built for reading with a 167 ppi glare-free display that
-                reads like real paper, even in direct sunlight. Adjustable
-                brightness lets you read comfortably
-              </p>
-              <a
-                href="./pages/cart.html?price=59.99&name=Kindle%20-%20black&image=..%2Fimg%2FprodImg%2Fkindle.jpg"
-                class="card-link"
-                >$59.99</a
-              >
-            </div>
+    <div class="d-flex flex-wrap col-centered px-3">
+      {{#each products}}
+      <div class="m-2">
+        <div class="card h-100 rounded" style="width: 15rem;">
+          <img
+            class="card-img-top w-100 text-center rounded"
+            style="height: 12rem; object-fit: contain;"
+            src="{{../imageRoot}}{{this.image1_path}}"
+            alt="{{this.alt1_text}}"
+          />
+          <div class="card-body">
+            <h5 class="card-title">{{this.product_name}}</h5>
+            <h4>${{this.price}}</h4>
           </div>
-        </div>
-
-
-        <div class="col my-2 mx-2">
-          <div class="card rounded" style="width: 16rem;">
-            <img
-              class="card-img-top rounded px-2 py-2"
-              style="height: 13.5rem;"
-              src="{{imageRoot}}/prodImg/ipad.jpg"
-              alt="Card image cap"
-            />
-            <div class="card-body">
-              <h5 class="card-title">2021 Apple 10.2" iPad</h5>
-              <p class="card-text">
-                Gorgeous 10.2-inch Retina display with True Tone A13 Bionic chip
-                with Neural Engine 8MP Wide back camera, 12MP Ultra Wide front
-                camera with Center Stage
-              </p>
-              <a
-                href="./pages/cart.html?price=429.99&name=2021%20Apple%2010.2%22%20iPad&image=..%2Fimg%2FprodImg%2Fipad.jpg"
-                class="card-link"
-                >$429.99</a
-              >
-            </div>
+          <div class="card-footer">
+            <form action="{{../urlRoot}}/productinfo" method="GET">
+              <input type="hidden" name="id" id="id" value="{{this.id}}" />
+              <button class="btn w-100" style = "background-color: #4b1b25; color:white">More Info</button>
+            </form>
           </div>
-        </div>
-
-        <div class="col my-2 mx-2">
-          <div class="card rounded" style="width: 16rem;">
-            <img
-              class="card-img-top rounded px-2 py-2"
-              style="height: 12rem;"
-              src="{{imageRoot}}/prodImg/protector.jpg"
-              alt="Card image cap"
-            />
-            <div class="card-body">
-              <h5 class="card-title">Alex Tech 10ft - cord protector</h5>
-              <p class="card-text">
-                Size: Diameter: 1/2"| Length: 10 Feet | Color: Black. Our wire
-                loom is split and easy to load wires. Once loaded, our cable
-                sleeve will close on itself and perfect wire wrap
-              </p>
-              <a
-                href="./pages/cart.html?price=9.99&name=Alex%20Tech%2010ft%20-%20cord%20protector&image=..%2Fimg%2FprodImg%2Fprotector.jpg"
-                class="card-link"
-                >$9.99</a
-              >
-            </div>
+          {{#if ../loggedIn}}
+          <div class="card-footer">
+                <div>
+                  <button class="add-cart cart btn w-100" style="background-color: #1a4918; color:white"> Add to cart </button>
+                </div>
           </div>
+          {{/if}}
         </div>
-
-
-        <div class="col my-2 mx-2">
-          <div class="card rounded" style="width: 16rem;">
-            <img
-              class="card-img-top rounded px-2 py-2"
-              style="height: 15rem;"
-              src="{{imageRoot}}/prodImg/stand.jpg"
-              alt="Card image cap"
-            />
-            <div class="card-body">
-              <h5 class="card-title">LISEN Desk Stand</h5>
-              <p class="card-text">
-                This cell phone stand for desk is the only one on the market
-                equipped with a weighted base and an aluminum alloy rod taller
-                electronic stand.
-              </p>
-              <a
-                href="./pages/cart.html?price=15.99&name=ISEN%20Desk%20Stand&image=..%2Fimg%2FprodImg%2Fstand.jpg"
-                class="card-link"
-                >$15.99</a
-              >
-            </div>
-          </div>
-        </div>
-
-        <div class="col my-2 mx-2">
-          <div class="card rounded" style="width: 15rem;">
-            <img
-              class="card-img-top rounded px-2 py-2"
-              style="height: 15rem;"
-              src="{{imageRoot}}/prodImg/s21fe.jpg"
-              alt="Card image cap"
-            />
-            <div class="card-body">
-              <h5 class="card-title">Samsung S21 FE</h5>
-              <p class="card-text">
-                The 120Hz display delivers a super smooth scroll, with optimized
-                refresh rate, and a fast touch response gives seamless visuals
-                in both work and play
-              </p>
-              <a
-                href="./pages/cart.html?price=549.99&name=Samsung%20S21%20FE&image=..%2Fimg%2FprodImg%2Fs21fe.jpg"
-                class="card-link"
-                >$549.99</a
-              >
-            </div>
-          </div>
-        </div>
-
       </div>
+      {{else}}
+      <p>No products to display.</p>
+      {{/each}}
     </div>
