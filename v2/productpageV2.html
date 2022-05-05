@@ -4,129 +4,85 @@
       
 <div class="container-fluid mt-4">
     <div class="row">
-
-        <!-- Filter and Sort Products -->
-        <div class="col-lg-3">
-            <h5>Filters</h5>
-            <h6>Brands</h6>
-            <form method="get" action="{{urlRoot}}/{{subcategoryId}}">
-            <ul class="list-group">
-                <!-- <li class="list-group-item"> <h6>Brand</h6></li>  -->
-                {{#each brands}}
-                <li class="list-group-item">
-                    <div class="form-check">
-                        <label class="mb-0" for="form-check">
-                            <input checked type="checkbox" name="{{this}}" class="form-check-input product-check" value="true" id="brand">{{this}}</inputl>
-                        </label>
-                    </div>
-                </li>
-                {{else}}
-                <li class="list-group-item">
-                No brands.
-                </li>
-                {{/each}}
-            </ul>
-            <br>
-            <h5>Sort Products</h5>
-            <div class="form-group">
-                <select name="sortby" class="form-control form-control-md">
-                <option> Best sellers </option>
-                <option> Low-to-high </option>
-                <option> High-to-low </option>
-                </select>
+      <!-- Filter and Sort Products -->
+      <div class="col-lg-3">
+        <h5>Filters</h5>
+        <h6>Brands</h6>
+        <form method="get" action="{{urlRoot}}/{{subcategoryId}}">
+          <ul class="list-group">
+            <!-- <li class="list-group-item"> <h6>Brand</h6></li>  -->
+            {{#each brands}}
+            <li class="list-group-item">
+              <div class="form-check">
+                <label class="mb-0" for="form-check">
+                  <input
+                    checked
+                    type="checkbox"
+                    name="{{this}}"
+                    class="form-check-input product-check"
+                    value="true"
+                    id="brand"
+                  />{{this}}
+                </label>
+              </div>
+            </li>
+            {{else}}
+            <li class="list-group-item">
+              No brands.
+            </li>
+            {{/each}}
+          </ul>
+          <br />
+          <h5>Sort Products</h5>
+          <div class="form-group">
+            <select name="sortby" class="form-control form-control-md">
+              <option> Best sellers </option>
+              <option> Low-to-high </option>
+              <option> High-to-low </option>
+            </select>
+          </div>
+          <div class="pt-1 mb-3">
+            <input
+              class="btn btn-block"
+              type="submit"
+              value="SORT & FILTER"
+              style = "background-color: #4b1b25; color:white"
+            />
+          </div>
+        </form>
+      </div>
+  
+      <!-- Display products -->
+      <div class="col-lg-9">
+        {{category}} / {{subcategory}}
+        <h4>{{subcategory}}</h4>
+  
+        <div class="row col-centered">
+          {{#each products}}
+          <div class="col-md d-flex align-items-stretch my-3">
+            <div class="card h-100 rounded" style="width: 15rem;">
+              <img
+                class="card-img-top text-center rounded"
+                style="height: 13rem; width: 13rem;"
+                src="{{../imageRoot}}{{this.image1_path}}"
+                alt="{{this.alt1_text}}"
+              />
+              <div class="card-body">
+                <h5 class="card-title">{{this.product_name}}</h5>
+                <h4>${{this.price}}</h4>
+              </div>
+              <div class="card-footer">
+                <form action="{{urlRoot}}/productdetailsV2" method="GET">
+                  <input type="hidden" name="id" id="id" value="{{this.id}}" />
+                  <button class="btn w-100" style = "background-color: #4b1b25; color:white">MORE INFO</button>
+                </form>
+              </div>
             </div>
-            <div class="pt-1 mb-3">
-                <input class="btn btn-dark btn-block" type="submit" value="Sort & Filter" style="background-color: #4b1b25;"/>
-            </div>
-            </form>
+          </div>
+          {{else}}
+          <p>No products to display.</p>
+          {{/each}}
         </div>
-        <!-- filter and sort -->
-
-        <!-- Display products -->
-        <div class="col-lg-9">
-            Computers / {{category}}
-            <h4>{{category}}</h4>
-            {{#each products}}
-            <div class="row">
-                <div class="col-md-3 mb-2">
-                    <div class="card rounded" style="width: 15rem;">
-                        <img
-                            class="card-img-top rounded px-2 py-2"
-                            style="height: 13.5rem;"
-                            src="{{../imageRoot}}{{this.image1_path}}"
-                            alt="{{this.alt1_text}}"
-                        />
-                        <div class="card-body">
-                            <h5 class="card-title">{{this.product_name}}</h5>
-                            <a
-                            href="./pages/cart.html?price=59.99&name=Kindle%20-%20black&image=..%2Fimg%2FprodImg%2Fkindle.jpg"
-                            class="card-link"
-                            >${{this.price}}</a
-                            >
-                            
-                            <!-- modal to display detailed product description -->
-                            <button
-                                    type="button"
-                                    class="btn"
-                                    data-toggle="modal"
-                                    data-target=".bd-example-modal-lg"
-                                    style = "background-color: #4b1b25; color:white">
-                                    More Info
-                            </button>
-                            <div
-                                class="modal fade bd-example-modal-lg"
-                                tabindex="-1"
-                                role="dialog"
-                                aria-labelledby="myLargeModalLabel"
-                                aria-hidden="true"
-                                >
-                                <div class="modal-dialog modal-lg">
-                                    <div class="col my-4 mx-4">
-                                        <div class="card rounded">
-                                            <img class="card-img-top rounded" height="160" width="160"
-                                            src="{{../imageRoot}}{{this.image1_path}}"
-                                            alt="{{this.alt1_text}}" />
-                                            <div class="card-body">
-                                                <h5 class="card-title">{{this.product_name}}</h5>
-                                                <p class="card-text">{{this.product_description}}</p>
-                                                <p class="card-text">
-                                                    Category : {{this.category}} / {{this.subcategory}}
-                                                </p>
-                                                <p class="card-text">Brand : {{this.brand}}</p>
-                                                <p class="card-text">Color : {{this.color}}</p>
-                                                <p class="card-text">Model : {{this.model_number}}</p>
-                                                <p class="card-text">${{this.price}}</p>
-
-                                                <button type="button" class="btn ml-4 " style = "background-color: #4b1b25; color:white">
-                                                    Add to Cart  
-                                                </button>
-                                            </div>
-                                            <!-- card body -->
-                                        </div>
-                                        <!-- card rounded -->
-                                    </div>
-                                    <!-- col my-4 mx-4 -->
-                                </div>
-                                <!-- modal dialog-->
-                            </div>
-                            <!-- modal fade -->
-                        </div>
-                        <!-- card body -->
-                    </div>
-                    <!-- card rounded -->               
-                </div>
-                <!-- col-md-3 mb-2 -->
-                {{else}}
-                <p>No products to display.</p>
-                {{/each}}
-
-            </div>
-            <!-- row -->
-        </div>
-        <!-- col-lg-9 -->
-
-
+      </div>
     </div>
-    <!-- row -->
-</div>
-<!-- container -->
+  </div>

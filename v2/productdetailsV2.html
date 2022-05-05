@@ -1,0 +1,57 @@
+
+<div class="row">
+    <div class="container-fluid">
+      <div class="card mb-3 mx-4 my-4">
+        <div class="row no-gutters">
+          <div class="col-md-4 text-center border-right">
+            <img
+              class="card-img-top rounded mx-2 my-2"
+              style="height: 25rem; width: 25rem;"
+              src="/static/img/{{prod.image1_path}}"
+              alt="{{prod.alt1_text}}"
+            />
+          </div>
+          <div class="col-md-8">
+            <div class="card-body">
+              <h5 class="card-title">{{prod.product_name}}</h5>
+              <p class="card-text">{{prod.product_description}}</p>
+              <p class="card-text">
+                Category : {{prod.category}} / {{prod.subcategory}}
+              </p>
+              <p class="card-text">Brand : {{prod.brand}}</p>
+              <p class="card-text">Color : {{prod.color}}</p>
+              <p class="card-text">Model : {{prod.model_number}}</p>
+              <p class="card-text">${{prod.price}}</p>
+              {{#if loggedIn}}
+              <form method="get" action="/cart">
+                <div class="row pt-4 mt-2 px-3 mb-4">
+                  <input
+                    type="hidden"
+                    name="name"
+                    id="name"
+                    value="{{prod.product_name}}"
+                  />
+                  <input
+                    type="hidden"
+                    name="price"
+                    id="price"
+                    value="{{prod.price}}"
+                  />
+                  <input
+                    class="btn btn-lg"
+                    type="submit"
+                    value="Add to cart"
+                    style = "background-color: #4b1b25; color:white"
+                  />
+                </div>
+                <input type="hidden" id="version" name="version" value="1" />
+              </form>
+              {{/if}}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
