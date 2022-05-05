@@ -530,10 +530,12 @@ app.get(`${v2UrlPath}/cart`, (request, response) => {
   });
 });
 
-app.get(`${v2UrlPath}/checkoutV2`, (request, response) => {
+app.get(`${v2UrlPath}/checkoutV2`, async (request, response) => {
+  let user = await database.getUser({ id: request.session.userId });
   response.render(`${v2ViewsPath}/checkoutV2.html`, {
     ...v2BaseContext,
-    layout: './basev2.html'
+    layout: './basev2.html',
+    user: user,
   });
 });
 
