@@ -95,6 +95,7 @@ app.get(`${v1UrlPath}/cart`, async (request, response) => {
   let price = request.query["price"];
   if (price != null || name != null) {
     database.addToOrder(name, price);
+    response.redirect(`${v1UrlPath}/cart`);
   }
 
   let orders = await database.getOrder();
@@ -198,6 +199,7 @@ app.get(`${v1UrlPath}/signup/success`, (request, response) => {
 });
 
 app.get(`${v1UrlPath}/purchasesucc`, (request, response) => {
+  database.removeOrders();
   response.render(`${v1ViewsPath}/purchasesucc.html`, {
     ...v1BaseContext,
     layout: "./auth.html",
