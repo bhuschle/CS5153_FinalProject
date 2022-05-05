@@ -924,8 +924,6 @@ app.get(`${v2UrlPath}/signout`, (request, response) => {
   response.render(`${v2ViewsPath}/signedoutV2.html`, {
     ...v2BaseContext,
     layout: "./authv2.html",
-    loggedIn: request.session.loggedIn,
-    userFirstName: request.session.firstName,
   });
 });
 
