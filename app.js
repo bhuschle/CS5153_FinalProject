@@ -453,6 +453,35 @@ app.get(`${v1UrlPath}/signout`, (request, response) => {
   });
 });
 
+app.get(`${v1UrlPath}/search`,
+  bodyParser.urlencoded(),
+  async (request, response) => {
+    let query = request.query["query"];
+    delete request.query["query"];
+    let products = await database.searchProducts(query);
+    brands = new Set(products.map((x) => x["brand"]));
+
+    if (Object.keys(request.query).length !== 0) {
+      let filterBrands = Object.keys(request.query);
+      delete filterBrands["sortby"];
+      products = filterAndSort(products, filterBrands, request.query["sortby"]);
+    }
+
+    response.render(`${v1ViewsPath}/product.html`, {
+      ...v1BaseContext,
+      loggedIn: request.session.loggedIn,
+      layout: "./basev1.html",
+      products: products,
+      productsString: JSON.stringify(products),
+      category: "Search",
+      subcategory: "Results",
+      subcategoryId: "search",
+      query: query,
+      brands: brands,
+    });
+  }
+);
+
 // V2 INFORMATION
 
 app.get(`${v2UrlPath}`, (request, response) => {
@@ -795,7 +824,7 @@ app.post(
 
 app.post(
   `${commonUrlPath}/addtocart`,
-  //bodyParser.urlencoded(),
+  bodyParser.urlencoded(),
   async (request, response) => {
     if (request.body.version == 1) {
       response.redirect(`${v1UrlPath}/cart`);
@@ -807,9 +836,8 @@ app.post(
 
 app.post(
   `${commonUrlPath}/purchase`,
-  //bodyParser.urlencoded(),
+  bodyParser.urlencoded(),
   async (request, response) => {
-    database.addToOrder(request.query["id"]);
     if (request.body.version == 1) {
       response.redirect(`${v1UrlPath}/purchasesucc`);
     } else {
