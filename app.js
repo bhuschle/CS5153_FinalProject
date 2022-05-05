@@ -493,11 +493,18 @@ app.get(`${v1UrlPath}/search`,
 
 // V2 INFORMATION
 
-app.get(`${v2UrlPath}`, (request, response) => {
+app.get(`${v2UrlPath}`, async (request, response) => {
+  let products = await database.getAllProducts();
+  let featured = await database.getProductById(4);
+  let brands = Array.from(new Set(products.map(x => x["brand"])));
+  products = filterAndSort(products, brands, "Best sellers");
+  
   response.render(`${v2ViewsPath}/index.html`, {
     ...v2BaseContext,
     userFirstName: request.session.firstName,
     loggedIn: request.session.loggedIn,
+    featured: featured,
+    products: products,
     layout: "./basev2.html",
   });
 });
@@ -536,13 +543,27 @@ app.get(`${v2UrlPath}/checkoutV2`, async (request, response) => {
     ...v2BaseContext,
     layout: './basev2.html',
     user: user,
+
   });
 });
+
+
+app.get(`${v2UrlPath}/productinfo`, async (request, response) => {
+  let product = await database.getProductById(request.query["id"]);
+
+  response.render(`${v2ViewsPath}/productdetailsV2.html`, {
+    ...v2BaseContext,
+    userFirstName: request.session.firstName,
+    loggedIn: request.session.loggedIn,
+    layout: "./basev2.html",
+    prod: product,
+    productsString: JSON.stringify(product),
 
 app.get(`${v2UrlPath}/purchasesuccV2`, (request, response) => {
   response.render(`${v2ViewsPath}/purchasesuccV2.html`, {
     ...v2BaseContext,
     layout: './authv2.html'
+
   });
 });
 
