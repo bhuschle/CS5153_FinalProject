@@ -460,11 +460,17 @@ app.get(`${v2UrlPath}`, (request, response) => {
 });
 
 app.get(`${v2UrlPath}/account`, (request, response) => {
-  response.render(`${v2ViewsPath}/account.html`, { layout: false });
+  response.render(`${v2ViewsPath}/account.html`, {
+    ...v2BaseContext,
+    layout: false
+  });
 });
 
 app.get(`${v2UrlPath}/cart`, (request, response) => {
-  response.render(`${v2ViewsPath}/cartV2.html`, { layout: './basev2.html' });
+  response.render(`${v2ViewsPath}/cartV2.html`,{
+    ...v2BaseContext,
+    layout: './basev2.html'
+  });
 });
 
 app.get(`${v2UrlPath}/desktops`, async (request, response) => {
