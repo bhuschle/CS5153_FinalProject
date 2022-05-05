@@ -152,19 +152,8 @@ async function addUser(
 
 module.exports.addUser = addUser;
 
-async function editUser(
-  id,
-  firstName,
-  lastName,
-  emailAddress,
-  password,
-  address,
-  city,
-  state,
-  country,
-  zipCode
-) {
-  await knex(usersTableName).where({ id: id }).update({
+async function editUser(id, firstName, lastName, emailAddress, address, city, state, country, zipCode, password = null) {
+  let u = {
     first_name: firstName,
     last_name: lastName,
     email: emailAddress,
@@ -174,7 +163,13 @@ async function editUser(
     user_state: state,
     user_country: country,
     user_zip_code: zipCode,
-  });
+  };
+
+  if (password !== null) {
+    u["user_password"] = password;
+  }
+
+  await knex(usersTableName).where({ id: id }).update(u);
 }
 
 module.exports.editUser = editUser;
