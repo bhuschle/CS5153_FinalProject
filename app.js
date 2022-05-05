@@ -493,11 +493,16 @@ app.get(`${v1UrlPath}/search`,
 
 // V2 INFORMATION
 
-app.get(`${v2UrlPath}`, (request, response) => {
+app.get(`${v2UrlPath}`, async (request, response) => {
+  let products = await database.getAllProducts();
+  let brands = Array.from(new Set(products.map(x => x["brand"])));
+  products = filterAndSort(products, brands, "Best sellers");
+  
   response.render(`${v2ViewsPath}/index.html`, {
     ...v2BaseContext,
     userFirstName: request.session.firstName,
     loggedIn: request.session.loggedIn,
+    products: products,
     layout: "./basev2.html",
   });
 });
